@@ -11,7 +11,7 @@ dependencies:
   - partd
   - bokeh
   - dask
-  - holoview
+  - hvplot
   - netCDF4
   - xarray 
   - s3fs
