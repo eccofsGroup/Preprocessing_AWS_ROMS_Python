@@ -1,0 +1,3 @@
+name: Climatology files for ROMS
+channels:
+    - pip
