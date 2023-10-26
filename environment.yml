@@ -1,6 +1,6 @@
 name: Climatology files for ROMS
 channels:
-  - pip
+  - conda-forge
 dependencies:
   - python=3.11
   - numpy
