@@ -1,18 +1,3 @@
 name: Climatology files for ROMS
 channels:
-  - conda-forge
 dependencies:
-  - python=3.11
-  - numpy
-  - psutil
-  - toolz
-  - matplotlib
-  - pandas
-  - partd
-  - bokeh
-  - dask
-  - hvplot
-  - netCDF4
-  - xarray 
-  - s3fs
-  - geoviews
