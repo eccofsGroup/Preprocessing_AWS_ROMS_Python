@@ -11,6 +11,6 @@ dependencies:
   - matplotlib=3.7.1
   - hvplot=0.8.4
   - holoviews=1.16.2
-  - cartopy=0.22.0
+  - cartopy>=0.22.0
   - s3fs=2023.4.0
-  - geoviews=1.10.1
+  - geoviews>=1.10.1
