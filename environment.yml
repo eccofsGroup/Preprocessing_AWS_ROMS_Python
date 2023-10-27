@@ -4,7 +4,7 @@ channels:
   - defaults
   - conda-forge/label/broken
 dependencies:
-  - python=3.12
+  - python>=3.11
   - numpy=1.25.2
   - netCD4=1.6.4
   - xarray=2022.11.0
