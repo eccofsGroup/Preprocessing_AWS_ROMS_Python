@@ -1,0 +1,16 @@
+name: Climatology files for ROMS
+channels:
+  - conda-forge
+  - defaults
+  - conda-forge/label/broken
+dependencies:
+  - python>=3.9
+  - numpy
+  - netcdf4=1.6.4
+  - xarray=2022.11.0
+  - matplotlib=3.7.1
+  - hvplot=0.8.4
+  - holoviews=1.16.2
+  - cartopy>=0.22.0
+  - s3fs=2023.4.0
+  - geoviews>=1.10.1
