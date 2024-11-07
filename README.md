@@ -1,3 +1,3 @@
-## This is the folder containing the Python codes to generate CLM and BC for ROMS
-### Only iteractivePlots jupyter notebook works interactively in binder right now.
-#### Author: Matheus Fagundes
+## Python scripts to create initial conditions, boundary conditions, and forcing files fdor the ECCOFS domain.
+### Regional Ocean Modeiling System.
+
