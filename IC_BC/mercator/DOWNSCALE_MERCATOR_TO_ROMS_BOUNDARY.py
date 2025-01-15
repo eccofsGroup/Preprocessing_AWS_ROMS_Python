@@ -50,7 +50,7 @@ regrid_coef_file='/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_bdry_9999.nc'
 
 
 #Receiver Grid Info
-L1grdfile='/home/om/roms/eccofs/grid_eccofs_6km_02.nc' # can be a thredds url
+L1grdfile='/home/om/roms/eccofs/grid_eccofs_3km_02.nc' # can be a thredds url
 L1theta_s=7.0
 L1theta_b=2.0
 L1Tcline=250.0
@@ -76,7 +76,7 @@ bdylist={'EAST':True, 'WEST':False, 'NORTH':False, 'SOUTH':True}
 
 
 nday=7
-start_date = datetime.datetime(2019, 1, 1)
+start_date = datetime.datetime(2025, 1, 13)
 sdate=start_date.strftime('%Y%m%d')
 date_times = [start_date  + timedelta(days=i) for i in range(nday)] 
 
@@ -112,7 +112,17 @@ def main():
         filelist.append(mfilename)
 
     print(filelist)   
+    start_time=time.time()
     dsmerc=xr.open_mfdataset(filelist)
+    dsmerc['zos']= dsmerc['zos'].interpolate_na(dim="longitude", method="nearest",limit=None,fill_value="extrapolate").interpolate_na(dim="latitude", method="nearest",limit=None,fill_value="extrapolate")
+    dsmerc['uo']= dsmerc['uo'].interpolate_na(dim="longitude", method="nearest",limit=None,fill_value="extrapolate").interpolate_na(dim="latitude", method="nearest",limit=None,fill_value="extrapolate")
+    dsmerc['vo']= dsmerc['vo'].interpolate_na(dim="longitude", method="nearest",limit=None,fill_value="extrapolate").interpolate_na(dim="latitude", method="nearest",limit=None,fill_value="extrapolate")
+    dsmerc['so']= dsmerc['so'].interpolate_na(dim="longitude", method="nearest",limit=None,fill_value="extrapolate").interpolate_na(dim="latitude", method="nearest",limit=None,fill_value="extrapolate")
+    dsmerc['thetao']= dsmerc['thetao'].interpolate_na(dim="longitude", method="nearest",limit=None,fill_value="extrapolate").interpolate_na(dim="latitude", method="nearest",limit=None,fill_value="extrapolate")
+  
+    end_time=time.time()
+    elapsed_time = end_time - start_time
+    print(f"filling processing time: {elapsed_time} seconds")
    # blon,blat = np.meshgrid(dsmerc['longitude'].values,dsmerc['latitude'].values)
     
   #  print(blat)
@@ -380,56 +390,56 @@ def downscale_bdry_file(cfgrd,dsmerc):
          #   xi_rho=dataout['xi_rho'];
     
      
-            for eta in range(0,dim_dict['eta_rho']):
-                for xi in range(0,dim_dict['xi_rho']):
-                    maskflag=mask[eta,xi]
-                    if maskflag==0.0:
-                        continue
+            # for eta in range(0,dim_dict['eta_rho']):
+            #     for xi in range(0,dim_dict['xi_rho']):
+            #         maskflag=mask[eta,xi]
+            #         if maskflag==0.0:
+            #             continue
 
-                    all_nan = np.all(np.isnan(temp[:,eta,xi]))
+            #         all_nan = np.all(np.isnan(temp[:,eta,xi]))
                     
-                    if all_nan:
+            #         if all_nan:
                       
-                        tmp=np.squeeze(temp[0,:,:])
-                        real_value_indices = np.argwhere(~np.isnan(tmp))
+            #             tmp=np.squeeze(temp[0,:,:])
+            #             real_value_indices = np.argwhere(~np.isnan(tmp))
                         
-                        distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
-                            (real_value_indices[:, 1] - xi)**2)
-                        cI = real_value_indices[np.argmin(distances)]
-                        temp[:,eta,xi]=temp[:,cI[0],cI[1]]
+            #             distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
+            #                 (real_value_indices[:, 1] - xi)**2)
+            #             cI = real_value_indices[np.argmin(distances)]
+            #             temp[:,eta,xi]=temp[:,cI[0],cI[1]]
                
                         
                         
-                    all_nan = np.all(np.isnan(salt[:,eta,xi]))
-                    if all_nan:
+            #         all_nan = np.all(np.isnan(salt[:,eta,xi]))
+            #         if all_nan:
                       
-                        tmp=np.squeeze(salt[0,:,:])
-                        real_value_indices = np.argwhere(~np.isnan(tmp))
-                        distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
-                            (real_value_indices[:, 1] - xi)**2)
-                        cI = real_value_indices[np.argmin(distances)]
-                        salt[:,eta,xi]=salt[:,cI[0],cI[1]]
+            #             tmp=np.squeeze(salt[0,:,:])
+            #             real_value_indices = np.argwhere(~np.isnan(tmp))
+            #             distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
+            #                 (real_value_indices[:, 1] - xi)**2)
+            #             cI = real_value_indices[np.argmin(distances)]
+            #             salt[:,eta,xi]=salt[:,cI[0],cI[1]]
                       
-                    all_nan = np.all(np.isnan(u_east[:,eta,xi]))
-                    if all_nan:
+            #         all_nan = np.all(np.isnan(u_east[:,eta,xi]))
+            #         if all_nan:
                       
-                        tmp=np.squeeze(u_east[0,:,:])
-                        real_value_indices = np.argwhere(~np.isnan(tmp))
-                        distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
-                            (real_value_indices[:, 1] - xi)**2)
-                        cI = real_value_indices[np.argmin(distances)]
-                        u_east[:,eta,xi]=u_east[:,cI[0],cI[1]]
+            #             tmp=np.squeeze(u_east[0,:,:])
+            #             real_value_indices = np.argwhere(~np.isnan(tmp))
+            #             distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
+            #                 (real_value_indices[:, 1] - xi)**2)
+            #             cI = real_value_indices[np.argmin(distances)]
+            #             u_east[:,eta,xi]=u_east[:,cI[0],cI[1]]
                     
                         
-                    all_nan = np.all(np.isnan(v_north[:,eta,xi]))
-                    if all_nan:
+            #         all_nan = np.all(np.isnan(v_north[:,eta,xi]))
+            #         if all_nan:
                       
-                        tmp=np.squeeze(v_north[0,:,:])
-                        real_value_indices = np.argwhere(~np.isnan(tmp))
-                        distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
-                            (real_value_indices[:, 1] - xi)**2)
-                        cI = real_value_indices[np.argmin(distances)]
-                        v_north[:,eta,xi]=v_north[:,cI[0],cI[1]]
+            #             tmp=np.squeeze(v_north[0,:,:])
+            #             real_value_indices = np.argwhere(~np.isnan(tmp))
+            #             distances = np.sqrt((real_value_indices[:, 0] - eta)**2 + 
+            #                 (real_value_indices[:, 1] - xi)**2)
+            #             cI = real_value_indices[np.argmin(distances)]
+            #             v_north[:,eta,xi]=v_north[:,cI[0],cI[1]]
                  
                 
                     
