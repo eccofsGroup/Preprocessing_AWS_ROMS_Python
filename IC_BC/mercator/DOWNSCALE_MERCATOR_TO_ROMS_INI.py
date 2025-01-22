@@ -1,7 +1,7 @@
 """
 DOWNSCALE_MERCATOR_TO ROM_INI.py
 
-Adapted from DOWNSCALE_ROMS_OUTPUT.py. Generate and INitial conditions file 
+Adapted from DOWNSCALE_ROMS_OUTPUT.py. Generate and Initial conditions file 
 for a ROMS gird from Mercator. 
 Created by Elias Hunter, hunter@marine.rutgers.edu, 12/19/2023 
 """
@@ -35,7 +35,7 @@ lonmin=-100.0
 lonmax=-38.0
 
 #Set time
-start_date = datetime.datetime(2025, 1, 13)
+start_date = datetime.datetime(2025, 1, 21)
 today=start_date.strftime('%Y%m%d')
 
 nday=1
@@ -54,7 +54,7 @@ regrid_coef_file='/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_REGRID.nc'
 
 
 #Receiver Grid Info
-L1grdfile='/home/om/roms/eccofs/grid_eccofs_3km_02.nc' # can be a thredds url
+L1grdfile='/home/om/cron/ECCOFS_OBS/MERCATOR/work/grid_eccofs_3km_08_b7.nc' # can be a thredds url
 L1theta_s=7.0
 L1theta_b=2.0
 L1Tcline=250.0
@@ -186,7 +186,7 @@ def downscale_init_file(cfgrd,dsmerc):
     end_time=time.time()
     elapsed_time = end_time - start_time
     print(f'FILL time: {elapsed_time}')
-    varnew=varnew.rename({'mask_rho':'mask'})
+#    varnew=varnew.rename({'mask_rho':'mask'})
     start_time=time.time()
     
     if os.path.exists(regrid_coef_file):
@@ -223,13 +223,13 @@ def downscale_init_file(cfgrd,dsmerc):
     dim_dict=dataout_z.dims
     
     temp = np.empty((L1N,dim_dict['eta_rho'],dim_dict['xi_rho']))
-    temp[:]=np.nan
+    temp[:]=0.0
     salt = np.empty((L1N,dim_dict['eta_rho'],dim_dict['xi_rho']))
-    salt[:]=np.nan
+    salt[:]=0.0
     u_east = np.empty((L1N,dim_dict['eta_rho'],dim_dict['xi_rho']))
-    u_east[:]=np.nan
+    u_east[:]=0.0
     v_north = np.empty((L1N,dim_dict['eta_rho'],dim_dict['xi_rho']))
-    v_north[:]=np.nan
+    v_north[:]=0.0
     
     
     
@@ -405,6 +405,7 @@ def downscale_init_file(cfgrd,dsmerc):
     ncid.variables['vbar'][0,:,:]=vbar.values[:,:]
     ncid.variables['zeta'][0,:,:]=dataout['zos'].values[:,:]
     ncid.variables['u'][0,:,:,:]=dataout_z.u.values[:,:,:]
+    ncid.variables['v'][0,:,:,:]=dataout_z.v.values[:,:,:]
     ncid.variables['salt'][0,:,:,:]=salt
     ncid.variables['temp'][0,:,:,:]=temp
     ncid.variables['Vtransform'][:]=L1Vtransform
