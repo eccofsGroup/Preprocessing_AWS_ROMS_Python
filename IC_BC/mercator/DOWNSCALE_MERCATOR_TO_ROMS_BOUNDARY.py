@@ -50,7 +50,7 @@ regrid_coef_file='/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_bdry_9999.nc'
 
 
 #Receiver Grid Info
-L1grdfile='/home/om/roms/eccofs/grid_eccofs_3km_02.nc' # can be a thredds url
+L1grdfile='/home/om/cron/ECCOFS_OBS/MERCATOR/work/grid_eccofs_3km_08_b7.nc' # can be a thredds url
 L1theta_s=7.0
 L1theta_b=2.0
 L1Tcline=250.0
@@ -76,7 +76,7 @@ bdylist={'EAST':True, 'WEST':False, 'NORTH':False, 'SOUTH':True}
 
 
 nday=7
-start_date = datetime.datetime(2025, 1, 13)
+start_date = datetime.datetime(2025, 1, 21)
 sdate=start_date.strftime('%Y%m%d')
 date_times = [start_date  + timedelta(days=i) for i in range(nday)] 
 
@@ -284,25 +284,25 @@ def downscale_bdry_file(cfgrd,dsmerc):
 ##############################################################################################
             print('INITIALZING OUTPUT ARRAYS')
             if key=='EAST' :
-                temp=np.full((L1N,dim_dict['eta_rho'],3),np.nan)    
-                salt=np.full((L1N,dim_dict['eta_rho'],3),np.nan)   
-                u_east=np.full((L1N,dim_dict['eta_rho'],3),np.nan)   
-                v_north=np.full((L1N,dim_dict['eta_rho'],3),np.nan)   
+                temp=np.full((L1N,dim_dict['eta_rho'],3),0.0)    
+                salt=np.full((L1N,dim_dict['eta_rho'],3),0.0)   
+                u_east=np.full((L1N,dim_dict['eta_rho'],3),0.0)   
+                v_north=np.full((L1N,dim_dict['eta_rho'],3),0.0)   
             if key=='WEST' :
-                temp=np.full((L1N,dim_dict['eta_rho'],3),np.nan)    
-                salt=np.full((L1N,dim_dict['eta_rho'],3),np.nan)   
-                u_east=np.full((L1N,dim_dict['eta_rho'],3),np.nan)   
-                v_north=np.full((L1N,dim_dict['eta_rho'],3),np.nan)   
+                temp=np.full((L1N,dim_dict['eta_rho'],3),0.0)    
+                salt=np.full((L1N,dim_dict['eta_rho'],3),0.0)   
+                u_east=np.full((L1N,dim_dict['eta_rho'],3),0.0)   
+                v_north=np.full((L1N,dim_dict['eta_rho'],3),0.0)   
             if key=='NORTH' :
-                temp=np.full((L1N,3,dim_dict['xi_rho']),np.nan)    
-                salt=np.full((L1N,3,dim_dict['xi_rho']),np.nan)   
-                u_east=np.full((L1N,3,dim_dict['xi_rho']),np.nan)   
-                v_north=np.full((L1N,3,dim_dict['xi_rho']),np.nan)   
+                temp=np.full((L1N,3,dim_dict['xi_rho']),0.0)    
+                salt=np.full((L1N,3,dim_dict['xi_rho']),0.0)   
+                u_east=np.full((L1N,3,dim_dict['xi_rho']),0.0)   
+                v_north=np.full((L1N,3,dim_dict['xi_rho']),0.0)   
             if key=='SOUTH' :
-                temp=np.full((L1N,3,dim_dict['xi_rho']),np.nan)    
-                salt=np.full((L1N,3,dim_dict['xi_rho']),np.nan)   
-                u_east=np.full((L1N,3,dim_dict['xi_rho']),np.nan)   
-                v_north=np.full((L1N,3,dim_dict['xi_rho']),np.nan)   
+                temp=np.full((L1N,3,dim_dict['xi_rho']),0.0)    
+                salt=np.full((L1N,3,dim_dict['xi_rho']),0.0)   
+                u_east=np.full((L1N,3,dim_dict['xi_rho']),0.0)   
+                v_north=np.full((L1N,3,dim_dict['xi_rho']),0.0)   
            
 
 # # tlat=[]
