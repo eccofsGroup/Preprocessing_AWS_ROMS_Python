@@ -1,4 +1,4 @@
-Pyhton scripts for working with Mercator output. 
+Python scripts for working with Mercator output. 
  
 download_mercator_ECCOFS_analysis.py : Download mercator real time analysis/forcast files. 
 download_mercator_ECCOFS_renalysis.py :  Download mercator reanalysis files.
