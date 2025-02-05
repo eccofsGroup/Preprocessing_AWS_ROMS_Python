@@ -151,7 +151,91 @@ def stretching(Vstretching, theta_s, theta_b, hc, N, kgrid):
 
     return (s,C)
 
+def create_roms_rivers_file(riverfile,data):
 
+    fh        = nc.Dataset(riverfile, "w", format="NETCDF4",clobber=True)
+    fh.type   = data['type'] 
+    fh.title  =  data['title'] 
+    fh.grd_file  =  data['gridfile'] 
+    fh.history = data['history']
+    fh.source=data['source']
+    fh.citation=data['citation']
+    fh.rivers=data['rivers']
+#     dims=grd.sizes
+#     atts=grd.attrs
+    fh.createDimension('river', data['nriver'])
+    fh.createDimension('river_time', None)
+    fh.createDimension('s_rho', data['nz'])
+
+        
+# # Defining hydrodynamic variables of initialization file.  
+
+    fh.createVariable('river', 'double', ('river'))
+    fh.variables['river'].long_name = 'river runoff identification number'
+
+    fh.createVariable('river_Xposition', 'double', ('river'))
+    fh.variables['river_Xposition'].long_name = "river XI-position at RHO-points" 
+    fh.variables['river_Xposition'].valid_min = 1. 
+    fh.variables['river_Xposition'].valid_max = 1665. 
+    fh.variables['river_Xposition'].LuvSrc_meaning = "i-index grid cell of U- or V-face source/sink" 
+    fh.variables['river_Xposition'].LwSrc_meaning = "i-index grid cell of RHO-centered source/sink" 
+                
+    fh.createVariable('river_Eposition', 'double', ('river'))
+    fh.variables['river_Eposition'].long_name = "river ETA-position at RHO-points" 
+    fh.variables['river_Eposition'].valid_min = 1. 
+    fh.variables['river_Eposition'].valid_max = 1441. 
+    fh.variables['river_Eposition'].LuvSrc_meaning = "j-index grid cell of U- or V-face source/sink" 
+    fh.variables['river_Eposition'].LwSrc_meaning = "j-index grid cell of RHO-centered source/sink" 
+                
+    fh.createVariable('river_direction', 'double', ('river'))
+    fh.variables['river_direction'].long_name = "river runoff grid-cell face flag" 
+    fh.variables['river_direction'].flag_values = "0, 1, 2" ;
+    fh.variables['river_direction'].flag_meanings = "LuvSrc flow across U-face, LuvSrc flow across V-face, LwSrc flow into cell center" 
+    
+    fh.createVariable('river_lat', 'double', ('river'))
+    fh.variables['river_lat'].long_name = "latitude of grid cell in GloFAS" 
+    
+    fh.createVariable('river_lon', 'double', ('river'))
+    fh.variables['river_lon'].long_name = "longitude of grid cell in GloFAS" 
+    
+    fh.createVariable('river_Vshape', 'double', ('s_rho','river'))
+    fh.variables['river_Vshape'].long_name = "river runoff mass transport vertical profile" ;
+    fh.variables['river_Vshape'].requires = "must sum to 1 over s_rho" 
+
+    fh.createVariable('river_salt', 'double', ('river_time', 's_rho','river'))
+    fh.variables['river_salt'].long_name = "river runoff salinity" 
+    fh.variables['river_salt'].time = "river_time" 
+    
+    fh.createVariable('river_sign', 'double', ('river'))
+    fh.variables['river_sign'].long_name = "river runoff sense of flow" 
+    fh.variables['river_sign'].flag_values = "-1, 1" 
+    fh.variables['river_sign'].LuvSrc_meaning = "flow in negative u,v direction, flow in positive u,v, direction" ;
+    fh.variables['river_sign'].LwSrc_meaning = "flag not used" 
+
+    fh.createVariable('river_temp', 'double', ('river_time', 's_rho','river'))
+    fh.variables['river_temp'].long_name = "river runoff potential temperature" 
+    fh.variables['river_temp'].units = "Celsius" 
+    fh.variables['river_temp'].time = "river_time" 
+    
+    fh.createVariable('river_time', 'double', ('river_time'))
+    fh.variables['river_time'].long_name = "river runoff time" 
+    fh.variables['river_time'].units = data['tunits']
+
+    fh.createVariable('river_transport', 'double', ('river_time','river'))
+    fh.variables['river_transport'].long_name = "river runoff vertically integrated mass transport" 
+    fh.variables['river_transport'].units = "meter3 second-1" 
+    fh.variables['river_transport'].positive = "LuvSrc=T flow in positive u,v direction, LwSrc=T flow into RHO-cell" 
+    fh.variables['river_transport'].negative = "LuvSrc=T flow in negative u,v direction, LwSrc=T flow out of RHO-cell" 
+    fh.variables['river_transport'].time = "river_time" 
+    
+  
+  #  t=dsmerc.time.values
+  #  timeout=(t-np.datetime64(rtime)) / np.timedelta64(1, 'D')
+  #  ncid.variables['ocean_time'][:]=timeout
+    
+        
+        
+    fh.close()   
 def create_init_file(initfile,grd,tunits):
     """
     create_init_file(initfile,grd)
