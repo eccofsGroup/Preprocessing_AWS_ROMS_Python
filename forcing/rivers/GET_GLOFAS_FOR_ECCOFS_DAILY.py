@@ -38,7 +38,6 @@ Some notes from Johns m-file:
 % Subregion - W E S N 92.5 145.0 -20.0 25.0    <<<<<<<<<<<<< MINTIE
 % Subregion - W E S N -105.0 -35.0 -5.0 55.0   <<<<<<<<<<<<< ECCOFS
 % Select grib
-% Login jwilkin@rutgers.edu nf0yawmd
 % Submit request and wait.
 % Download the netcdf file. It is zipped and will unpack into the same directory with the
 % name data.nc (so it will overwrite other years if you have not renamed them)
@@ -50,6 +49,7 @@ rIJfile='/home/om/cron/ECCOFS_OBS/RIVERS/work/glofasV4_river_points_for_eccofs.m
 rdata=loadmat(rIJfile)
 lat_indices = xr.DataArray(rdata['J'][:][0], dims="points")-2    
 lon_indices = xr.DataArray(rdata['I'][:][0], dims="points")-2
+gridflag='3km'
 
 #Only for plotting
 proj = cartopy.crs.Mercator(central_longitude=-74)
@@ -61,7 +61,15 @@ lonmax=-38.0
 
 #NetCDF parameters
 rpre='/home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/'
-fname='ECCOFS_rivers_file'
+
+match gridflag:
+    case "3km":
+        fname='ECCOFS_rivers_file_3km'
+    case "6km":
+        fname='ECCOFS_rivers_file_6km'
+        
+
+
 reftime=datetime.datetime(2011,1,1)
 tunits=reftime.strftime('days since %Y-%m-%d')
 rtime=np.datetime64(reftime.date())
@@ -129,6 +137,33 @@ routdata = {
 }
 
 
+soutdata = {
+    "nriver": 141,
+    "nz": 50,
+    "type": 'ROMS FORCING file',
+    "title":'ECCOFS River Forcing from GloFAS, split sources',
+    "history":['Created by create_roms_rivers_file  on '+ datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+" (based on J. Wilkin matlab scripts)"],
+    "gridfile": '/home/om/cron/ECCOFS_OBS/MERCATOR/work/grid_eccofs_3km_08_b7.nc',
+    "source": ["Daily discharge from GloFAS Global Flood Awareness Program globalfloods.eu accessed from Copernicus"+
+                        "  https://ewds.climate.copernicus.eu/datasets/cems-glofas-historical?tab=overview"+
+                        "  Source point locations identified using driver_glofas_rivers.m John Wilkin 2023-05-17"],
+    "citation":"Harrigan, S., Zsoter, E., Alfieri, L., Prudhomme, C., Salamon, P., Wetterhall, F., Barnard, C., Cloke, H. and Pappenberger, F., 2020. GloFAS-ERA5 operational global river discharge reanalysis 1979present. Earth System Science Data, 12(3), pp.2043-2060., https://doi.org/10.5194/essd-12-2043-2020",   
+    "rivers": rlist,
+    "river": 1,
+    "river_Xposition": 1,
+    "river_Eposition": 1,
+    "river_Direction": 1,
+    "river_lat": 1,
+    "river_lon": 1,
+    "river_Vshape": 1,
+    "river_salt": 1,
+    "river_sign": 1,
+    "river_temp": 1,
+    "river_time": 1,
+    "tunits":tunits,
+    "river_transport": 1,
+    "river_Vshape": 1,
+}
 
 
 #Choose file format
@@ -202,7 +237,7 @@ def main():
         ntime=dssubset.sizes['forecast_period']
         nz=routdata['nz']
         inz=1/nz
-
+        rivers=np.arange(1,nriver+1)
         tmp=np.zeros((nz,nriver))+inz
         salt=np.zeros((ntime,nz,nriver))
         rdir=np.zeros((nriver,1))+2
@@ -214,6 +249,15 @@ def main():
         timeout=(t-np.datetime64(rtime)) / np.timedelta64(1, 'D')
         ncid.variables['river_time'][:]=timeout
     
+    
+        match gridflag:
+            case "3km":
+                ncid.variables['river_Eposition'][:]=rdata['river_Eposition']
+                ncid.variables['river_Xposition'][:]=rdata['river_Xposition']
+            case "6km":
+                ncid.variables['river_Eposition'][:]=rdata['river_Eposition_6km']
+                ncid.variables['river_Xposition'][:]=rdata['river_Xposition_6km']
+        
         ncid.variables['river_Eposition'][:]=rdata['river_Eposition']
         ncid.variables['river_Xposition'][:]=rdata['river_Xposition']
         ncid.variables['river_lat'][:]=dssubset.latitude.values[:]
@@ -222,6 +266,9 @@ def main():
         ncid.variables['river_direction'][:]=rdir
         ncid.variables['river_salt'][:]=salt
         ncid.variables['river_transport'][:,:]=dis
+        ncid.variables['river'][:]=rivers
+        
+        ncid.variables['river'].distributed_source=['duplicate values connect to a source distributed over multiple cells']
         
         ncid.createVariable('I_index_glofas_subset','double', ('river'))
         ncid.variables['I_index_glofas_subset'].description = "I index to glofas*.nc files to extract discharge at near coastal sources" 
@@ -229,6 +276,17 @@ def main():
         ncid.createVariable('J_index_glofas_subset', 'double', ('river'))
         ncid.variables['J_index_glofas_subset'].description = "J index to glofas*.nc files to extract discharge at near coastal sources" 
         
+        ncid.createVariable('distributed_source_fraction', 'double', ('river'))
+        ncid.variables['distributed_source_fraction'].long_name = "fraction of true river_transport at this source cell" 
+        ncid.variables['distributed_source_fraction'].valid_min = 0.0 
+        ncid.variables['distributed_source_fraction'].valid_max = 1.0
+        
+        ncid.createVariable('num_real_source', 'i2')
+        ncid.variables['num_real_source'].long_name = "number of true river sources if there are any distributed sources" 
+        ncid.variables['num_real_source'].equals_zero = "no distributed sources - number of true sources matches dimension RIVERs" 
+        
+        ncid.variables['num_real_source'][:]=0.0
+        ncid.variables['distributed_source_fraction'][:]=1.0
         ncid.variables['I_index_glofas_subset'][:]=rdata['I'][:][0]
         ncid.variables['J_index_glofas_subset'][:]=rdata['J'][:][0]
         
@@ -238,6 +296,177 @@ def main():
         
         ncid.sync()
         ncid.close()
+        
+        make_split_rivers_file(rfile)
+        
+        
+def make_split_rivers_file(rfile):
+    
+    
+    rivdata=xr.open_dataset(rfile)
+    dims=rivdata.sizes
+#    nriver=dims['river']
+    rivers=rivdata['river'].values[:]
+    I_index_GLOFAS=rivdata['I_index_glofas_subset'].values[:]
+    J_index_GLOFAS=rivdata['J_index_glofas_subset'].values[:]
+    river_lat=rivdata['river_lat'].values[:]
+    river_lon=rivdata['river_lon'].values[:]
+    nriver_new=soutdata["nriver"]
+    nz=dims['s_rho']
+    ntime=dims['river_time']
+    intransport=rivdata['river_transport'].values
+    splitfile=rfile.replace('rivers','splitrivers')
+    print(f'Splitting the rivers file {rfile} into {splitfile}')
+    
+    rutil.create_roms_rivers_file(splitfile,soutdata)
+    print('Writing River data to file '+rfile)
+    
+    ncid = nc.Dataset(splitfile, "r+", format="NETCDF4")
+
+    t=rivdata.river_time.values
+    timeout=(t-np.datetime64(rtime)) / np.timedelta64(1, 'D')
+    
+    inz=1/nz
+
+    tmp=np.zeros((nz,nriver_new))+inz
+    salt=np.zeros((ntime,nz,nriver_new))
+    rdir=np.zeros((nriver_new,1))+2
+    I_index_GLOFAS_new=np.zeros((nriver_new,1))*np.nan
+    J_index_GLOFAS_new=np.zeros((nriver_new,1))*np.nan
+    river_lat_new=np.zeros((nriver_new,1))*np.nan
+    river_lon_new=np.zeros((nriver_new,1))*np.nan
+    distributed_source_fraction=np.zeros((nriver_new,1))*np.nan
+    outtransport=np.zeros((ntime,nriver_new))*np.nan
+    num_real_source=dims['river']
+    
+    
+    ncid.variables['river_time'][:]=timeout
+    
+    river=rivdata.river.values
+    epos=rivdata.river_Eposition.values
+    xpos=rivdata.river_Xposition.values
+    #St. Lawrence
+    river=np.append(river,np.full(10,3))
+    #epos = [epos; [1403   1405   1405   1405   1406   1407   1407   1408   1408   1408]'-1 ];
+    epos=np.append(epos,np.array([1403,   1405,   1405,  1405,   1406,  1407,   1407,   1408,   1408,  1408])-1)
+    #xpos = [xpos; [1275   1275   1276   1277   1278   1279   1280   1281   1282   1283]'-1];
+    xpos=np.append(xpos,np.array([1275,   1275,   1276,   1277,   1278,  1279,   1280,   1281,   1282,  1283])-1)
+
+    # split Susquehanna
+    # river = [ river; 5* ones([2 1])];
+    river=np.append(river,np.full(2,5))
+    # epos = [epos; [1278 1278]'-1 ];
+    epos=np.append(epos,np.array([1278,1278])-1)
+    # xpos = [xpos; [985 984]'-1];
+    xpos=np.append(xpos,np.array([985, 984])-1)
+   
+    # #split Mobile
+    # river = [ river; 6* ones([3 1])];
+    river=np.append(river,np.full(3,6))
+    # epos = [epos; [1284 1283 1284]' ];
+    epos=np.append(epos,np.array([1284, 1283, 1284]))
+    # xpos = [xpos; [498 497 500]'];
+    xpos=np.append(xpos,np.array([498, 497, 500]))
+   
+    # #split Missisippi
+    # river = [ river; 7* ones([11 1])];
+    river=np.append(river,np.full(11,7))
+    # epos = [epos; [1274  1273 1274 1273 1268 1267 1267 1270 1271 1270 1271]'-1 ];
+    epos=np.append(epos,np.array([1274,  1273, 1274, 1273, 1268, 1267, 1267, 1270, 1271, 1270, 1271])-1)
+    # xpos = [xpos; [425   425   424 424   435  435  436  440  440  441  441]'-1];
+    xpos=np.append(xpos,np.array([425,   425,   424, 424,  435, 435,  436,  440,  440,  441,  441])-1)
+   
+    # #split Usumacinta
+    # river = [ river; 9* ones([3 1])];
+    river=np.append(river,np.full(3,9))
+    # epos = [epos; [1094  1094 1093]'-1 ];
+    epos=np.append(epos,np.array([1094,  1094, 1093,])-1)
+    # xpos = [xpos; [79   80 80]'-1];
+    xpos=np.append(xpos,np.array([79, 80, 80])-1)
+   
+    # #split Atrato
+    # river = [ river; 11* ones([2 1])];
+    river=np.append(river,np.full(2,11))
+    # epos(11)=419; xpos(11)=216;
+    epos[10]=419
+    xpos[10]=216
+    # epos = [epos; [420   421]' ];
+    epos=np.append(epos,np.array([420,  421]))
+    # xpos = [xpos; [216   216]'];
+    xpos=np.append(xpos,np.array([216,  216]))
+   
+    # #split Orinoco
+    # river = [ river; 13* ones([17 1])];
+    river=np.append(river,np.full(17,13))
+    # epos = [epos; [56   58   62   63   64   71   72   73]'-1 ];
+    epos=np.append(epos,np.array([56,   58,   62,   63,   64,   71,   72,   73])-1)
+    # xpos = [xpos; [708   708   708   708   708   709   709   709]'-1];
+    xpos=np.append(xpos,np.array([708,   708,   708,   708,   708,   709,   709,   709])-1)
+    # epos = [epos; [56 57  58   62   63   64   71   72   73]'-1 ];
+    epos=np.append(epos,np.array([56, 57,  58,   62,   63,   64,   71,   72,   73,])-1)
+    # xpos = [xpos; [709 709  709   709   709   709   710   710   710]'-1];
+    xpos=np.append(xpos,np.array([709, 709,  709,   709,   709,   709,   710,   710,   710,])-1)
+
+    ncid.variables['river'][:]=river 
+
+    for iriv in rivers:
+        rind=np.where(river==iriv)
+
+        dsf=1.0/len(rind[0])
+
+        I_index_GLOFAS_new[rind]=I_index_GLOFAS[int(iriv-1)]
+        J_index_GLOFAS_new[rind]=J_index_GLOFAS[int(iriv-1)]
+        
+        river_lat_new[rind]=river_lat[int(iriv-1)]
+        river_lon_new[rind]=river_lon[int(iriv-1)]
+        
+        distributed_source_fraction[rind[0].astype(int)]=dsf
+     
+        for rrind,tmp in enumerate(rind):
+
+            outtransport[:,rind[rrind][0]]=intransport[:,int(iriv-1)]*dsf
+
+    ncid.variables['river_Eposition'][:]=epos
+    ncid.variables['river_Xposition'][:]=xpos
+    # ncid.variables['river_lat'][:]=dssubset.latitude.values[:]
+    # ncid.variables['river_lon'][:]=dssubset.longitude.values[:]
+    ncid.variables['river_Vshape'][:]=tmp
+    ncid.variables['river_direction'][:]=rdir
+    ncid.variables['river_salt'][:]=salt
+    ncid.variables['river_transport'][:,:]=outtransport
+    
+    ncid.variables['river'].distributed_source=['duplicate values connect to a source distributed over multiple cells']
+    
+    ncid.createVariable('I_index_glofas_subset','double', ('river'))
+    ncid.variables['I_index_glofas_subset'].description = "I index to glofas*.nc files to extract discharge at near coastal sources" 
+        
+    ncid.createVariable('J_index_glofas_subset', 'double', ('river'))
+    ncid.variables['J_index_glofas_subset'].description = "J index to glofas*.nc files to extract discharge at near coastal sources" 
+    
+    ncid.createVariable('distributed_source_fraction', 'double', ('river'))
+    ncid.variables['distributed_source_fraction'].long_name = "fraction of true river_transport at this source cell" 
+    ncid.variables['distributed_source_fraction'].valid_min = 0.0 
+    ncid.variables['distributed_source_fraction'].valid_max = 1.0
+    
+    ncid.createVariable('num_real_source', 'i2')
+    ncid.variables['num_real_source'].long_name = "number of true river sources if there are any distributed sources" 
+    ncid.variables['num_real_source'].equals_zero = "no distributed sources - number of true sources matches dimension RIVERs" 
+    
+    ncid.variables['num_real_source'][:]=num_real_source
+    ncid.variables['distributed_source_fraction'][:]=distributed_source_fraction
+  
+    ncid.variables['I_index_glofas_subset'][:]=I_index_GLOFAS_new
+    ncid.variables['J_index_glofas_subset'][:]=J_index_GLOFAS_new
+    
+    ncid.variables['river_lat'][:]=river_lat_new
+    ncid.variables['river_lon'][:]=river_lon_new
+
+
+    
+    ncid.sync()
+    ncid.close()   
+        
+        
 def download_GLOFAS_forcast_daily(iday,infile):
     #SOURCE:https://ewds.climate.copernicus.eu/datasets
     print(f'DOWNLOADING GLOFAS {iday} forecast to {infile}')
