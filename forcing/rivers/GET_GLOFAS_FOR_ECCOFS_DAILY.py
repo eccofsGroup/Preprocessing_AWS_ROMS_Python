@@ -410,8 +410,9 @@ def make_split_rivers_file(rfile):
     ncid.variables['river'][:]=river 
 
     for iriv in rivers:
+        
         rind=np.where(river==iriv)
-
+        
         dsf=1.0/len(rind[0])
 
         I_index_GLOFAS_new[rind]=I_index_GLOFAS[int(iriv-1)]
@@ -421,10 +422,11 @@ def make_split_rivers_file(rfile):
         river_lon_new[rind]=river_lon[int(iriv-1)]
         
         distributed_source_fraction[rind[0].astype(int)]=dsf
-     
-        for rrind,tmp in enumerate(rind):
 
-            outtransport[:,rind[rrind][0]]=intransport[:,int(iriv-1)]*dsf
+        for rrind,rivp in enumerate(rind[0]):
+
+            outtransport[:,rivp]=intransport[:,int(iriv-1)]*dsf
+
 
     ncid.variables['river_Eposition'][:]=epos
     ncid.variables['river_Xposition'][:]=xpos
