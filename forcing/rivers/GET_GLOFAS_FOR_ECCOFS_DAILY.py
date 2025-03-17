@@ -138,7 +138,7 @@ routdata = {
 
 
 soutdata = {
-    "nriver": 141,
+    "nriver": 145,
     "nz": 50,
     "type": 'ROMS FORCING file',
     "title":'ECCOFS River Forcing from GloFAS, split sources',
@@ -406,6 +406,15 @@ def make_split_rivers_file(rfile):
     epos=np.append(epos,np.array([56, 57,  58,   62,   63,   64,   71,   72,   73,])-1)
     # xpos = [xpos; [709 709  709   709   709   709   710   710   710]'-1];
     xpos=np.append(xpos,np.array([709, 709,  709,   709,   709,   709,   710,   710,   710,])-1)
+    
+    
+    #New split for Atchafalaya
+    #river = [river; 66 * ones([4 1])];
+    river=np.append(river,np.full(4,66))
+    #epos = [epos; [1329   1328  1327 1331]']; 
+    epos=np.append(epos,np.array([1329,  1328,  1327, 1331]))
+    #xpos = [xpos; [xpos(66) xpos(66) xpos(66) xpos(66)]'];
+    xpos=np.append(xpos,np.array([xpos[66-1],xpos[66-1], xpos[66-1],xpos[66-1]]))
 
     ncid.variables['river'][:]=river 
 
