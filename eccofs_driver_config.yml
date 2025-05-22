@@ -1,0 +1,56 @@
+---
+# Define OBS driver parameters
+
+ modulepath: ["/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/"]
+
+ obs: 
+    name: "OBS driver"
+    
+    delay: 3600
+    insitu:
+        indir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/raw/'
+        outdir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/'
+        nday: 4
+        latmin: -3.0
+        latmax: 53.0
+        lonmin: -100.0
+        lonmax: -38.0
+        zmin: -10.0
+        zmax: 6000.0
+        saltcut: 38.0
+        dataset_id: "cmems_obs-ins_glo_phybgcwav_mynrt_na_irr"
+        dataset_part: "latest"
+        dataset_version: "202311"
+        variables: ["PSAL", "TEMP"]
+        prov_list: {'PF':801, 'XX':802, 'ML':803, 'TX':804, 'XB':805, 'GL':806, 'CT':807, 'SM':808, 'BO':809,'FB':821, 'SD':822, 'MO':823, 'TS':824, 'DB':825, 'TG':826}
+        var_list: {'PSAL':7.0, 'TEMP':6.0}
+        rtime: '2011-01-01'
+    ssh: 
+        sats: ["jason3","sentinel3a","sentinel3b","sentinel6a","swot"]
+        direc: "/home/om/cron/ECCOFS_OBS/SSH/data/raw"
+        rads2asc: '/home/om/cron/RADS4/local/bin/rads2asc4'
+        odirdac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/'
+        odirnodac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/dac/'
+        days: 90
+        latlon: '-100,-38,5,52'
+        variables: 'time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15'
+        satlist: ['j3/c','3a/a','3b/b','6a/a','sw/b']
+        dirlist: ['jason3/','sentinel3a/','sentinel3b/','sentinel6a/','swot/']
+        radsxmlnodac: '/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_nodac.xml'
+        radsxmldac: '/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_dac.xml'
+
+    sst:
+        direc: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/'
+        subdir: ['AMSR2_L3','GOES16_L3','L3S_LEO_AM_D','L3S_LEO_AM_N','L3S_LEO_PM_D','L3S_LEO_PM_N']
+        ndays: 10
+
+    
+    
+    
+    
+    
+# 
+
+
+
+...

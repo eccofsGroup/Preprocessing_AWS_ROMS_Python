@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+local RADS.xml 
+-->
+
+<var name="sla" field="0">
+	<long_name>sea level anomaly</long_name>
+	<standard_name>sea_surface_height_above_sea_level</standard_name>
+	<units>m</units>
+	<limits>-3 3</limits>
+	<plot_range>-0.4 0.4</plot_range>
+	<format>f8.4</format>
+	<compress>int2 1e-4</compress>
+	<data>alt range SUB dry_tropo SUB wet_tropo SUB iono SUB tide_solid SUB tide_ocean_got410 SUB tide_load_got410 SUB
+		tide_pole SUB ssb SUB mss_dtu15 SUB ref_frame_offset SUB</data>
+	<quality_flag>swh sig0 range_rms range_numval flags</quality_flag>
+	<quality_flag sat="3a 3b e1 e2 g1 j1 j2 j3 n1 tx" action="append">swh_rms</quality_flag>
+	<quality_flag sat="3a 3b j1 j2 j3" action="append">sig0_rms</quality_flag>
+	<quality_flag sat="c2 n1 sa" action="append">peakiness</quality_flag>
+	<quality_flag sat="e2 j1 j2 j3" action="append">attitude</quality_flag><!--attitude not included for Sentinel-3 because there is no altimeter value in SAR mode (only PLRM)-->
+	
+	
+
+	<comment>Sea level determined from satellite altitude - range - all altimetric corrections</comment>
+</var>
