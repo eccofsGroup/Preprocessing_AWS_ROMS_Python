@@ -54,7 +54,7 @@ def main(fconfig):
      timestart=tstart.strftime( "%Y%m%d%H%M%S" )
 #      print(timestart)
 #      print(timeend)
-     
+     print('GETTING SL WITH DAC')
      for il,sat in enumerate(satlist):
              print(sat)
              subprocess.check_call([rads2asc,

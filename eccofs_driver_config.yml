@@ -1,7 +1,7 @@
 ---
 # Define OBS driver parameters
 
- modulepath: ["/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/"]
+ modulepath: ["/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/","/home/om/cron/ECCOFS_OBS/REALTIME/work/utilities/"]
 
  obs: 
     name: "OBS driver"
@@ -30,7 +30,7 @@
         direc: "/home/om/cron/ECCOFS_OBS/SSH/data/raw"
         rads2asc: '/home/om/cron/RADS4/local/bin/rads2asc4'
         odirdac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/'
-        odirnodac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/dac/'
+        odirnodac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/'
         days: 90
         latlon: '-100,-38,5,52'
         variables: 'time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15'
@@ -41,12 +41,47 @@
 
     sst:
         direc: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/'
-        subdir: ['AMSR2_L3','GOES16_L3','L3S_LEO_AM_D','L3S_LEO_AM_N','L3S_LEO_PM_D','L3S_LEO_PM_N']
-        ndays: 10
-
-    
-    
-    
+        subdir: ['AMSR2_L3','GOES19_L3','L3S_LEO_AM_D','L3S_LEO_AM_N','L3S_LEO_PM_D','L3S_LEO_PM_N']
+        ndays: 4
+        gbaseurl: 'https://www.star.nesdis.noaa.gov/thredds/dodsC/gridG19ABINRTL3CWW00/'
+        gsuffix: '-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc'
+        gnday: 3
+        goutdirec: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/GOES19_L3/'
+        gfilepart: '_NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00.nc'
+    romsobs:
+        gridfile: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
+        scoord: [7, 2, 250, 50, 2, 4] 
+        ndays: 4
+        AMSR2:
+            URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/AMSR2_L3/'
+            BASE_FILE_NAME: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_'
+            suffix: '-ECCOFS-REMSS-L3U_GHRSST-SSTsubskin-AMSR2-RSS_daily.nc'
+        GOES:
+            BASE_FILE_NAME: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_'
+            URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/GOES19_L3/'
+            suffix: '_NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00.nc'
+            LLFILE: '/home/om/cron/ECCOFS_OBS/REALTIME/data/sst/LL_GOES.nc'
+        LEO:
+            URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/'
+            subdirs: ['L3S_LEO_AM_D/','L3S_LEO_AM_N/','L3S_LEO_PM_D/','L3S_LEO_PM_N/']
+            BASE_FILE_NAME: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_'
+            suffix: '-ECCOFS-REMSS-L3U_GHRSST-SSTsubskin-AMSR2-RSS_daily.nc'
+        SSH:
+            working_dir: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/"
+            prefix: "along_track_TotalSSH_"
+            altfile: "/home/om/cron/ECCOFS_OBS/REALTIME/data/ssh/altimeter_data.npz"
+            nodacfilestat: "/home/om/cron/ECCOFS_OBS/REALTIME/data/ssh/nodac_ssha_mean_std.npz"
+            tidalcoeff: "/home/om/cron/ECCOFS_OBS/REALTIME/data/ssh/tidal_coef_6km.npz"
+            woa_merc_mdt: "/home/om/cron/ECCOFS_OBS/REALTIME/data/ssh/eccofs_woa_mercator_mdt.npz"
+            jas3_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/jason3/"
+            sentinel3a_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3a/"
+            sentinel3b_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/"
+            sentinel6a_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel6a/"
+            swot_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/swot"
+        CMEMS:
+            input_dir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_'
+            output_file: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_'
+            
     
     
 # 

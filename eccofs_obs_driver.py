@@ -6,10 +6,14 @@ from datetime import datetime,timedelta,date
 import time
 import pprint,traceback
 import sched
+import warnings
+warnings.filterwarnings("ignore")
+
 # import DOWNSCALE_ROMS_FORECAST
 
 def main(opts):
     print('OBS driver initializing')
+    st=time.time()
     cfgfile=opts.configfile
     fconfig=read_config(cfgfile)
     #pprint.pprint(fconfig)
@@ -19,59 +23,122 @@ def main(opts):
 
     
     
-    print('In situ driver running')
-    status_insitu=insitu_driver(fconfig)
+ #    print('In situ driver running')
+ #    status_insitu=insitu_driver(fconfig)
     
     
-    print('Rads Driver Running')
-    status_ssh=rads_driver(fconfig)
+ #    print('Rads Driver Running')
+ #    status_ssh=rads_driver(fconfig)
     
-    print('Checking SST Availability')
-    filecount=sst_driver(fconfig)
-    print(f'There are a total of  {filecount} SST files')
+ #    print('Checking SST Availability')
+ #    status_sst=sst_driver(fconfig)
+ # #   print(f'There are a total of  {filecount} SST files')
 
-    print('Checking GLIDER Availability')
-    glider_driver(fconfig)
-
-
+ #    print('Checking GLIDER Availability')
+ #    glider_driver(fconfig)
 
 
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+    print('RUNNING OBS PreProcessing')
+    status=obs_pre_driver(fconfig)
 
 
+    #create scheduler
+    # delay=fconfig['obs']['delay']
+    # scheduler = sched.scheduler(time.time, time.sleep)
 
 
-    # create scheduler
-    delay=fconfig['obs']['delay']
-    scheduler = sched.scheduler(time.time, time.sleep)
-
-
-    if not(status_insitu):
-        print(f'In situ data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
-    else:
-        print('In situ data aquisition succeeded')
+    # if not(status_insitu):
+    #     print(f'In situ data aquisition failed, waiting {delay} seconds')
+    #     scheduler.enter(delay, 2, insitu_driver,(fconfig,))
+    # else:
+    #     print('In situ data aquisition succeeded')
             
             
-    if not(status_ssh):
-        print(f'SSH data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay,1, rads_driver,(fconfig,))
-    else:
-        print('SSH data aquisition succeeded')
+    # if not(status_ssh):
+    #     print(f'SSH data aquisition failed, waiting {delay} seconds')
+    #     scheduler.enter(delay,1, rads_driver,(fconfig,))
+    # else:
+    #     print('SSH data aquisition succeeded')
 
-    scheduler.run()
+    
+    # if not(status_sst):
+    #     print(f'SST data aquisition failed, waiting {delay} seconds')
+    #     scheduler.enter(delay,1, sst_driver,(fconfig,))
+    # else:
+    #     print('SST data aquisition succeeded')
 
 
+    # scheduler.run()
+    # et=time.time()
+    # elt=et-st
+    # print(f'TOTAL processing time: {elt} seconds')
+
+def obs_pre_driver(fconfig):
+    import get_sst_amsr2 as amsr2
+    import get_sst_goes as GOES
+    import get_sst_leo as LEO
+    import get_ssh as SSH
+    import get_cmems as CMEMS
+    
+        
+    # print('Processing CMEMS')
+    # try:    
+    #     st=time.time()
+    #     CMEMS.main(fconfig)
+    #     status=True  
+    #     et=time.time()
+    #     elt=et-st
+    #     print(f'CMEMS processing time: {elt} seconds')
+        
+    # except Exception as e:
+    #         print(f"An error occurred: {e}")
+    #         traceback.print_exc()  
+    #         status=False 
+            
+            
+    print('Processing SSH')
+    try:    
+        st=time.time()
+        SSH.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'SSH processing time: {elt} seconds')
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+            
+    print('Processing AMSR2')
+    try:    
+        amsr2.main(fconfig)
+        status=True  
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+    
+    print('Processing GOES')
+    try:    
+        GOES.main(fconfig)
+        status=True  
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+     
+    print('Processing LEO')
+    try:    
+        LEO.main(fconfig)
+        status=True  
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+
+                           
+                   
+    return status     
 def rads_driver(fconfig):
     import acquire_eccofs_ssh_rads_v1 as sshaquire
     print('--------------------')
@@ -87,7 +154,17 @@ def rads_driver(fconfig):
     return status
         
 def sst_driver(fconfig):
+    import acquire_GOES19_sst_v1 as goesacquire
     print('--------------------')
+    
+    try:
+        goesacquire.main(fconfig)
+        status=True    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        traceback.print_exc()  
+        status=False   
+    
     direc=fconfig['obs']['sst']['direc']
     subs=fconfig['obs']['sst']['subdir']
     ndays=fconfig['obs']['sst']['ndays']
@@ -108,8 +185,8 @@ def sst_driver(fconfig):
                     fcount=fcount+1
                     #print(il)
         print(f' {subs[ind]} has {nfiles} files')
-
-    return fcount
+    print(f'There are a total of  {fcount} SST files')
+    return status
 def insitu_driver(fconfig):
     import acquire_eccofs_insitu_obs_v1 as isaquire
     
