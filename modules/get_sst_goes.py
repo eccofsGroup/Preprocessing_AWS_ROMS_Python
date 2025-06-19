@@ -60,8 +60,8 @@ def main(fconfig):
     
     
     # Create grouping arrays, filled with NaN
-    #latgroup = np.zeros((len(lat), len(lon)), dtype=int)-1
-    latgroup = np.empty((len(lat), len(lon)), dtype=int)
+    latgroup = np.zeros((len(lat), len(lon)), dtype=int)-1
+    # latgroup = np.empty((len(lat), len(lon)), dtype=int)
     longroup = latgroup.copy()
     tol = 4 * 0.06  
     print([latgroup.min(),latgroup.max()])
@@ -81,7 +81,10 @@ def main(fconfig):
                 #print(latgroup[np.ix_(ind_la, ind_lo)] )
                 #print(longroup[np.ix_(ind_la, ind_lo)] )
     M1,N1 = longroup.shape
-   # print([longroup,latgroup])
+    print([M1,N1])
+    mask = (longroup > 0) & (longroup <= M)
+    count = np.sum(mask)
+    print(f"Number of values between {0} and {M}: {count}")
     print([latgroup.min(),latgroup.max()])
     print([longroup.min(),longroup.max()])
     for day in days:

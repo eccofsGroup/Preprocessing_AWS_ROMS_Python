@@ -21,21 +21,35 @@ def main(opts):
         if path not in sys.path:
             sys.path.append(path)
 
+    print('Get GLOFAS Rivers Data')
+    status_river=ECCOFS_RIVERS_driver(fconfig)
     
-    
- #    print('In situ driver running')
- #    status_insitu=insitu_driver(fconfig)
-    
-    
- #    print('Rads Driver Running')
- #    status_ssh=rads_driver(fconfig)
-    
- #    print('Checking SST Availability')
- #    status_sst=sst_driver(fconfig)
- # #   print(f'There are a total of  {filecount} SST files')
 
- #    print('Checking GLIDER Availability')
- #    glider_driver(fconfig)
+    print('Get Mercator Data')
+    status_merc=mercator_aquire_driver(fconfig)
+    
+    
+    print('Extract Initial conditions from mercator')
+    status_ini=ECCOFS_INI_driver(fconfig)
+    
+        
+    print('Extract Boundary conditions from mercator')
+    status_bry=ECCOFS_BRY_driver(fconfig)
+    
+    
+    print('In situ driver running')
+    status_insitu=insitu_driver(fconfig)
+    
+    
+    print('Rads Driver Running')
+    status_ssh=rads_driver(fconfig)
+    
+    print('Checking SST Availability')
+    status_sst=sst_driver(fconfig)
+ #   print(f'There are a total of  {filecount} SST files')
+
+    print('Checking GLIDER Availability')
+    glider_driver(fconfig)
 
 
     print('RUNNING OBS PreProcessing')
@@ -43,36 +57,98 @@ def main(opts):
 
 
     #create scheduler
-    # delay=fconfig['obs']['delay']
-    # scheduler = sched.scheduler(time.time, time.sleep)
+    delay=fconfig['obs']['delay']
+    scheduler = sched.scheduler(time.time, time.sleep)
 
 
-    # if not(status_insitu):
-    #     print(f'In situ data aquisition failed, waiting {delay} seconds')
-    #     scheduler.enter(delay, 2, insitu_driver,(fconfig,))
-    # else:
-    #     print('In situ data aquisition succeeded')
+    if not(status_insitu):
+        print(f'In situ data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
+    else:
+        print('In situ data aquisition succeeded')
             
             
-    # if not(status_ssh):
-    #     print(f'SSH data aquisition failed, waiting {delay} seconds')
-    #     scheduler.enter(delay,1, rads_driver,(fconfig,))
-    # else:
-    #     print('SSH data aquisition succeeded')
+    if not(status_ssh):
+        print(f'SSH data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay,1, rads_driver,(fconfig,))
+    else:
+        print('SSH data aquisition succeeded')
 
     
-    # if not(status_sst):
-    #     print(f'SST data aquisition failed, waiting {delay} seconds')
-    #     scheduler.enter(delay,1, sst_driver,(fconfig,))
-    # else:
-    #     print('SST data aquisition succeeded')
+    if not(status_sst):
+        print(f'SST data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay,1, sst_driver,(fconfig,))
+    else:
+        print('SST data aquisition succeeded')
 
 
-    # scheduler.run()
-    # et=time.time()
-    # elt=et-st
-    # print(f'TOTAL processing time: {elt} seconds')
-
+    scheduler.run()
+    et=time.time()
+    elt=et-st
+    print(f'TOTAL processing time: {elt} seconds')
+def ECCOFS_RIVERS_driver(fconfig):
+    import GET_GLOFAS_FOR_ECCOFS_DAILY as ECCOFS_river
+    try:    
+        st=time.time()
+        ECCOFS_river.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'Rivers file time: {elt} seconds')
+        
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+    return status   
+    
+def ECCOFS_BRY_driver(fconfig):
+    import DOWNSCALE_MERCATOR_TO_ROMS_BOUNDARY as ECCOFS_bry
+    try:    
+        st=time.time()
+        ECCOFS_bry.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'BRY file time: {elt} seconds')
+        
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+    return status   
+   
+def ECCOFS_INI_driver(fconfig):
+    import DOWNSCALE_MERCATOR_TO_ROMS_INI as ECCOFS_ini
+    try:    
+        st=time.time()
+        ECCOFS_ini.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'IC file time: {elt} seconds')
+        
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+    return status   
+    
+def mercator_aquire_driver(fconfig):
+    import acquire_mercator_ECCOFS as get_merc
+    try:    
+        st=time.time()
+        get_merc.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'Mercator Acquisition time: {elt} seconds')
+        
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+    return status        
 def obs_pre_driver(fconfig):
     import get_sst_amsr2 as amsr2
     import get_sst_goes as GOES
@@ -81,19 +157,19 @@ def obs_pre_driver(fconfig):
     import get_cmems as CMEMS
     
         
-    # print('Processing CMEMS')
-    # try:    
-    #     st=time.time()
-    #     CMEMS.main(fconfig)
-    #     status=True  
-    #     et=time.time()
-    #     elt=et-st
-    #     print(f'CMEMS processing time: {elt} seconds')
+    print('Processing CMEMS')
+    try:    
+        st=time.time()
+        CMEMS.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'CMEMS processing time: {elt} seconds')
         
-    # except Exception as e:
-    #         print(f"An error occurred: {e}")
-    #         traceback.print_exc()  
-    #         status=False 
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
             
             
     print('Processing SSH')
@@ -151,8 +227,7 @@ def rads_driver(fconfig):
         traceback.print_exc()  
         status=False   
     
-    return status
-        
+    return status       
 def sst_driver(fconfig):
     import acquire_GOES19_sst_v1 as goesacquire
     print('--------------------')
@@ -205,8 +280,6 @@ def insitu_driver(fconfig):
 def glider_driver(fconfig):
     print('--------------------')
     print('glider obs placeholder')
-     
-
 def read_config(infile):
     # Reading YAML from a file
     with open(infile, 'r') as file:

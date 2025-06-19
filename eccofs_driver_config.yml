@@ -2,11 +2,112 @@
 # Define OBS driver parameters
 
  modulepath: ["/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/","/home/om/cron/ECCOFS_OBS/REALTIME/work/utilities/"]
+ force:
+    datadir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/'
+    L1grdfile: '/home/om/cron/ECCOFS_OBS/MERCATOR/work/grid_eccofs_3km_08_b7.nc' # 
+    L1theta_s: 7.0
+    L1theta_b: 2.0
+    L1Tcline: 250.0
+    L1N: 50
+    L1Vtransform: 2        #vertical transformation equation
+    L1Vstretching: 4        #vertical stretching function
+    L1hc: 250 
+    
+    river:
+        rIJfile: '/home/om/cron/ECCOFS_OBS/RIVERS/work/glofasV4_river_points_for_eccofs.mat'
+        gridflag: '3km'
+        fname: 'ECCOFS_rivers_file_3km'
+        rpre: '/home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/'
+        indir: '/home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/'
+        inname: 'GLOFAS_GRIDDED_FORECAST'
+        inext: '.nc'
+        nday: 5
+        routdata: {
+            "nriver": 0,
+            "nz": 50,
+            "type": 'ROMS FORCING file',
+            "title": 'ECCOFS River Forcing from GloFAS',
+            "history": 'Created by GET_GLOFAS_FOR_ECCOFS_DAILY  on (based on J. Wilkin matlab scripts)',
+            "gridfile": '/home/om/cron/ECCOFS_OBS/MERCATOR/work/grid_eccofs_3km_08_b7.nc',
+            "source": "Daily discharge from GloFAS Global Flood Awareness Program globalfloods.eu accessed from Copernicus https://ewds.climate.copernicus.eu/datasets/cems-glofas-historical?tab=overview Source point locations identified using driver_glofas_rivers.m John Wilkin 2023-05-17",
+            "citation": "Harrigan, S., Zsoter, E., Alfieri, L., Prudhomme, C., Salamon, P., Wetterhall, F., Barnard, C., Cloke, H. and Pappenberger, F., 2020. GloFAS-ERA5 operational global river discharge reanalysis 1979-present. Earth System Science Data, 12(3), pp.2043-2060., https://doi.org/10.5194/essd-12-2043-2020",   
+            "rivers": "rlist",
+            "river": 1,
+            "river_Xposition": 1,
+            "river_Eposition": 1,
+            "river_Direction": 1,
+            "river_lat": 1,
+            "river_lon": 1,
+            "river_Vshape": 1,
+            "river_salt": 1,
+            "river_sign": 1,
+            "river_temp": 1,
+            "river_time": 1,
+            "tunits": "tunits",
+            "river_transport": 1,
+            "river_Vshape": 1,
+            }
+        soutdata: {
+            "nriver": 145,
+            "nz": 50,
+            "type": 'ROMS FORCING file',
+            "title": 'ECCOFS River Forcing from GloFAS, split sources',
+            "history": 'Created by GET_GLOFAS_FOR_ECCOFS_DAILY  on  (based on J. Wilkin matlab scripts)',
+            "gridfile": '/home/om/cron/ECCOFS_OBS/MERCATOR/work/grid_eccofs_3km_08_b7.nc',
+            "source": "Daily discharge from GloFAS Global Flood Awareness Program globalfloods.eu accessed from Copernicus  https://ewds.climate.copernicus.eu/datasets/cems-glofas-historical?tab=overview Source point locations identified using driver_glofas_rivers.m John Wilkin 2023-05-17",
+            "citation": "Harrigan, S., Zsoter, E., Alfieri, L., Prudhomme, C., Salamon, P., Wetterhall, F., Barnard, C., Cloke, H. and Pappenberger, F., 2020. GloFAS-ERA5 operational global river discharge reanalysis 1979present. Earth System Science Data, 12(3), pp.2043-2060., https://doi.org/10.5194/essd-12-2043-2020",   
+            "rivers": "rlist",
+            "river": 1,
+            "river_Xposition": 1,
+            "river_Eposition": 1,
+            "river_Direction": 1,
+            "river_lat": 1,
+            "river_lon": 1,
+            "river_Vshape": 1,
+            "river_salt": 1,
+            "river_sign": 1,
+            "river_temp": 1,
+            "river_time": 1,
+            "tunits": 'tunits',
+            "river_transport": 1,
+            "river_Vshape": 1,
+}
 
+
+    mercator:
+        outdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/'
+        tmpdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/tmp/'
+        days: 6
+        fdays: 5
+        latmin: 0.0
+        latmax: 52.0
+        lonmin: -100.0
+        lonmax: -36.0
+        zmin: -10.0
+        zmax: 6000.0
+        variables: [['so'] ,['thetao'],['uo','vo'],['zos']]
+        tmpfiles: ['TMP_so.nc','TMP_thetao.nc','TMP_uv.nc','TMP_zos.nc']
+        ids: ['cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m','cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m', 'cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m','cmems_mod_glo_phy_anfc_0.083deg_P1D-m']
+    ini: 
+        nday: 19
+        inidir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/'
+        inipre: 'ECCOFS_REALTIME_'
+        regrid_coef_file: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_ini_regrid.nc'
+       
+    bry:
+        brydir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/bdry/'
+        brypre: 'ECCOFS_REALTIME_'
+        regrid_coef_file: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_bdry_9999_regrid.nc'
+        bdylist: {'EAST':True, 'WEST':False, 'NORTH':False, 'SOUTH':True}
+        days: 19 
+        fdays: 4 
+
+        
  obs: 
     name: "OBS driver"
     
     delay: 3600
+
     insitu:
         indir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/raw/'
         outdir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/'
