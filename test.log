@@ -1,0 +1,305 @@
+STARTING ECCOFS driver
+RUNNING DRIVER
+OBS driver initializing
+Extract Initial conditions from mercator
+Initilaizing grids and regridder
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_05_31.nc
+FILL time: 9.60962438583374
+Re-using weights
+REGRIDDER time: 0.7616007328033447
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 659.4574201107025 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250531_ini.nc
+Initilization file processing time: 731.50155210495 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_01.nc
+FILL time: 9.883378028869629
+Re-using weights
+REGRIDDER time: 0.5838038921356201
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 657.6537101268768 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250601_ini.nc
+Initilization file processing time: 729.3057045936584 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_02.nc
+FILL time: 9.661336183547974
+Re-using weights
+REGRIDDER time: 0.5810081958770752
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 682.5364530086517 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250602_ini.nc
+Initilization file processing time: 753.8057956695557 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_03.nc
+FILL time: 9.602949619293213
+Re-using weights
+REGRIDDER time: 0.5698587894439697
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 656.5234882831573 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250603_ini.nc
+Initilization file processing time: 727.6243107318878 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_04.nc
+FILL time: 9.697248220443726
+Re-using weights
+REGRIDDER time: 0.5811200141906738
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 662.489853143692 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250604_ini.nc
+Initilization file processing time: 734.4817936420441 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_05.nc
+FILL time: 9.656636953353882
+Re-using weights
+REGRIDDER time: 0.5929644107818604
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 686.2637588977814 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250605_ini.nc
+Initilization file processing time: 758.0889239311218 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_06.nc
+FILL time: 9.61660099029541
+Re-using weights
+REGRIDDER time: 0.5827560424804688
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 671.6720390319824 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250606_ini.nc
+Initilization file processing time: 743.4114513397217 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_07.nc
+FILL time: 9.644673109054565
+Re-using weights
+REGRIDDER time: 0.5745096206665039
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 675.3273363113403 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250607_ini.nc
+Initilization file processing time: 747.4764330387115 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_08.nc
+FILL time: 9.873247385025024
+Re-using weights
+REGRIDDER time: 0.5868639945983887
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 678.0478684902191 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250608_ini.nc
+Initilization file processing time: 750.2051770687103 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_09.nc
+FILL time: 9.666863918304443
+Re-using weights
+REGRIDDER time: 0.5767807960510254
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 639.6727545261383 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250609_ini.nc
+Initilization file processing time: 711.5439202785492 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_10.nc
+FILL time: 9.652290344238281
+Re-using weights
+REGRIDDER time: 0.5696732997894287
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 723.5179047584534 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250610_ini.nc
+Initilization file processing time: 795.227365732193 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_11.nc
+FILL time: 10.973397493362427
+Re-using weights
+REGRIDDER time: 0.5790820121765137
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 662.2753820419312 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250611_ini.nc
+Initilization file processing time: 734.9265458583832 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_12.nc
+FILL time: 9.812480449676514
+Re-using weights
+REGRIDDER time: 0.5715353488922119
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 686.790007352829 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250612_ini.nc
+Initilization file processing time: 759.4915444850922 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_13.nc
+FILL time: 11.256042242050171
+Re-using weights
+REGRIDDER time: 0.5871071815490723
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 735.8827042579651 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250613_ini.nc
+Initilization file processing time: 822.2360060214996 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_14.nc
+FILL time: 10.997525215148926
+Re-using weights
+REGRIDDER time: 0.5819985866546631
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 663.3510477542877 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250614_ini.nc
+Initilization file processing time: 760.6311254501343 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_15.nc
+FILL time: 10.112734317779541
+Re-using weights
+REGRIDDER time: 0.5606496334075928
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 673.510139465332 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250615_ini.nc
+Initilization file processing time: 783.2601413726807 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_16.nc
+FILL time: 9.86192011833191
+Re-using weights
+REGRIDDER time: 0.5749311447143555
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 683.4881284236908 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250616_ini.nc
+Initilization file processing time: 774.3831534385681 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_17.nc
+FILL time: 9.899635553359985
+Re-using weights
+REGRIDDER time: 0.5745177268981934
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 669.2563636302948 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250617_ini.nc
+Initilization file processing time: 779.6521337032318 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_18.nc
+FILL time: 9.768454313278198
+Re-using weights
+REGRIDDER time: 0.5582082271575928
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 682.2917881011963 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250618_ini.nc
+Initilization file processing time: 754.4487657546997 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_19.nc
+FILL time: 9.711828231811523
+Re-using weights
+REGRIDDER time: 0.5475990772247314
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 645.6264111995697 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250619_ini.nc
+Initilization file processing time: 718.1539783477783 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_20.nc
+FILL time: 9.66006326675415
+Re-using weights
+REGRIDDER time: 0.5481319427490234
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 665.0419929027557 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250620_ini.nc
+Initilization file processing time: 736.5681147575378 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_21.nc
+FILL time: 9.650468349456787
+Re-using weights
+REGRIDDER time: 0.54305100440979
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 670.0828423500061 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250621_ini.nc
+Initilization file processing time: 742.1494798660278 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_22.nc
+FILL time: 9.607409238815308
+Re-using weights
+REGRIDDER time: 0.5433650016784668
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 667.9892284870148 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250622_ini.nc
+Initilization file processing time: 747.469361782074 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_23.nc
+FILL time: 9.531316757202148
+Re-using weights
+REGRIDDER time: 0.5464425086975098
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 669.1792185306549 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250623_ini.nc
+Initilization file processing time: 749.5534579753876 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_24.nc
+FILL time: 9.591545343399048
+Re-using weights
+REGRIDDER time: 0.541649341583252
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 665.4175570011139 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250624_ini.nc
+Initilization file processing time: 740.7751603126526 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_25.nc
+FILL time: 9.497740507125854
+Re-using weights
+REGRIDDER time: 0.5421710014343262
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 653.6806693077087 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250625_ini.nc
+Initilization file processing time: 742.664981842041 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_26.nc
+FILL time: 9.54447317123413
+Re-using weights
+REGRIDDER time: 0.5493104457855225
+Creating Initialization file
+RUNNING horizontal regridding
+Preparing for vertical interpolation
+Running vertical interpolation, this may take a few minutes
+processing time: 670.2920253276825 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250626_ini.nc
+Initilization file processing time: 744.2413091659546 seconds
+IC file time: 20279.7416908741 seconds
+TOTAL processing time: 20286.158974170685 seconds
+DONE

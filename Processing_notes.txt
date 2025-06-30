@@ -1,0 +1,12 @@
+Notes for installing Real time system:
+1) Make sure the conda environment is evailable from ECCOFS.yml
+2) Make sure NCKS is installed.
+3) Male sure rads is installed. 
+4) edit yml file. 
+
+/home/om/cron/HRRR_AWS/data/merged
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/bdry
+/home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily
+
+

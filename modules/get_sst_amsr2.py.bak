@@ -23,7 +23,7 @@ def main(fconfig):
 
     # Import datetime and define start/end dates
     ndays=fconfig['obs']['romsobs']['ndays']    
-    end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
+    end_day     = pd.Timestamp.now().normalize()- pd.Timedelta(days=1)
     start_day     = end_day - pd.Timedelta(days=ndays)
     days = pd.date_range(start_day, end_day, freq='D')
     ref_datum = pd.Timestamp(2011,1,1);

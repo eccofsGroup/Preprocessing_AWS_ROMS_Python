@@ -9,29 +9,31 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import LinearNDInterpolator
 import warnings
 
-
+sys.path.append('/Users/julia/python')
+sys.path.append('/home/julia/python')
 from roms_get_grid import roms_get_grid
 #from define_obs_file import define_4dvar_obs_file, obs_provenance_definition_eccofs
 from CreateObsFile_SST import CreateObsFile_SST
 from add_history import add_history
 from accumarrays import accum3d, accum2d
 
-def main(fconfig):
+def get_sst_amsr2():
     # Define base URL and file name components
-    url = fconfig['obs']['romsobs']['AMSR2']['URL']
-    base_file_name =fconfig['obs']['romsobs']['AMSR2']['BASE_FILE_NAME']
+    url = '/p/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/AMSR2_L3/'
+    base_file_name = 'OBS_FILES/sst_amsr2_nrt_'
 
     # Import datetime and define start/end dates
-    ndays=fconfig['obs']['romsobs']['ndays']    
+
     end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
-    start_day     = end_day - pd.Timedelta(days=ndays)
+    start_day     = end_day - pd.Timedelta(days=2)
+
     days = pd.date_range(start_day, end_day, freq='D')
     ref_datum = pd.Timestamp(2011,1,1);
     dTime      = 6/24 #6 hours
 
-    
-    grd_file =fconfig['obs']['romsobs']['gridfile']
-    scoord = fconfig['obs']['romsobs']['scoord']
+
+    grd_file = '../../Data/grid_eccofs_6km_09_b7.nc'
+    scoord = [7, 2, 250, 50, 2, 4]
     g = roms_get_grid(grd_file, scoord)
 
     L, M = g['lon_rho'].shape
@@ -48,8 +50,7 @@ def main(fconfig):
     g1['JC'] = JC
 
     datestring = start_day.strftime('%Y%m%d')
-    #file = url + datestring + '-ECCOFS-REMSS-L3U_GHRSST-SSTsubskin-AMSR2-RSS_daily.nc'
-    file = url + datestring +  fconfig['obs']['romsobs']['AMSR2']['suffix']
+    file = url + datestring + '-ECCOFS-REMSS-L3U_GHRSST-SSTsubskin-AMSR2-RSS_daily.nc'
 
     # Read the 'lon' and 'lat' variables from the NetCDF file.
     with nc.Dataset(file, 'r') as ds:
@@ -68,7 +69,7 @@ def main(fconfig):
         datestr = day.strftime('%Y%m%d')
         print(f"Processing day {datestr}")
         mintime = (day - ref_datum).days
-        fname_in = f"{url}{datestr}{fconfig['obs']['romsobs']['AMSR2']['suffix']}"
+        fname_in = f"{url}{datestr}-ECCOFS-REMSS-L3U_GHRSST-SSTsubskin-AMSR2-RSS_daily.nc"
         if not os.path.exists(fname_in):
             print("  file not found, skipping.")
             continue
@@ -115,5 +116,6 @@ def main(fconfig):
         if flag != 1:
             print(f"  {fname} not created (no data).")
         
-#if __name__ == "__main__":
-#    get_sst_amsr2()
+if __name__ == "__main__":
+    warnings.filterwarnings("ignore")
+    get_sst_amsr2()

@@ -79,9 +79,9 @@ def main(fconfig):
                 #print(latgroup[np.ix_(ind_la, ind_lo)] )
                 #print(longroup[np.ix_(ind_la, ind_lo)] )
     M1,N1 = longroup.shape
-    #print([M1,N1])
-    #mask = (longroup > 0) & (longroup <= M)
-    #count = np.sum(mask)
+    print([M1,N1])
+    mask = (longroup > 0) & (longroup <= M)
+    count = np.sum(mask)
    # print(f"Number of values between {0} and {M}: {count}")
    # print([latgroup.min(),latgroup.max()])
    # print([longroup.min(),longroup.max()])

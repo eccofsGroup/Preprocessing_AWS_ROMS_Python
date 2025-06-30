@@ -25,67 +25,67 @@ def main(opts):
     status_river=ECCOFS_RIVERS_driver(fconfig)
     
 
-    print('Get Mercator Data')
-    status_merc=mercator_aquire_driver(fconfig)
+ #    print('Get Mercator Data')
+ #    status_merc=mercator_aquire_driver(fconfig)
     
     
-    print('Extract Initial conditions from mercator')
-    status_ini=ECCOFS_INI_driver(fconfig)
+ #    print('Extract Initial conditions from mercator')
+ #    status_ini=ECCOFS_INI_driver(fconfig)
     
         
-    print('Extract Boundary conditions from mercator')
-    status_bry=ECCOFS_BRY_driver(fconfig)
+ #    print('Extract Boundary conditions from mercator')
+ #    status_bry=ECCOFS_BRY_driver(fconfig)
     
     
-    print('In situ driver running')
-    status_insitu=insitu_driver(fconfig)
+ #    print('In situ driver running')
+ #    status_insitu=insitu_driver(fconfig)
     
     
-    print('Rads Driver Running')
-    status_ssh=rads_driver(fconfig)
+ #    print('Rads Driver Running')
+ #    status_ssh=rads_driver(fconfig)
     
-    print('Checking SST Availability')
-    status_sst=sst_driver(fconfig)
-    #print(f'There are a total of  {filecount} SST files')
+ #    print('Checking SST Availability')
+ #    status_sst=sst_driver(fconfig)
+ # #   print(f'There are a total of  {filecount} SST files')
 
-    print('Checking GLIDER Availability')
-    glider_driver(fconfig)
-
-
-    print('RUNNING OBS PreProcessing')
-    status=obs_pre_driver(fconfig)
-
-    print('RUNNING CombineOBS')
-    status=obs_combine_driver(fconfig)
+ #    print('Checking GLIDER Availability')
+ #    glider_driver(fconfig)
 
 
-    #create scheduler
-    delay=fconfig['obs']['delay']
-    scheduler = sched.scheduler(time.time, time.sleep)
+ #    print('RUNNING OBS PreProcessing')
+ #    status=obs_pre_driver(fconfig)
+
+ #    print('RUNNING CombineOBS')
+ #    status=obs_combine_driver(fconfig)
 
 
-    if not(status_insitu):
-        print(f'In situ data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
-    else:
-        print('In situ data aquisition succeeded')
+ #    #create scheduler
+ #    delay=fconfig['obs']['delay']
+ #    scheduler = sched.scheduler(time.time, time.sleep)
+
+
+ #    if not(status_insitu):
+ #        print(f'In situ data aquisition failed, waiting {delay} seconds')
+ #        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
+ #    else:
+ #        print('In situ data aquisition succeeded')
             
             
-    if not(status_ssh):
-        print(f'SSH data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay,1, rads_driver,(fconfig,))
-    else:
-        print('SSH data aquisition succeeded')
+ #    if not(status_ssh):
+ #        print(f'SSH data aquisition failed, waiting {delay} seconds')
+ #        scheduler.enter(delay,1, rads_driver,(fconfig,))
+ #    else:
+ #        print('SSH data aquisition succeeded')
 
     
-    if not(status_sst):
-        print(f'SST data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay,1, sst_driver,(fconfig,))
-    else:
-        print('SST data aquisition succeeded')
+ #    if not(status_sst):
+ #        print(f'SST data aquisition failed, waiting {delay} seconds')
+ #        scheduler.enter(delay,1, sst_driver,(fconfig,))
+ #    else:
+ #        print('SST data aquisition succeeded')
 
 
-    scheduler.run()
+ #    scheduler.run()
     et=time.time()
     elt=et-st
     print(f'TOTAL processing time: {elt} seconds')
@@ -182,42 +182,42 @@ def obs_pre_driver(fconfig):
     import get_cmems as CMEMS
     
         
-    # print('Processing CMEMS')
-    # try:    
-    #     st=time.time()
-    #     CMEMS.main(fconfig)
-    #     status=True  
-    #     et=time.time()
-    #     elt=et-st
-    #     print(f'CMEMS processing time: {elt} seconds')
+    print('Processing CMEMS')
+    try:    
+        st=time.time()
+        CMEMS.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'CMEMS processing time: {elt} seconds')
         
-    # except Exception as e:
-    #         print(f"An error occurred: {e}")
-    #         traceback.print_exc()  
-    #         status=False 
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
             
             
-    # print('Processing SSH')
-    # try:    
-    #     st=time.time()
-    #     SSH.main(fconfig)
-    #     status=True  
-    #     et=time.time()
-    #     elt=et-st
-    #     print(f'SSH processing time: {elt} seconds')
-    # except Exception as e:
-    #         print(f"An error occurred: {e}")
-    #         traceback.print_exc()  
-    #         status=False 
+    print('Processing SSH')
+    try:    
+        st=time.time()
+        SSH.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'SSH processing time: {elt} seconds')
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
             
-    # print('Processing AMSR2')
-    # try:    
-    #     amsr2.main(fconfig)
-    #     status=True  
-    # except Exception as e:
-    #         print(f"An error occurred: {e}")
-    #         traceback.print_exc()  
-    #         status=False 
+    print('Processing AMSR2')
+    try:    
+        amsr2.main(fconfig)
+        status=True  
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
     
     print('Processing GOES')
     try:    
@@ -228,14 +228,14 @@ def obs_pre_driver(fconfig):
             traceback.print_exc()  
             status=False 
      
-    # print('Processing LEO')
-    # try:    
-    #     LEO.main(fconfig)
-    #     status=True  
-    # except Exception as e:
-    #         print(f"An error occurred: {e}")
-    #         traceback.print_exc()  
-            # status=False 
+    print('Processing LEO')
+    try:    
+        LEO.main(fconfig)
+        status=True  
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
 
                            
                    

@@ -1,7 +1,7 @@
 #!/usr/bin/env python                                                                                                                                                  # coding: utf-8                                                                                                                                                         
 import sys,os
 import pandas as pd
-from datetime import datetime, timedelta
+
 import netCDF4 as nc
 import numpy as np
 import matplotlib.pyplot as plt
@@ -66,7 +66,7 @@ def main(fconfig):
     L, M = g1['lon_rho'].shape
 
     # Create grouping arrays, filled with NaN
-    latgroup = np.empty((len(lat), len(lon)), dtype=int)
+    latgroup = np.zeros((len(lat), len(lon)), dtype=int)-1
     longroup = latgroup.copy()
     tol = 4 * 0.06  
 
@@ -89,14 +89,18 @@ def main(fconfig):
             pattern = os.path.join(storage_dir, f"{datestr}*.nc")
             files = glob.glob(pattern)
             all_files.extend(files)
-
+        if not all_files:
+            print("No LEO files found, skipping.")
+            continue
+            
+            
         K = len(all_files); nlat = len(lat); nlon = len(lon)
         sst   = np.full((K, nlat, nlon), np.nan, dtype=float)
         dtime = np.full_like(sst, np.nan); qflag = np.full_like(sst, np.nan)
         for st, file in enumerate(all_files):
             with nc.Dataset(file) as ds:
                 # load and bias‐correct SST (to °C)
-                tmp = ds.variables['sea_surface_temperature'][:] - 273.15
+                #tmp = ds.variables['sea_surface_temperature'][:] - 273.15
                 sst[st, :, :] = ds.variables['sea_surface_temperature'][:] - 273.15 - ds.variables['sses_bias'][:]
                 # quality flags
                 qflag[st, :, :] = ds.variables['quality_level'][:]

@@ -77,8 +77,8 @@
     mercator:
         outdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/'
         tmpdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/tmp/'
-        days: 6
-        fdays: 5
+        days: 3
+        fdays: 10
         latmin: 0.0
         latmax: 52.0
         lonmin: -100.0
@@ -89,7 +89,7 @@
         tmpfiles: ['TMP_so.nc','TMP_thetao.nc','TMP_uv.nc','TMP_zos.nc']
         ids: ['cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m','cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m', 'cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m','cmems_mod_glo_phy_anfc_0.083deg_P1D-m']
     ini: 
-        nday: 19
+        nday: 2
         inidir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/'
         inipre: 'ECCOFS_REALTIME_'
         regrid_coef_file: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_ini_regrid.nc'
@@ -99,7 +99,8 @@
         brypre: 'ECCOFS_REALTIME_'
         regrid_coef_file: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_bdry_9999_regrid.nc'
         bdylist: {'EAST':True, 'WEST':False, 'NORTH':False, 'SOUTH':True}
-        days: 19 
+        days: 19
+        hdays: 5 
         fdays: 4 
 
         
@@ -107,7 +108,20 @@
     name: "OBS driver"
     
     delay: 3600
+    combine:
+        OBS_out: "/home/om/cron/ECCOFS_OBS/REALTIME/data/combine/ssh_sst_cmems_" 
+        grd_file: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
+        grd_file_3km: "/home/julia/ROMS/eccofs/Data/grid_eccofs_3km_08_b7.nc"
 
+        amsr2_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_"
+        leo_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_"
+        goes_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_"
+        ssh_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_"
+        cmems_file: /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_"
+        sst_stats_file: '/home/om/cron/ECCOFS_OBS/REALTIME/data/STD/sst_statistics.npz'
+
+
+        
     insitu:
         indir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/raw/'
         outdir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/'
@@ -182,6 +196,7 @@
         CMEMS:
             input_dir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_'
             output_file: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_'
+            std_dir: '/home/julia/ROMS/eccofs/Data/STD_eccofs6km_20112023_run01_1_1_wMLD1TS/eccofs6km_std_mesoscale_20112023_'
             
     
     

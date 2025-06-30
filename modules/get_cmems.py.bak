@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import sys,os
+import sys
 import numpy as np
 import pandas as pd
 from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator,interp1d
@@ -26,6 +26,7 @@ def main(fconfig):
     grd = roms_get_grid(grd_file, scoord)
     [Fi,Fj] = roms_lonlat2ij(grd)
     output_file =  fconfig['obs']['romsobs']['CMEMS']['output_file']
+    
     ndays=fconfig['obs']['romsobs']['ndays']
     end_day   = pd.Timestamp.today()- pd.Timedelta(days=1)
     start_day = end_day - pd.Timedelta(days=ndays)

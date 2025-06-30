@@ -1,31 +1,36 @@
 #!/usr/bin/env python                                                                                                                                                  # coding: utf-8                                                                                                                                                         
 import sys,os
 import pandas as pd
-
 import netCDF4 as nc
 import numpy as np
-import matplotlib.pyplot as plt
 import glob
+import warnings
 
-
+sys.path.append('/Users/julia/python')
+sys.path.append('/home/julia/python')
 from roms_get_grid import roms_get_grid
 from CreateObsFile_SST import CreateObsFile_SST
 from add_history import add_history
 from accumarrays import accum3d, accum2d
 
 
-def main(fconfig):
+def get_sst_leo():
 
-    url = fconfig['obs']['romsobs']['LEO']['URL'];
-    subdirs = fconfig['obs']['romsobs']['LEO']['subdirs']
+    url = '/p/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/';
+    subdirs = ['L3S_LEO_AM_D/','L3S_LEO_AM_N/','L3S_LEO_PM_D/','L3S_LEO_PM_N/']
 
     #  Base file name for output
-    base_file_name = fconfig['obs']['romsobs']['LEO']['BASE_FILE_NAME']
+    base_file_name = 'OBS_FILES/sst_leo_nrt_'
+    subdirs = [
+        'L3S_LEO_AM_D/',
+        'L3S_LEO_AM_N/',
+        'L3S_LEO_PM_D/',
+        'L3S_LEO_PM_N/'
+    ]
 
-    ndays=fconfig['obs']['romsobs']['ndays']
     end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
-    start_day     = end_day - pd.Timedelta(days=ndays)
-    
+    start_day     = end_day - pd.Timedelta(days=2)
+
     days = pd.date_range(start_day, end_day, freq='D')
     ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS
     ref_datum_leo = pd.Timestamp(1981,1,1);       # reference datum in LEO
@@ -34,8 +39,8 @@ def main(fconfig):
     dTime      = 6/24 #6 hours
 
 
-    grd_file =fconfig['obs']['romsobs']['gridfile']
-    scoord = fconfig['obs']['romsobs']['scoord']
+    grd_file = '/p/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
+    scoord = [7, 2, 250, 50, 2, 4]
     g = roms_get_grid(grd_file, scoord)
 
     L, M = g['lon_rho'].shape
@@ -90,18 +95,13 @@ def main(fconfig):
             pattern = os.path.join(storage_dir, f"{datestr}*.nc")
             files = glob.glob(pattern)
             all_files.extend(files)
-        if not all_files:
-            print("No LEO files found, skipping.")
-            continue
-            
-            
+
         K = len(all_files); nlat = len(lat); nlon = len(lon)
         sst   = np.full((K, nlat, nlon), np.nan, dtype=float)
         dtime = np.full_like(sst, np.nan); qflag = np.full_like(sst, np.nan)
         for st, file in enumerate(all_files):
             with nc.Dataset(file) as ds:
-                # load and bias‐correct SST (to °C)
-                #tmp = ds.variables['sea_surface_temperature'][:] - 273.15
+                # load and bias‐correct SST (to °C)                tmp = ds.variables['sea_surface_temperature'][:] - 273.15
                 sst[st, :, :] = ds.variables['sea_surface_temperature'][:] - 273.15 - ds.variables['sses_bias'][:]
                 # quality flags
                 qflag[st, :, :] = ds.variables['quality_level'][:]
@@ -149,5 +149,6 @@ def main(fconfig):
         if flag != 1:
             print(f"  {fname} not created (no data).")
 
-# if __name__ == "__main__":
-#     get_sst_leo()
+if __name__ == "__main__":
+    warnings.filterwarnings("ignore")
+    get_sst_leo()

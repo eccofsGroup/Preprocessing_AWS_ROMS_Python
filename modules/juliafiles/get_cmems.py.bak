@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import sys,os
+import sys
 import numpy as np
 import pandas as pd
 from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator,interp1d
 from netCDF4 import Dataset
 import warnings
 
-# sys.path.append('/Users/julia/python')
-# sys.path.append('/home/julia/python')
+sys.path.append('/Users/julia/python')
+sys.path.append('/home/julia/python')
 from roms_get_grid import roms_get_grid
 from roms_lonlat2ij import roms_lonlat2ij
 from define_obs_file import define_4dvar_obs_file, obs_provenance_definition_eccofs
@@ -17,18 +17,19 @@ from add_history import add_history
 from accumarrays import accum3d, accum2d
 
 
-def main(fconfig):
-    input_dir = fconfig['obs']['romsobs']['CMEMS']['input_dir']
-    grd_file =fconfig['obs']['romsobs']['gridfile']
-    std_dir = fconfig['obs']['romsobs']['CMEMS']['std_dir']
-    
-    scoord = fconfig['obs']['romsobs']['scoord']
+def get_cmems():
+    input_dir = '/p/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_';
+    grd_file = '/p/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
+    std_dir = "/p/julia/ROMS/eccofs/Data/STD_eccofs6km_20112023_run01_1_1_wMLD1TS/eccofs6km_std_mesoscale_20112023_"
+ 
+    scoord = [7, 2, 250, 50, 2, 4]
     grd = roms_get_grid(grd_file, scoord)
-    [Fi,Fj] = roms_lonlat2ij(grd)
-    output_file =  fconfig['obs']['romsobs']['CMEMS']['output_file']
-    ndays=fconfig['obs']['romsobs']['ndays']
-    end_day   = pd.Timestamp.today()- pd.Timedelta(days=1)
-    start_day = end_day - pd.Timedelta(days=ndays)
+    [Fi,Fj] = roms_lonlat2ij(grd);
+    output_file = 'OBS_FILES/cmems_nrt_';
+    
+    end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
+    start_day     = end_day - pd.Timedelta(days=2)
+
     days = pd.date_range(start_day, end_day, freq='D')
     ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS                                                                                             
 
@@ -57,10 +58,6 @@ def main(fconfig):
         datestr = day.strftime('%Y%m%d')
         print(f"=================================Processing day {datestr}==============")
         input_file = input_dir + datestr + ".nc"
-        
-        if not os.path.exists(input_file):
-            print("  file not found, skipping.")
-            continue
         
         # input data
         with Dataset(input_file, 'r') as nc:
