@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import sys,os
+import sys,os,glob
 import pandas as pd
 import netCDF4 as nc
 import numpy as np
@@ -17,14 +17,27 @@ def main(fconfig):
     #url = '/p/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/GOES16_L3/';
     
     url = fconfig['obs']['romsobs']['GOES']['URL']
-    base_file_name =fconfig['obs']['romsobs']['GOES']['BASE_FILE_NAME']
-
+    working_directory =fconfig['obs']['romsobs']['GOES']['WORKING_DIRECTORY']
+    prefix = fconfig['obs']['romsobs']['GOES']['prefix']
+    output_file  = os.path.join(working_directory, prefix)
     ndays=fconfig['obs']['romsobs']['ndays']
-    
+    ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS
+    base_file_name = os.path.join(working_directory, prefix)
     end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
     start_day     = end_day - pd.Timedelta(days=ndays)
+    all_files = glob.glob(f"{base_file_name}*.nc")
+    all_files = [os.path.basename(f) for f in all_files]
+
+    if all_files:
+           # extract the numeric timestamp from filenames
+           d = len(prefix)
+           times = [int(fn[d:-3]) for fn in all_files]  # strip prefix & ".nc"          for fn in all_files:
+           times.sort()
+
+           if (start_day> ref_datum + pd.Timedelta(days=times[-1])):
+                 start_day = ref_datum + pd.Timedelta(days=times[-1])
+
     days = pd.date_range(start_day, end_day, freq='D')
-    ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS
     ref_datum_goes = pd.Timestamp(1981,1,1);       # reference datum in LEO
     mintime = (ref_datum_goes - ref_datum).days    
     dTime      = 6/24 #6 hours
@@ -149,12 +162,10 @@ def main(fconfig):
         # create observation file
         fname   = f"{base_file_name}{mindays:04d}.nc"
         flag = CreateObsFile_SST(fname, sst_mean, g1, time, 317)
-        add_history(fname, 'GOES19 L3 SST', prepend=True)
-        add_history(fname, 'Prepared by Julia Levin (julia@marine.rutgers.edu)', prepend=False)
-
-
         if flag != 1:
             print(f"  {fname} not created (no data).")
-
+        else:
+           add_history(fname, 'GOES19 L3 SST', prepend=True)
+           add_history(fname, 'Prepared by Julia Levin (julia@marine.rutgers.edu)', prepend=False)
 # if __name__ == "__main__":
 #     get_sst_goes()

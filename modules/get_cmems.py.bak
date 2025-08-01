@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import sys
+import sys,os,glob
 import numpy as np
 import pandas as pd
 from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator,interp1d
@@ -21,15 +21,30 @@ def main(fconfig):
     input_dir = fconfig['obs']['romsobs']['CMEMS']['input_dir']
     grd_file =fconfig['obs']['romsobs']['gridfile']
     std_dir = fconfig['obs']['romsobs']['CMEMS']['std_dir']
+    working_directory =fconfig['obs']['romsobs']['CMEMS']['WORKING_DIRECTORY']
+    prefix = fconfig['obs']['romsobs']['CMEMS']['prefix']
     
     scoord = fconfig['obs']['romsobs']['scoord']
+    ref_datum = pd.Timestamp(2011,1,1);
     grd = roms_get_grid(grd_file, scoord)
     [Fi,Fj] = roms_lonlat2ij(grd)
-    output_file =  fconfig['obs']['romsobs']['CMEMS']['output_file']
-    
+    output_file = os.path.join(working_directory, prefix)
     ndays=fconfig['obs']['romsobs']['ndays']
     end_day   = pd.Timestamp.today()- pd.Timedelta(days=1)
     start_day = end_day - pd.Timedelta(days=ndays)
+    all_files = glob.glob(f"{output_file}*.nc")
+    all_files = [os.path.basename(f) for f in all_files]
+
+    if all_files:
+           # extract the numeric timestamp from filenames
+           d = len(prefix)
+           times = [int(fn[d:-3]) for fn in all_files]  # strip prefix & ".nc"          for fn in all_files:
+           times.sort()
+
+           # reprecess last 3 days
+           if (start_day> ref_datum + pd.Timedelta(days=times[-1])):
+               start_day = ref_datum + pd.Timedelta(days=times[-1])
+
     days = pd.date_range(start_day, end_day, freq='D')
     ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS                                                                                             
 
@@ -48,15 +63,15 @@ def main(fconfig):
     dTime = 1 / 24         # 1 hour in days
     t_epsilon = 4 / 24 / 60  # 4 minutes in days
     a = 25
-
-    
+    L, M = grd['h'].shape
+       
     # Create points for interpolant
     all_pts = np.column_stack((grd['lon_rho'].ravel(), grd['lat_rho'].ravel()))
     Fm = NearestNDInterpolator(all_pts, grd['mask_rho'].ravel())
     
     for day in days:
         datestr = day.strftime('%Y%m%d')
-        print(f"=================================Processing day {datestr}==============")
+        print(f"Processing day {datestr}")
         input_file = input_dir + datestr + ".nc"
         
         if not os.path.exists(input_file):
@@ -87,8 +102,6 @@ def main(fconfig):
         All['obs_Ygrid'] = yind[IC];
         
         # Find boolean mask for points outside the grid or with invalid depth/value
-        L, M = grd['mask_rho'].shape
-
         outside = np.where(np.isnan(All['obs_Xgrid']) | np.isnan(All['obs_Ygrid']) |
                     (All['obs_Xgrid'] < 0) | (All['obs_Ygrid'] < 0) |
                     (All['obs_Xgrid'] > M - 1) | (All['obs_Ygrid'] > L - 1) |
@@ -358,13 +371,15 @@ def profile_obs_error(stdfile, data, grd):
             if z[i] > 0:
                 data['obs_error'][ind[i]] = temp_std[z[i], y[i], x[i]]
             else:       # if obs_depth is given as depth, not as index
-                if z[i] > zN[-1]:
+                if z[i] >= zN[-1]:
                     data['obs_error'][ind[i]] = temp_std[-1, y[i], x[i]]
                 elif z[i] < zN[0]:
                     data['obs_error'][ind[i]] = temp_std[0, y[i], x[i]]
                 else:
                     f = interp1d(zN, temp_std[:, y[i], x[i]], bounds_error=False, fill_value="extrapolate")
                     data['obs_error'][ind[i]] = f(z[i])
+    # Clip 
+    data['obs_error'][ind] = np.clip(data['obs_error'][ind], 0.1, 4)
 
  
     # Salinity observations (obs_type == 7)
@@ -378,7 +393,7 @@ def profile_obs_error(stdfile, data, grd):
             if z[i] > 0:
                 data['obs_error'][ind[i]] = salt_std[int(np.floor(z[i])), y[i], x[i]]
             else:
-                if z[i] > zN[-1]:
+                if z[i] >= zN[-1]:
                     data['obs_error'][ind[i]] = salt_std[-1, y[i], x[i]]
                 elif z[i] < zN[0]:
                     data['obs_error'][ind[i]] = salt_std[0, y[i], x[i]]
@@ -390,10 +405,10 @@ def profile_obs_error(stdfile, data, grd):
     data['obs_error'][ind] = np.clip(data['obs_error'][ind], 0.1, 0.6)
     data['obs_error'] = data['obs_error'] ** 2
             
-if __name__ == "__main__":
-    warnings.filterwarnings("ignore")
+#if __name__ == "__main__":
+#    warnings.filterwarnings("ignore")
 
-    get_cmems()
+#    get_cmems()
 
 
 

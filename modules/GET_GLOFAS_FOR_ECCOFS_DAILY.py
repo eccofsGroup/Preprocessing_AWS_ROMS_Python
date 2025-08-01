@@ -214,7 +214,7 @@ def main(fconfig):
     
         infile=f'{indir}{inname}_{idate}{inext}'
 
-        download_GLOFAS_forcast_daily(iday,infile)
+        download_GLOFAS_forcast_daily(iday-timedelta(days=1),infile)
         print('**********************************')
     #    if ncflag:
         ds=xr.open_dataset(infile)
@@ -498,7 +498,7 @@ def make_split_rivers_file(rfile,fconfig):
 def download_GLOFAS_forcast_daily(iday,infile):
     #SOURCE:https://ewds.climate.copernicus.eu/datasets
     print(f'DOWNLOADING GLOFAS {iday} forecast to {infile}')
-
+    
     syear=iday.strftime('%Y')
     smonth=iday.strftime('%m')
     sday=iday.strftime('%d')
@@ -520,7 +520,10 @@ def download_GLOFAS_forcast_daily(iday,infile):
             "120",
             "144",
             "168",
-            "192"
+            "192",
+            "216",
+            "240",
+            "264"
             ],
         "data_format": "netcdf",
         "download_format": "unarchived",

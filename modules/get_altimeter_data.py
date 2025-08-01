@@ -338,7 +338,8 @@ def get_all_altimetry(grd, start_day,fconfig):
     altimeter_data['pass'].extend(data['AllPass'])
     altimeter_data['cycle'].extend(data['AllCycle'])
     altimeter_data['provenance'].extend([404] * len(data['AllSSHA']))
-
+    print(min(altimeter_data['time']))
+    print(max(altimeter_data['time']))
     np.savez_compressed(fconfig['obs']['romsobs']['SSH']['altfile'], **altimeter_data)
 
     return altimeter_data

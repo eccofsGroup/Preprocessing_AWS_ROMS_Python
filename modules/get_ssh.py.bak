@@ -44,11 +44,10 @@ def main(fconfig):
 
     # compute days since 2011-01-01 for various reference dates
     ndays=fconfig['obs']['romsobs']['ndays']
-    #end_day = np.floor((np.datetime64('now', 's')- ref) / np.timedelta64(1, 'D')) 
-    #start_day    = end_day-ndays
-    end_day = np.datetime64('now','D') - np.timedelta64(1,'D')
-    start_day     = end_day - np.timedelta64(ndays,'D')
-
+    end_day = np.floor((np.datetime64('now', 's')- ref) / np.timedelta64(1, 'D')) 
+    start_day    = end_day-ndays
+    print(start_day)
+    print(end_day)   
 
     # ————————————————
     # FIND ALL ALONG-TRACK FILES
@@ -56,40 +55,32 @@ def main(fconfig):
     all_files = glob.glob(os.path.join(working_dir, f'{fconfig['obs']['romsobs']['SSH']['prefix']}*.nc'))
     all_files = [os.path.basename(f) for f in all_files]
     
-    if all_files:
-        # extract the numeric timestamp from filenames
-        prefix = fconfig['obs']['romsobs']['SSH']['prefix']
-        d = len(prefix)
-        times = [int(fn[d:-3]) for fn in all_files]  # strip prefix & ".nc"
-        times.sort()
-
-        # go back 6 days in case of updates
-        start = times[-1] - 6
-
-        if (start_day> ref +np.timedelta64(times[-1],'D')):
-           start_day = ref + np.timedelta64(times[-1],'D')
-               
-    else:
-        start=(np.floor((np.datetime64('now', 's')- ref) / np.timedelta64(1, 'D')))-6 
-                   
-        
-            #altimeter_data = np.load('altimeter_data.npz')
-    
     if True:
-        altimeter_data = get_all_altimetry(grd, start,fconfig)
+        altimeter_data = get_all_altimetry(grd, start_day,fconfig)
     else:
         altimeter_data =np.load(f"{working_dir}altimeter_data.npz")
+        
+    if all_files:
+            # extract the numeric timestamp from filenames
+            prefix = fconfig['obs']['romsobs']['SSH']['prefix']
+            d = len(prefix)
+            times = [int(fn[d:-3]) for fn in all_files]  # strip prefix & ".nc"
+            times.sort()
 
-    all_time = np.array(altimeter_data['time'])
+            # go back 6 days in case of updates
+            start = times[-1] - 6
+            if (start_day> ref + pd.Timedelta(days=times[-1])):
+               start_day = ref + pd.Timedelta(days=times[-1])
 
-    start_day_int=(start_day-ref)/ np.timedelta64(1, 'D')
+            #altimeter_data = np.load('altimeter_data.npz')
+    
+            idxs = np.where(altimeter_data['time'] >  (start_day-10))[0]
+    
+            for key in altimeter_data.files:
+                altimeter_data[key][:] = altimeter_data[key][idxs[0]]
 
-    idxs = np.where(altimeter_data['time'] >  (start_day_int-10))[0]
+ 
 
-    for key in altimeter_data.keys():
-                altimeter_data[key] = np.array(altimeter_data[key])[idxs]
-                
-                 
     # ---  SSHA standard‐deviation by interpolation ---
     print("Loading SSHA mean std")
     m1 = np.load(fconfig['obs']['romsobs']['SSH']['nodacfilestat'])
@@ -155,12 +146,8 @@ def main(fconfig):
     L, M = grd['mask_rho'].shape
 
     #  Loop over each day
-
     days = pd.date_range(start_day, end_day, freq='D')
-
-    
     for day_pd in days:
-    
         datestr = day_pd.strftime('%Y%m%d')
         print(f"processing day {datestr}")
         day = (day_pd - ref).days
@@ -168,7 +155,6 @@ def main(fconfig):
         # select +/- 7 days window
         # select +/- 7 days window
         ind = np.where((all_time >= day - 6) & (all_time < day + 8))[0]
-
         lon        = np.array(altimeter_data['lon'])[ind]
         lat        = np.array(altimeter_data['lat'])[ind]
         ssha       = np.array(altimeter_data['ssha'])[ind]

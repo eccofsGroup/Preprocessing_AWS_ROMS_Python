@@ -25,7 +25,8 @@ def main(fconfig):
     OBS_out = fconfig['obs']['combine']['OBS_out']
     grd_file = fconfig['obs']['combine']['grd_file']
     grd_file_3km = fconfig['obs']['combine']['grd_file_3km']
-
+    ndays=fconfig['obs']['romsobs']['ndays']
+    
     amsr2_file = fconfig['obs']['combine']['amsr2_file']
     leo_file = fconfig['obs']['combine']['leo_file']
     goes_file = fconfig['obs']['combine']['goes_file']
@@ -34,15 +35,15 @@ def main(fconfig):
 
     m1 = np.load(fconfig['obs']['combine']['sst_stats_file'])
 
-    scoord = [7, 2, 250, 50, 2, 4]
+    scoord = fconfig['obs']['romsobs']['scoord']
     g = roms_get_grid(grd_file, scoord)
     g3 = roms_get_grid(grd_file_3km,scoord)
     [Fi,Fj] = roms_lonlat2ij(g3);
 
   #  end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
   #  start_day     = end_day - pd.Timedelta(days=2)
-    end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=11)
-    start_day     = end_day - pd.Timedelta(days=12)
+    end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
+    start_day     = end_day - pd.Timedelta(days=ndays)
 
     days = pd.date_range(start_day, end_day, freq='3D')
     ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS                                                                                             
@@ -82,12 +83,13 @@ def main(fconfig):
 
         #initiate arrays
         SST = {}
-        SST['obs_lon'] = []; SST['obs_lon'] = []; SST['obs_lat'] = []; 
+        SST['obs_lon'] = [];  SST['obs_lat'] = []; 
         SST['depth'] = []; SST['obs_value'] = []; SST['obs_Xgrid'] = []; 
         SST['obs_Ygrid'] = []; SST['obs_Zgrid'] = []; SST['obs_provenance']=[];
         SST['obs_time'] = []; SST['obs_depth']=[]; SST['obs_label']=[]; SST['obs_type']=[]
 
         for file in files:
+            print(file)
             if os.path.isfile(file):
                 print(f"reading data from {file}")
                 with Dataset(file) as nc:
@@ -131,10 +133,10 @@ def main(fconfig):
             estd[indx] = Fstd(lon_b[indx],lat_b[indx] )
         
             # quality control on SST
-            ss = np.where((counter<2) | ((counter==2) & (std_b > estd)))[0]
+            ss = np.where((counter==1) | ((counter==2) & (std_b > estd)))[0]
 
             for s in ss:
-                iii = np.where(varInd == s)[0]
+                iii = np.where(varInd == s)
                 SST['obs_value'][iii] = np.nan
 
             ss = np.where((counter>2) & (std_b > 1.5 * estd))[0]
@@ -161,7 +163,7 @@ def main(fconfig):
             onesCol = np.ones_like(varInd)
             maxVarInd = np.max(varInd)+1
        
-            # Bin at 25 km
+            # Bin at 100 km
             counter = accum2d(varInd,0,onesCol,shape=[maxVarInd, 1],func=np.sum).ravel()
             lat_b = accum2d(varInd,0,SST['obs_lat'],shape=[maxVarInd, 1],func=np.mean).ravel() 
             lon_b = accum2d(varInd,0,SST['obs_lon'],shape=[maxVarInd, 1],func=np.mean).ravel()
@@ -186,14 +188,14 @@ def main(fconfig):
                 SST[var] = SST[var][good];
         
             # design weights for binning
-            weights = np.ones_like(good, dtype=float)
+            weights = np.ones_like(SST['obs_value'], dtype=float)
             weights[SST['obs_provenance'] == 317] = 0.05  # GOES
             weights[SST['obs_provenance'] == 311] = 10.0  # LEO
 
             # bin in space and time
             minTime = np.min(SST['obs_time'])
 
-            xind = np.floor(SST['obs_Xgrid']).astype(int); yind = np.floor(SST['obs_Xgrid']).astype(int)
+            xind = np.floor(SST['obs_Xgrid']).astype(int); yind = np.floor(SST['obs_Ygrid']).astype(int)
             timeBin = np.floor((SST['obs_time']- minTime) / dTime).astype(int)
             timeDimLength  = np.max(timeBin)+1;
             # linear index of each (xbin, ybin)
@@ -202,7 +204,7 @@ def main(fconfig):
             maxVarInd = np.max(varInd)+1;
         
             ind = np.where(~np.isnan(SST['obs_value']))[0];
-            counter = accum2d(timeBin[ind], varInd[ind],np.ones_like(ind),shape=[timeDimLength, maxVarInd],func=np.sum)
+            counter = accum2d(timeBin[ind], varInd[ind], np.ones_like(ind),shape=[timeDimLength, maxVarInd],func=np.sum)
             good = ~np.isnan(counter)
         
             var_names = ['obs_lat', 'obs_lon', 'obs_Xgrid', 'obs_Ygrid']
@@ -300,8 +302,9 @@ def main(fconfig):
         files.extend([f"{ssh_file}{int(day):04d}.nc", f"{cmems_file}{int(day):04d}.nc"])
         files.extend([f"{ssh_file}{int(day+1):04d}.nc", f"{cmems_file}{int(day+1):04d}.nc"])
         files.extend([f"{ssh_file}{int(day+2):04d}.nc", f"{cmems_file}{int(day+2):04d}.nc"])
-
+        
         for file in files:
+            print(file)
             if os.path.isfile(file):
                 print(f"reading data from {file}")
                 with Dataset(file) as nc:
@@ -317,7 +320,7 @@ def main(fconfig):
                 data[var] = data[var][good]
 
             ind = np.where(data['obs_type']==1)[0]  # altimetry
-            data['obs_error'][ind] = 0.04**2 * np.ones_like(ind)
+            data['obs_error'][ind] = 0.05**2 * np.ones_like(ind)
 
             # scale error for CMEMS Argo profiles (801), Gliders (806), 
             # CTD profiles (807), Sea Mammals (808), Moorings (823), 
@@ -391,7 +394,8 @@ def main(fconfig):
             #    (Is contains the survey index for each obs_time entry)                                                                                            
             Nobs = np.bincount(Is, minlength=survey_time.size)
 # %%
-            output_fname = f"{OBS_out}{day:04d}.nc"
+            #output_fname = f"{OBS_out}{day:04d}.nc"
+            output_fname = f"{OBS_out}{day_pd.strftime('%Y%m%d')}.nc"
             survey = len(survey_time)
             define_4dvar_obs_file(output_fname,survey,obs_provenance_definition_eccofs())
             ds = Dataset(output_fname, 'a')
@@ -414,8 +418,8 @@ def main(fconfig):
 
           
             # create observation file for 3km grid
-            output_fname_3km = f"{OBS_out}{day:04d}_3km.nc"
-            # Copy file
+            output_fname_3km = f"{OBS_out}{day_pd.strftime('%Y%m%d')}_3km.nc"
+             # Copy file
             shutil.copy2(output_fname, output_fname_3km)  
             Xgrid = Fi(data['obs_lon'], data['obs_lat']);
             Ygrid = Fj(data['obs_lon'], data['obs_lat']);

@@ -1,7 +1,7 @@
 """
-DOWNSCALE_MERCATOR_TO ROM_INI.py
+DOWNSCALE_MERCATOR_TO ROM_CLM.py
 
-Adapted from DOWNSCALE_ROMS_OUTPUT.py. Generate and Initial conditions file 
+Adapted from DOWNSCALE_ROMS_OUTPUT.py. Generate a Climatology file 
 for a ROMS gird from Mercator. 
 Created by Elias Hunter, hunter@marine.rutgers.edu, 12/19/2023 
 """
@@ -21,56 +21,11 @@ import warnings
 warnings.filterwarnings("ignore")
 #Set relevant inout parameters
 
-# proj = cartopy.crs.Mercator(central_longitude=-74)
-# pc = cartopy.crs.PlateCarree()
-
-
-# latmin=-3.0
-# latmax=53.0
-# lonmin=-100.0
-# lonmax=-38.0
-
-#Set time
-# start_date = datetime.datetime(2025, 1, 21)
-# today=start_date.strftime('%Y%m%d')
-
-# nday=1
-# date_times = [start_date  + timedelta(days=i) for i in range(nday)] 
 
 reftime=datetime.datetime(2011,1,1)
 tunits=reftime.strftime('days since %Y-%m-%d')
 rtime=np.datetime64(reftime.date())
 
-# #Donor grid Info
-
-
-# #Donor inputfiles
-# datadir='/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/'
-# regrid_coef_file='/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_REGRID.nc'
-
-
-# #Receiver Grid Info
-# L1grdfile='/home/om/cron/ECCOFS_OBS/MERCATOR/work/grid_eccofs_3km_08_b7.nc' # can be a thredds url
-# L1theta_s=7.0
-# L1theta_b=2.0
-# L1Tcline=250.0
-# L1N=50
-# L1Vtransform  =2        #vertical transformation equation
-# L1Vstretching =4        #vertical stretching function
-# L1hc=250
-
-
-# (s_w_L1,C_w_L1)=rutil.stretching(L1Vstretching,L1theta_s,L1theta_b,L1hc,L1N,1)
-# (s_r_L1,C_r_L1)=rutil.stretching(L1Vstretching,L1theta_s,L1theta_b,L1hc,L1N,0)
-
-# #Receiver Output files
-
-# #inifile=f'/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_INI_{today}_ini.nc'
-# inifile=f'/home/hunter/roms/ECCOFS/init/ECCOFS_INI_TEST_{today}_ini.nc'
-
-
-
-#Output file flags, if True create file
 
 
 
@@ -88,33 +43,25 @@ def main(fconfig):
     datadir=fconfig['force']['datadir']
     L1grdfile=fconfig['force']['L1grdfile']
     L1N=fconfig['force']['L1N']
-    
-    #Getting the mercator grid information
-    # day=date_times[0]
-    # mfilename = day.strftime(datadir+'mercator_doppio_%Y_%m_%d.nc')
-    # dsmgrd=xr.open_dataset(mfilename)
-    # mlat=dsmgrd['latitude']
-    # mlon=dsmgrd['longitude']
-    # mdepth=dsmgrd['depth']
-    nday=fconfig['force']['ini']['nday']
-    # fdays=fconfig['force']['ini']['fdays']
-    start_date = date.today()-timedelta(days=nday)
-    #date_times = [start_date  + timedelta(days=i) for i in range(nday+fdays)]  
-    
-    #for day in date_times:
-    
-    #day=date.today()-timedelta(days=nday)
-    
-    #for day in date_times:
-    mfilename = start_date.strftime(datadir+'mercator_doppio_%Y_%m_%d.nc')
-    print(mfilename)
-        
+            
      
     cfgrd=xroms.open_netcdf(L1grdfile)
     cfgrd.attrs['sc_r']=L1N
     cfgrd.attrs['sc_w']=L1N+1
+    #Getting the mercator grid information
+    nday=fconfig['force']['clm']['nday']
+    fdays=fconfig['force']['clm']['fdays']
+    start_date = date.today()-timedelta(days=nday)
+    date_times = [start_date  + timedelta(days=i) for i in range(nday+fdays)]  
+    
+    
+
+    for day in date_times:
+        mfilename = day.strftime(datadir+'mercator_doppio_%Y_%m_%d.nc')
+        print(mfilename)
+
         
-    dsmerc=xr.open_dataset(mfilename)
+        dsmerc=xr.open_dataset(mfilename)
         
     
                 
@@ -122,11 +69,11 @@ def main(fconfig):
     #Process donwscaling files
     ########################################################################
        
-    start_time=time.time()
-    downscale_init_file(cfgrd,dsmerc,start_date,fconfig)
-    end_time=time.time()
-    elapsed_time = end_time - start_time
-    print(f"Initilization file processing time: {elapsed_time} seconds")
+        start_time=time.time()
+        downscale_clm_file(cfgrd,dsmerc,day,fconfig)
+        end_time=time.time()
+        elapsed_time = end_time - start_time
+        print(f"Initilization file processing time: {elapsed_time} seconds")
 
 
 def memory_usage():
@@ -179,10 +126,13 @@ def dataset_get_Z(dataout,varnew,fconfig):
 
 
         
-def downscale_init_file(cfgrd,dsmerc,day,fconfig):
-    regrid_coef_file=fconfig['force']['ini']['regrid_coef_file']
+def downscale_clm_file(cfgrd,dsmerc,day,fconfig):
     today=day.strftime('%Y%m%d')
-    inifile=f'{fconfig['force']['ini']['inidir']}{fconfig['force']['ini']['inipre']}{today}_ini.nc'
+    clmfile=f'{fconfig['force']['clm']['clmdir']}{fconfig['force']['clm']['clmpre']}{today}_clm.nc'
+    rutil.create_clm_file(clmfile,cfgrd,tunits)
+    
+    regrid_coef_file=fconfig['force']['clm']['regrid_coef_file']
+
     L1N=fconfig['force']['L1N']
     
    
@@ -231,7 +181,7 @@ def downscale_init_file(cfgrd,dsmerc,day,fconfig):
     elapsed_time = end_time - start_time
     print(f'REGRIDDER time: {elapsed_time}')
     
-    rutil.create_init_file(inifile,cfgrd,tunits)
+    
 
     
     print('RUNNING horizontal regridding')
@@ -361,8 +311,8 @@ def downscale_init_file(cfgrd,dsmerc,day,fconfig):
     vbar=dataout_z.v.xroms.gridmean(gridout,"Z")
 
 
-    print('Writing initialization data to file'+inifile)
-    ncid = nc.Dataset(inifile, "r+", format="NETCDF4")
+    print('Writing climatology data to file'+clmfile)
+    ncid = nc.Dataset(clmfile, "r+", format="NETCDF4")
     
     t=dsmerc.time.values
     timeout=(t-np.datetime64(rtime)) / np.timedelta64(1, 'D')

@@ -1,305 +1,642 @@
-STARTING ECCOFS driver
 RUNNING DRIVER
 OBS driver initializing
+Get Mercator Data
+Getting Mercator Data
+2025-07-26 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T18:47:21Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:47:21Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:47:26Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:47:28Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:24, 28.32s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.41s/it]100%|██████████| 4/4 [00:31<00:00,  7.80s/it]
+INFO - 2025-07-29T18:48:00Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T18:48:01Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:48:01Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:48:03Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:48:05Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.68s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.51s/it]100%|██████████| 4/4 [00:28<00:00,  7.22s/it]
+INFO - 2025-07-29T18:48:34Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T18:48:36Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:48:36Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:48:38Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:48:40Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:28, 29.74s/it] 38%|███▊      | 3/8 [00:31<00:42,  8.53s/it] 62%|██████▎   | 5/8 [00:32<00:12,  4.19s/it] 88%|████████▊ | 7/8 [00:32<00:02,  2.45s/it]100%|██████████| 8/8 [00:32<00:00,  4.04s/it]
+INFO - 2025-07-29T18:49:13Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T18:49:15Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:49:15Z - Selected dataset part: "default"
+INFO - 2025-07-29T18:49:19Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.19s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.33it/s]100%|██████████| 4/4 [00:01<00:00,  2.64it/s]
+INFO - 2025-07-29T18:49:21Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_26.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_26.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_26.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_26.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_26.nc
+2025-07-27 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T18:49:29Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:49:29Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:49:31Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:49:33Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:25, 28.44s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.42s/it]100%|██████████| 4/4 [00:28<00:00,  7.14s/it]
+INFO - 2025-07-29T18:50:02Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T18:50:03Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:50:03Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:50:06Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:50:08Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.82s/it] 75%|███████▌  | 3/4 [00:29<00:07,  7.58s/it]100%|██████████| 4/4 [00:29<00:00,  7.28s/it]
+INFO - 2025-07-29T18:50:37Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T18:50:39Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:50:39Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:50:40Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:50:43Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:28, 29.73s/it] 38%|███▊      | 3/8 [00:29<00:38,  7.76s/it] 62%|██████▎   | 5/8 [00:31<00:12,  4.32s/it]100%|██████████| 8/8 [00:32<00:00,  4.00s/it]
+INFO - 2025-07-29T18:51:15Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T18:51:17Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:51:17Z - Selected dataset part: "default"
+INFO - 2025-07-29T18:51:21Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.14s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.30it/s]100%|██████████| 4/4 [00:01<00:00,  2.63it/s]
+INFO - 2025-07-29T18:51:23Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_27.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_27.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_27.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_27.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_27.nc
+2025-07-28 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T18:51:28Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:51:28Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:51:30Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:51:32Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:25, 28.45s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.56s/it]100%|██████████| 4/4 [00:28<00:00,  7.24s/it]
+INFO - 2025-07-29T18:52:01Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T18:52:03Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:52:03Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:52:05Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:52:07Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.07s/it]100%|██████████| 4/4 [00:29<00:00,  7.29s/it]
+INFO - 2025-07-29T18:52:36Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T18:52:38Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:52:38Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:52:40Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:52:42Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:28, 29.73s/it] 38%|███▊      | 3/8 [00:29<00:39,  7.80s/it]100%|██████████| 8/8 [00:30<00:00,  3.76s/it]
+INFO - 2025-07-29T18:53:12Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T18:53:15Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:53:15Z - Selected dataset part: "default"
+INFO - 2025-07-29T18:53:19Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.30s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.29it/s]100%|██████████| 4/4 [00:01<00:00,  2.55it/s]
+INFO - 2025-07-29T18:53:21Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_28.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_28.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_28.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_28.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_28.nc
+2025-07-29 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T18:53:26Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:53:26Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:53:28Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:53:30Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:24, 28.29s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.49s/it]100%|██████████| 4/4 [00:28<00:00,  7.17s/it]
+INFO - 2025-07-29T18:53:59Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T18:54:01Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:54:01Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:54:03Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:54:05Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.84s/it]100%|██████████| 4/4 [00:28<00:00,  7.21s/it]
+INFO - 2025-07-29T18:54:34Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T18:54:36Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:54:36Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:54:38Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:54:41Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:28, 29.77s/it] 38%|███▊      | 3/8 [00:31<00:42,  8.53s/it] 62%|██████▎   | 5/8 [00:32<00:12,  4.17s/it]100%|██████████| 8/8 [00:32<00:00,  4.01s/it]
+INFO - 2025-07-29T18:55:13Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T18:55:15Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:55:15Z - Selected dataset part: "default"
+INFO - 2025-07-29T18:55:19Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.15s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.26it/s]100%|██████████| 4/4 [00:01<00:00,  2.60it/s]
+INFO - 2025-07-29T18:55:21Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_29.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_29.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_29.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_29.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_29.nc
+2025-07-30 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T18:55:27Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:55:27Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:55:29Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:55:31Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:25, 28.49s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.54s/it]100%|██████████| 4/4 [00:28<00:00,  7.23s/it]
+INFO - 2025-07-29T18:56:00Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T18:56:02Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:56:02Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:56:04Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:56:06Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.75s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.53s/it]100%|██████████| 4/4 [00:28<00:00,  7.24s/it]
+INFO - 2025-07-29T18:56:35Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T18:56:37Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:56:37Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:56:39Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:56:41Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:28, 29.71s/it] 62%|██████▎   | 5/8 [00:31<00:14,  4.79s/it]100%|██████████| 8/8 [00:31<00:00,  3.93s/it]
+INFO - 2025-07-29T18:57:13Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T18:57:15Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:57:15Z - Selected dataset part: "default"
+INFO - 2025-07-29T18:57:19Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.20s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.30it/s]100%|██████████| 4/4 [00:01<00:00,  2.60it/s]
+INFO - 2025-07-29T18:57:20Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_30.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_30.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_30.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_30.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_30.nc
+2025-07-31 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T18:57:26Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:57:26Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:57:28Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:57:30Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:24, 28.26s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.44s/it]100%|██████████| 4/4 [00:28<00:00,  7.14s/it]
+INFO - 2025-07-29T18:57:58Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T18:58:00Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:58:00Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:58:02Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:58:04Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.83s/it]100%|██████████| 4/4 [00:28<00:00,  7.21s/it]
+INFO - 2025-07-29T18:58:33Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T18:58:35Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:58:35Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:58:37Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:58:39Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:30<03:31, 30.28s/it] 88%|████████▊ | 7/8 [00:31<00:03,  3.41s/it]100%|██████████| 8/8 [00:31<00:00,  3.99s/it]
+INFO - 2025-07-29T18:59:11Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T18:59:13Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:59:13Z - Selected dataset part: "default"
+INFO - 2025-07-29T18:59:18Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.20s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.32it/s]100%|██████████| 4/4 [00:01<00:00,  2.63it/s]
+INFO - 2025-07-29T18:59:19Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_31.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_31.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_31.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_31.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_07_31.nc
+2025-08-01 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T18:59:24Z - Selected dataset version: "202406"
+INFO - 2025-07-29T18:59:24Z - Selected dataset part: "default"
+WARNING - 2025-07-29T18:59:26Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T18:59:29Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:30<01:32, 30.77s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.07s/it]100%|██████████| 4/4 [00:31<00:00,  7.76s/it]
+INFO - 2025-07-29T19:00:00Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T19:00:02Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:00:02Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:00:04Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:00:06Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:30<01:30, 30.22s/it]100%|██████████| 4/4 [00:30<00:00,  7.56s/it]
+INFO - 2025-07-29T19:00:36Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T19:00:38Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:00:38Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:00:40Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:00:42Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:29, 29.90s/it] 62%|██████▎   | 5/8 [00:31<00:14,  4.70s/it]100%|██████████| 8/8 [00:31<00:00,  3.89s/it]
+INFO - 2025-07-29T19:01:14Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T19:01:16Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:01:16Z - Selected dataset part: "default"
+INFO - 2025-07-29T19:01:20Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.19s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.08it/s]100%|██████████| 4/4 [00:01<00:00,  2.41it/s]
+INFO - 2025-07-29T19:01:22Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_01.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_01.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_01.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_01.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_01.nc
+2025-08-02 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T19:01:27Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:01:27Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:01:29Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:01:31Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:25, 28.38s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.52s/it]100%|██████████| 4/4 [00:31<00:00,  7.88s/it]
+INFO - 2025-07-29T19:02:03Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T19:02:05Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:02:05Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:02:07Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:02:09Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:30<01:32, 30.76s/it]100%|██████████| 4/4 [00:30<00:00,  7.71s/it]
+INFO - 2025-07-29T19:02:40Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T19:02:42Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:02:42Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:02:44Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:02:46Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:31<03:42, 31.78s/it] 62%|██████▎   | 5/8 [00:32<00:14,  4.86s/it]100%|██████████| 8/8 [00:32<00:00,  4.05s/it]
+INFO - 2025-07-29T19:03:19Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T19:03:20Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:03:20Z - Selected dataset part: "default"
+INFO - 2025-07-29T19:03:25Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.19s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.32it/s]100%|██████████| 4/4 [00:01<00:00,  2.63it/s]
+INFO - 2025-07-29T19:03:26Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_02.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_02.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_02.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_02.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_02.nc
+2025-08-03 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T19:03:31Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:03:31Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:03:34Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:03:36Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:29, 29.96s/it] 75%|███████▌  | 3/4 [00:30<00:07,  7.81s/it]100%|██████████| 4/4 [00:30<00:00,  7.52s/it]
+INFO - 2025-07-29T19:04:06Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T19:04:08Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:04:08Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:04:10Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:04:12Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.88s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.53s/it]100%|██████████| 4/4 [00:28<00:00,  7.25s/it]
+INFO - 2025-07-29T19:04:41Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T19:04:44Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:04:44Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:04:46Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:04:48Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:24, 29.20s/it] 38%|███▊      | 3/8 [00:29<00:39,  7.81s/it]100%|██████████| 8/8 [00:29<00:00,  3.74s/it]
+INFO - 2025-07-29T19:05:18Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T19:05:20Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:05:20Z - Selected dataset part: "default"
+INFO - 2025-07-29T19:05:24Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.15s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.25it/s]100%|██████████| 4/4 [00:01<00:00,  2.59it/s]
+INFO - 2025-07-29T19:05:26Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_03.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_03.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_03.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_03.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_03.nc
+2025-08-04 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T19:05:33Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:05:33Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:05:35Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:05:37Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:25, 28.38s/it]100%|██████████| 4/4 [00:28<00:00,  7.10s/it]
+INFO - 2025-07-29T19:06:05Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T19:06:07Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:06:07Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:06:09Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:06:11Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.13s/it]100%|██████████| 4/4 [00:29<00:00,  7.30s/it]
+INFO - 2025-07-29T19:06:41Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T19:06:42Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:06:42Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:06:44Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:06:47Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:27, 29.63s/it] 38%|███▊      | 3/8 [00:29<00:39,  7.81s/it] 62%|██████▎   | 5/8 [00:31<00:12,  4.31s/it] 88%|████████▊ | 7/8 [00:32<00:02,  2.52s/it]100%|██████████| 8/8 [00:32<00:00,  4.02s/it]
+INFO - 2025-07-29T19:07:19Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T19:07:21Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:07:21Z - Selected dataset part: "default"
+INFO - 2025-07-29T19:07:25Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.19s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.08it/s]100%|██████████| 4/4 [00:01<00:00,  2.41it/s]
+INFO - 2025-07-29T19:07:27Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_04.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_04.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_04.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_04.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_04.nc
+2025-08-05 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T19:07:33Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:07:33Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:07:35Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:07:37Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:25, 28.35s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.46s/it]100%|██████████| 4/4 [00:31<00:00,  7.84s/it]
+INFO - 2025-07-29T19:08:09Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T19:08:10Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:08:10Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:08:12Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:08:14Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.01s/it]100%|██████████| 4/4 [00:29<00:00,  7.26s/it]
+INFO - 2025-07-29T19:08:44Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T19:08:45Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:08:45Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:08:48Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:08:50Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:23, 29.07s/it] 38%|███▊      | 3/8 [00:29<00:38,  7.69s/it] 62%|██████▎   | 5/8 [00:29<00:11,  3.79s/it] 88%|████████▊ | 7/8 [00:29<00:02,  2.21s/it]100%|██████████| 8/8 [00:29<00:00,  3.73s/it]
+INFO - 2025-07-29T19:09:20Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T19:09:21Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:09:21Z - Selected dataset part: "default"
+INFO - 2025-07-29T19:09:26Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.21s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.32it/s]100%|██████████| 4/4 [00:01<00:00,  2.62it/s]
+INFO - 2025-07-29T19:09:27Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_05.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_05.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_05.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_05.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_05.nc
+2025-08-06 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T19:09:33Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:09:33Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:09:35Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:09:36Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:24, 28.22s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.44s/it]100%|██████████| 4/4 [00:31<00:00,  7.81s/it]
+INFO - 2025-07-29T19:10:08Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T19:10:10Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:10:10Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:10:12Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:10:14Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.82s/it] 75%|███████▌  | 3/4 [00:29<00:07,  7.58s/it]100%|██████████| 4/4 [00:29<00:00,  7.28s/it]
+INFO - 2025-07-29T19:10:43Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T19:10:45Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:10:45Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:10:47Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:10:49Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:27<03:10, 27.25s/it] 38%|███▊      | 3/8 [00:27<00:35,  7.17s/it] 62%|██████▎   | 5/8 [00:30<00:12,  4.20s/it] 88%|████████▊ | 7/8 [00:32<00:02,  2.91s/it]100%|██████████| 8/8 [00:32<00:00,  4.08s/it]
+INFO - 2025-07-29T19:11:22Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T19:11:24Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:11:24Z - Selected dataset part: "default"
+INFO - 2025-07-29T19:11:28Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.21s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.32it/s]100%|██████████| 4/4 [00:01<00:00,  2.62it/s]
+INFO - 2025-07-29T19:11:30Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_06.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_06.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_06.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_06.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_06.nc
+2025-08-07 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T19:11:35Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:11:35Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:11:37Z - Some of your subset selection [2025-08-07 00:00:00+00:00, 2025-08-07 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-07 00:00:00+00:00]
+WARNING - 2025-07-29T19:11:37Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:11:39Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.82s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.51s/it]100%|██████████| 4/4 [00:31<00:00,  7.90s/it]
+INFO - 2025-07-29T19:12:11Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
+TMP_thetao.nc
+cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
+['thetao']
+INFO - 2025-07-29T19:12:13Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:12:13Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:12:15Z - Some of your subset selection [2025-08-07 00:00:00+00:00, 2025-08-07 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-07 00:00:00+00:00]
+WARNING - 2025-07-29T19:12:15Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:12:17Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.73s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.45s/it]100%|██████████| 4/4 [00:31<00:00,  7.86s/it]
+INFO - 2025-07-29T19:12:48Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
+TMP_uv.nc
+cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
+['uo', 'vo']
+INFO - 2025-07-29T19:12:50Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:12:50Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:12:52Z - Some of your subset selection [2025-08-07 00:00:00+00:00, 2025-08-07 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-07 00:00:00+00:00]
+WARNING - 2025-07-29T19:12:52Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
+INFO - 2025-07-29T19:12:54Z - Starting download. Please wait...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:27<03:10, 27.27s/it] 38%|███▊      | 3/8 [00:31<00:43,  8.78s/it] 62%|██████▎   | 5/8 [00:33<00:13,  4.58s/it]100%|██████████| 8/8 [00:33<00:00,  4.15s/it]
+INFO - 2025-07-29T19:13:28Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
+TMP_zos.nc
+cmems_mod_glo_phy_anfc_0.083deg_P1D-m
+['zos']
+INFO - 2025-07-29T19:13:29Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:13:29Z - Selected dataset part: "default"
+WARNING - 2025-07-29T19:13:32Z - Some of your subset selection [2025-08-07 00:00:00+00:00, 2025-08-07 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-07 00:00:00+00:00]
+INFO - 2025-07-29T19:13:34Z - Starting download. Please wait...
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.28s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.38it/s]100%|██████████| 4/4 [00:01<00:00,  2.63it/s]
+INFO - 2025-07-29T19:13:36Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_07.nc
+Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_07.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_07.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_07.nc
+Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_07.nc
+2025-08-08 00:00:00
+TMP_so.nc
+cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
+['so']
+INFO - 2025-07-29T19:13:41Z - Selected dataset version: "202406"
+INFO - 2025-07-29T19:13:41Z - Selected dataset part: "default"
+An error occurred: Some of your subset selection [2025-08-08 00:00:00+00:00, 2025-08-08 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-07 00:00:00+00:00]
+Traceback (most recent call last):
+  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/eccofs_obs_driver_testing.py", line 176, in mercator_aquire_driver
+    get_merc.main(fconfig)
+  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/acquire_mercator_ECCOFS.py", line 79, in main
+    copernicus_marine.subset(
+  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/core_functions/deprecated_options.py", line 78, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/python_interface/exception_handler.py", line 17, in wrapper
+    raise exception
+  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/python_interface/exception_handler.py", line 13, in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/python_interface/subset.py", line 195, in subset
+    return subset_function(
+           ^^^^^^^^^^^^^^^^
+  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/core_functions/subset.py", line 155, in subset_function
+    check_dataset_subset_bounds(
+  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/download_functions/subset_xarray.py", line 745, in check_dataset_subset_bounds
+    _check_coordinate_overlap(
+  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/download_functions/subset_xarray.py", line 820, in _check_coordinate_overlap
+    raise CoordinatesOutOfDatasetBounds(message)
+copernicusmarine.core_functions.exceptions.CoordinatesOutOfDatasetBounds: Some of your subset selection [2025-08-08 00:00:00+00:00, 2025-08-08 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-07 00:00:00+00:00]
 Extract Initial conditions from mercator
 Initilaizing grids and regridder
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_05_31.nc
-FILL time: 9.60962438583374
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_26.nc
+FILL time: 9.362595319747925
 Re-using weights
-REGRIDDER time: 0.7616007328033447
+REGRIDDER time: 0.556096076965332
 Creating Initialization file
 RUNNING horizontal regridding
 Preparing for vertical interpolation
 Running vertical interpolation, this may take a few minutes
-processing time: 659.4574201107025 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250531_ini.nc
-Initilization file processing time: 731.50155210495 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_01.nc
-FILL time: 9.883378028869629
+processing time: 670.2932605743408 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250726_ini.nc
+Initilization file processing time: 761.0793478488922 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_27.nc
+FILL time: 9.238403081893921
 Re-using weights
-REGRIDDER time: 0.5838038921356201
+REGRIDDER time: 0.5424847602844238
 Creating Initialization file
 RUNNING horizontal regridding
 Preparing for vertical interpolation
 Running vertical interpolation, this may take a few minutes
-processing time: 657.6537101268768 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250601_ini.nc
-Initilization file processing time: 729.3057045936584 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_02.nc
-FILL time: 9.661336183547974
+processing time: 691.6220486164093 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250727_ini.nc
+Initilization file processing time: 764.3974661827087 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_28.nc
+FILL time: 9.233457088470459
 Re-using weights
-REGRIDDER time: 0.5810081958770752
+REGRIDDER time: 0.5475490093231201
 Creating Initialization file
 RUNNING horizontal regridding
 Preparing for vertical interpolation
 Running vertical interpolation, this may take a few minutes
-processing time: 682.5364530086517 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250602_ini.nc
-Initilization file processing time: 753.8057956695557 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_03.nc
-FILL time: 9.602949619293213
+processing time: 702.4540770053864 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250728_ini.nc
+Initilization file processing time: 775.3306031227112 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_29.nc
+FILL time: 9.313640832901001
 Re-using weights
-REGRIDDER time: 0.5698587894439697
+REGRIDDER time: 0.5450992584228516
 Creating Initialization file
 RUNNING horizontal regridding
 Preparing for vertical interpolation
 Running vertical interpolation, this may take a few minutes
-processing time: 656.5234882831573 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250603_ini.nc
-Initilization file processing time: 727.6243107318878 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_04.nc
-FILL time: 9.697248220443726
+processing time: 667.5209403038025 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250729_ini.nc
+Initilization file processing time: 743.2300050258636 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_30.nc
+FILL time: 9.276827335357666
 Re-using weights
-REGRIDDER time: 0.5811200141906738
+REGRIDDER time: 0.5399532318115234
 Creating Initialization file
 RUNNING horizontal regridding
 Preparing for vertical interpolation
 Running vertical interpolation, this may take a few minutes
-processing time: 662.489853143692 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250604_ini.nc
-Initilization file processing time: 734.4817936420441 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_05.nc
-FILL time: 9.656636953353882
+processing time: 662.9514694213867 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250730_ini.nc
+Initilization file processing time: 734.0222887992859 seconds
+/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_07_31.nc
+FILL time: 9.20289158821106
 Re-using weights
-REGRIDDER time: 0.5929644107818604
+REGRIDDER time: 0.5512881278991699
 Creating Initialization file
 RUNNING horizontal regridding
 Preparing for vertical interpolation
 Running vertical interpolation, this may take a few minutes
-processing time: 686.2637588977814 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250605_ini.nc
-Initilization file processing time: 758.0889239311218 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_06.nc
-FILL time: 9.61660099029541
-Re-using weights
-REGRIDDER time: 0.5827560424804688
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 671.6720390319824 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250606_ini.nc
-Initilization file processing time: 743.4114513397217 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_07.nc
-FILL time: 9.644673109054565
-Re-using weights
-REGRIDDER time: 0.5745096206665039
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 675.3273363113403 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250607_ini.nc
-Initilization file processing time: 747.4764330387115 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_08.nc
-FILL time: 9.873247385025024
-Re-using weights
-REGRIDDER time: 0.5868639945983887
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 678.0478684902191 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250608_ini.nc
-Initilization file processing time: 750.2051770687103 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_09.nc
-FILL time: 9.666863918304443
-Re-using weights
-REGRIDDER time: 0.5767807960510254
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 639.6727545261383 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250609_ini.nc
-Initilization file processing time: 711.5439202785492 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_10.nc
-FILL time: 9.652290344238281
-Re-using weights
-REGRIDDER time: 0.5696732997894287
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 723.5179047584534 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250610_ini.nc
-Initilization file processing time: 795.227365732193 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_11.nc
-FILL time: 10.973397493362427
-Re-using weights
-REGRIDDER time: 0.5790820121765137
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 662.2753820419312 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250611_ini.nc
-Initilization file processing time: 734.9265458583832 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_12.nc
-FILL time: 9.812480449676514
-Re-using weights
-REGRIDDER time: 0.5715353488922119
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 686.790007352829 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250612_ini.nc
-Initilization file processing time: 759.4915444850922 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_13.nc
-FILL time: 11.256042242050171
-Re-using weights
-REGRIDDER time: 0.5871071815490723
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 735.8827042579651 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250613_ini.nc
-Initilization file processing time: 822.2360060214996 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_14.nc
-FILL time: 10.997525215148926
-Re-using weights
-REGRIDDER time: 0.5819985866546631
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 663.3510477542877 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250614_ini.nc
-Initilization file processing time: 760.6311254501343 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_15.nc
-FILL time: 10.112734317779541
-Re-using weights
-REGRIDDER time: 0.5606496334075928
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 673.510139465332 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250615_ini.nc
-Initilization file processing time: 783.2601413726807 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_16.nc
-FILL time: 9.86192011833191
-Re-using weights
-REGRIDDER time: 0.5749311447143555
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 683.4881284236908 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250616_ini.nc
-Initilization file processing time: 774.3831534385681 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_17.nc
-FILL time: 9.899635553359985
-Re-using weights
-REGRIDDER time: 0.5745177268981934
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 669.2563636302948 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250617_ini.nc
-Initilization file processing time: 779.6521337032318 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_18.nc
-FILL time: 9.768454313278198
-Re-using weights
-REGRIDDER time: 0.5582082271575928
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 682.2917881011963 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250618_ini.nc
-Initilization file processing time: 754.4487657546997 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_19.nc
-FILL time: 9.711828231811523
-Re-using weights
-REGRIDDER time: 0.5475990772247314
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 645.6264111995697 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250619_ini.nc
-Initilization file processing time: 718.1539783477783 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_20.nc
-FILL time: 9.66006326675415
-Re-using weights
-REGRIDDER time: 0.5481319427490234
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 665.0419929027557 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250620_ini.nc
-Initilization file processing time: 736.5681147575378 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_21.nc
-FILL time: 9.650468349456787
-Re-using weights
-REGRIDDER time: 0.54305100440979
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 670.0828423500061 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250621_ini.nc
-Initilization file processing time: 742.1494798660278 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_22.nc
-FILL time: 9.607409238815308
-Re-using weights
-REGRIDDER time: 0.5433650016784668
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 667.9892284870148 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250622_ini.nc
-Initilization file processing time: 747.469361782074 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_23.nc
-FILL time: 9.531316757202148
-Re-using weights
-REGRIDDER time: 0.5464425086975098
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 669.1792185306549 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250623_ini.nc
-Initilization file processing time: 749.5534579753876 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_24.nc
-FILL time: 9.591545343399048
-Re-using weights
-REGRIDDER time: 0.541649341583252
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 665.4175570011139 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250624_ini.nc
-Initilization file processing time: 740.7751603126526 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_25.nc
-FILL time: 9.497740507125854
-Re-using weights
-REGRIDDER time: 0.5421710014343262
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 653.6806693077087 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250625_ini.nc
-Initilization file processing time: 742.664981842041 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_06_26.nc
-FILL time: 9.54447317123413
-Re-using weights
-REGRIDDER time: 0.5493104457855225
-Creating Initialization file
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 670.2920253276825 seconds
-Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250626_ini.nc
-Initilization file processing time: 744.2413091659546 seconds
-IC file time: 20279.7416908741 seconds
-TOTAL processing time: 20286.158974170685 seconds
+processing time: 654.1281275749207 seconds
+Writing initialization data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/ECCOFS_REALTIME_20250731_ini.nc
+Initilization file processing time: 724.7397773265839 seconds
+IC file time: 4503.271169662476 seconds
+File transfer
 DONE

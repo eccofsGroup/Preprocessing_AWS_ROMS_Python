@@ -16,79 +16,105 @@ def main(opts):
     st=time.time()
     cfgfile=opts.configfile
     fconfig=read_config(cfgfile)
-    #pprint.pprint(fconfig)
+    # #pprint.pprint(fconfig)
     for path in fconfig['modulepath']:
         if path not in sys.path:
             sys.path.append(path)
 
-    print('Get GLOFAS Rivers Data')
-    status_river=ECCOFS_RIVERS_driver(fconfig)
+    # print('Get GLOFAS Rivers Data')
+    # status_river=ECCOFS_RIVERS_driver(fconfig)
     
 
- #    print('Get Mercator Data')
- #    status_merc=mercator_aquire_driver(fconfig)
+    # print('Get Mercator Data')
+    # status_merc=mercator_aquire_driver(fconfig)
     
     
- #    print('Extract Initial conditions from mercator')
- #    status_ini=ECCOFS_INI_driver(fconfig)
+    # # print('Extract Initial conditions from mercator')
+    # # status_ini=ECCOFS_INI_driver(fconfig)
     
-        
- #    print('Extract Boundary conditions from mercator')
- #    status_bry=ECCOFS_BRY_driver(fconfig)
+    # print('Extract climatology data from mercator')
+    # status_clm=ECCOFS_CLM_driver(fconfig)
     
-    
- #    print('In situ driver running')
- #    status_insitu=insitu_driver(fconfig)
+    # print('Extract Boundary conditions from mercator')
+    # status_bry=ECCOFS_BRY_driver(fconfig)
     
     
- #    print('Rads Driver Running')
- #    status_ssh=rads_driver(fconfig)
+    print('In situ driver running')
+    status_insitu=insitu_driver(fconfig)
     
- #    print('Checking SST Availability')
- #    status_sst=sst_driver(fconfig)
- # #   print(f'There are a total of  {filecount} SST files')
+    
+    print('Rads Driver Running')
+    status_ssh=rads_driver(fconfig)
+    
+    print('Checking SST Availability')
+    status_sst=sst_driver(fconfig)
+    #print(f'There are a total of  {filecount} SST files')
 
- #    print('Checking GLIDER Availability')
- #    glider_driver(fconfig)
-
-
- #    print('RUNNING OBS PreProcessing')
- #    status=obs_pre_driver(fconfig)
-
- #    print('RUNNING CombineOBS')
- #    status=obs_combine_driver(fconfig)
+    print('Checking GLIDER Availability')
+    glider_driver(fconfig)
 
 
- #    #create scheduler
- #    delay=fconfig['obs']['delay']
- #    scheduler = sched.scheduler(time.time, time.sleep)
+    print('RUNNING OBS PreProcessing')
+    status=obs_pre_driver(fconfig)
+
+    print('RUNNING CombineOBS')
+    status=obs_combine_driver(fconfig)
 
 
- #    if not(status_insitu):
- #        print(f'In situ data aquisition failed, waiting {delay} seconds')
- #        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
- #    else:
- #        print('In situ data aquisition succeeded')
+    #create scheduler
+    delay=fconfig['obs']['delay']
+    scheduler = sched.scheduler(time.time, time.sleep)
+
+
+    if not(status_insitu):
+        print(f'In situ data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
+    else:
+        print('In situ data aquisition succeeded')
             
             
- #    if not(status_ssh):
- #        print(f'SSH data aquisition failed, waiting {delay} seconds')
- #        scheduler.enter(delay,1, rads_driver,(fconfig,))
- #    else:
- #        print('SSH data aquisition succeeded')
+    if not(status_ssh):
+        print(f'SSH data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay,1, rads_driver,(fconfig,))
+    else:
+        print('SSH data aquisition succeeded')
 
     
- #    if not(status_sst):
- #        print(f'SST data aquisition failed, waiting {delay} seconds')
- #        scheduler.enter(delay,1, sst_driver,(fconfig,))
- #    else:
- #        print('SST data aquisition succeeded')
+    if not(status_sst):
+        print(f'SST data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay,1, sst_driver,(fconfig,))
+    else:
+        print('SST data aquisition succeeded')
 
 
- #    scheduler.run()
+    scheduler.run()
     et=time.time()
     elt=et-st
     print(f'TOTAL processing time: {elt} seconds')
+        
+    file_delete_driver(fconfig)
+    file_compile_driver(fconfig)
+    file_transfer_driver(fconfig)
+    et=time.time()
+    elt=et-st
+    print(f'TOTAL processing time with file transfer: {elt} seconds')
+
+def file_compile_driver(fconfig):
+    import fileutil as fileu
+    
+    fileu.compile_all_files(fconfig)
+    
+
+def file_delete_driver(fconfig):
+    import fileutil as fileu
+    
+    fileu.delete_remote(fconfig)
+    fileu.delete_local(fconfig)
+    
+def file_transfer_driver(fconfig):
+    import fileutil as fileu
+    
+    fileu.transfer(fconfig)
     
     
     
@@ -158,7 +184,23 @@ def ECCOFS_INI_driver(fconfig):
             traceback.print_exc()  
             status=False 
     return status   
-    
+
+def ECCOFS_CLM_driver(fconfig):
+    import DOWNSCALE_MERCATOR_TO_ROMS_CLM as ECCOFS_clm
+    try:    
+        st=time.time()
+        ECCOFS_clm.main(fconfig)
+        status=True  
+        et=time.time()
+        elt=et-st
+        print(f'CLM file time: {elt} seconds')
+        
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+    return status   
+   
 def mercator_aquire_driver(fconfig):
     import acquire_mercator_ECCOFS as get_merc
     try:    

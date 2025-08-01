@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import sys,os
+import sys,os,glob
 import pandas as pd
 import netCDF4 as nc
 import numpy as np
@@ -19,14 +19,31 @@ from accumarrays import accum3d, accum2d
 def main(fconfig):
     # Define base URL and file name components
     url = fconfig['obs']['romsobs']['AMSR2']['URL']
-    base_file_name =fconfig['obs']['romsobs']['AMSR2']['BASE_FILE_NAME']
+    working_directory =fconfig['obs']['romsobs']['AMSR2']['WORKING_DIRECTORY']
+    prefix = fconfig['obs']['romsobs']['AMSR2']['prefix']
+    base_file_name = os.path.join(working_directory, prefix)
 
+    ref_datum = pd.Timestamp(2011,1,1);
     # Import datetime and define start/end dates
     ndays=fconfig['obs']['romsobs']['ndays']    
     end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
     start_day     = end_day - pd.Timedelta(days=ndays)
+
+    all_files = glob.glob(f"{base_file_name}*.nc")
+    all_files = [os.path.basename(f) for f in all_files]
+
+    if all_files:
+           # extract the numeric timestamp from filenames
+           d = len(prefix)
+           times = [int(fn[d:-3]) for fn in all_files]  # strip prefix & ".nc"          for fn in all_files:
+           times.sort()
+
+           if (start_day> ref_datum + pd.Timedelta(days=times[-1])):
+                start_day = ref_datum + pd.Timedelta(days=times[-1])
+
+
+
     days = pd.date_range(start_day, end_day, freq='D')
-    ref_datum = pd.Timestamp(2011,1,1);
     dTime      = 6/24 #6 hours
 
     
@@ -108,12 +125,13 @@ def main(fconfig):
         fname   = f"{base_file_name}{mintime:04d}.nc"
 
         flag = CreateObsFile_SST(fname, sst_mean, g1, time, 324)
-        add_history(fname, 'AMSR2 SST', prepend=True)
-        add_history(fname, 'Prepared by Julia Levin (julia@marine.rutgers.edu)', prepend=False)
-
-
         if flag != 1:
-            print(f"  {fname} not created (no data).")
+             print(f"  {fname} not created (no data).")
+        else:
+            add_history(fname, 'AMSR2 SST', prepend=True)
+            add_history(fname, 'Prepared by Julia Levin (julia@marine.rutgers.edu)', prepend=False)
+
+
         
 #if __name__ == "__main__":
 #    get_sst_amsr2()

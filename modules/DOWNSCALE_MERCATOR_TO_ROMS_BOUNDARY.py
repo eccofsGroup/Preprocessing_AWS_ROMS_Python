@@ -91,7 +91,7 @@ def main(fconfig):
     L1grdfile=fconfig['force']['L1grdfile']
     datadir=fconfig['force']['datadir']
     days=fconfig['force']['bry']['days']
-    hdays=fconfig['force']['bry']['fdays']
+    hdays=fconfig['force']['bry']['hdays']
     fdays=fconfig['force']['bry']['fdays']
     nday=hdays+fdays
     #Getting the mercator grid information

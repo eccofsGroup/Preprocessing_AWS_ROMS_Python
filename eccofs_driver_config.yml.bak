@@ -4,31 +4,32 @@
  modulepath: ["/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/","/home/om/cron/ECCOFS_OBS/REALTIME/work/utilities/"]
  transfer:
     server: elhunter@amarel.rutgers.edu
-    rdesdir: '/scratch/elhunter/ECCOFS/REALTIME/data/'
-    ldesdir: '/home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/'
-    nday: 3
+    nfiles: 4
     trlist:
         met:
-            srcdir: '/home/om/cron/HRRR_AWS/data/gfs/'
-            prefix: 'ECCOFS_REALTIME_GFS'
-            nday: 4
-            vars: ['Uwind','Vwind','Tair','Pair','Qair','lwrad_down','lwrad','swrad','rain']
-            searchpattern: '*'
+            srcdir: '/home/om/cron/HRRR_AWS/data/merged/'
+            desdir: '/scratch/elhunter/ECCOFS/REALTIME/data/forcing/met/'
+            searchpattern: ['*Uwind*.nc','*Vwind*.nc','*Tair*.nc','*Pair*.nc','*Qair*.nc','*lwrad_down*.nc','*lwrad*.nc','*swrad*.nc','*rain*.nc']
         bdry:
             srcdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/bdry/'
-            searchpattern: '*'
-        clm:
-            srcdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/'
-            nday: 4
-            prefix: 'ECCOFS_REALTIME'
-            searchpattern: '*'
-
+            desdir: '/scratch/elhunter/ECCOFS/REALTIME/data/forcing/boundary/'
+            searchpattern: ['*bry.nc']
+        ini:
+            srcdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/'
+            desdir: '/scratch/elhunter/ECCOFS/REALTIME/data/forcing/ini/'
+            searchpattern: ['*ini.nc']
         river:
             srcdir: '/home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/'
-            searchpattern: '*splitrivers*'
+            desdir: '/scratch/elhunter/ECCOFS/REALTIME/data/forcing/river/'
+            searchpattern: ['*splitrivers*.nc']
+        preobs:
+            srcdir: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
+            desdir: '/scratch/elhunter/ECCOFS/REALTIME/data/obs/preobs/'
+            searchpattern: ['along_track_TotalSSH_*.nc','cmems*.nc','sst_amsr2*.nc','sst_goes*.nc','sst_leo*.nc']
         combine:
             srcdir: '/home/om/cron/ECCOFS_OBS/REALTIME/data/combine/'
-            searchpattern: '*'
+            desdir: '/scratch/elhunter/ECCOFS/REALTIME/data/obs/combine/'
+            searchpattern: ['ssh_sst_cmems_*.nc']
             
  force:
     datadir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/'
@@ -99,7 +100,7 @@
             "tunits": 'tunits',
             "river_transport": 1,
             "river_Vshape": 1,
-            }
+}
 
 
     mercator:
@@ -121,20 +122,15 @@
         inidir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/ini/'
         inipre: 'ECCOFS_REALTIME_'
         regrid_coef_file: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_ini_regrid.nc'
-    clm: 
-        nday: 3
-        fdays: 1
-        clmdir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/'
-        clmpre: 'ECCOFS_REALTIME_'
-        regrid_coef_file: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_clm_regrid.nc'
+       
     bry:
         brydir: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/bdry/'
         brypre: 'ECCOFS_REALTIME_'
         regrid_coef_file: '/home/om/cron/ECCOFS_OBS/MERCATOR/data/mercator_bdry_9999_regrid.nc'
         bdylist: {'EAST':True, 'WEST':False, 'NORTH':False, 'SOUTH':True}
         days: 3
-        hdays: 3 
-        fdays: 6 
+        hdays: 5 
+        fdays: 4 
 
         
  obs: 
@@ -179,7 +175,7 @@
         rads2asc: '/home/om/cron/RADS4/local/bin/rads2asc4'
         odirdac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/'
         odirnodac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/'
-        days: 20
+        days: 90
         latlon: '-100,-38,5,52'
         variables: 'time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15'
         satlist: ['j3/c','3a/a','3b/b','6a/a','sw/b']
@@ -199,7 +195,7 @@
     romsobs:
         gridfile: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
         scoord: [7, 2, 250, 50, 2, 4] 
-        ndays : 3
+        ndays : 2
         AMSR2:
             URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/AMSR2_L3/'
             WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
@@ -208,7 +204,7 @@
         GOES:
             WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
             URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/GOES19_L3/'
-            suffix: '_NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00.nc'
+            suffix:'_NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00.nc'
             prefix: 'sst_goes_nrt_'
             LLFILE: '/home/om/cron/ECCOFS_OBS/REALTIME/data/sst/LL_GOES.nc'
         LEO:
