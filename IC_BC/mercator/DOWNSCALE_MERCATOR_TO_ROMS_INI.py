@@ -35,7 +35,7 @@ lonmin=-100.0
 lonmax=-38.0
 
 #Set time
-start_date = datetime.datetime(2025, 1, 21)
+start_date = datetime.datetime(2025, 1, 23)
 today=start_date.strftime('%Y%m%d')
 
 nday=1
@@ -379,9 +379,8 @@ def downscale_init_file(cfgrd,dsmerc):
     dataout_z['salt']=(('s_rho', 'eta_rho', 'xi_rho'),salt) 
     dataout_z['u_eastward']=(('s_rho', 'eta_rho', 'xi_rho'),u_east) 
     dataout_z['v_northward']=(('s_rho', 'eta_rho', 'xi_rho'),v_north) 
-  #   dataout_z['vbar_northward']=xromqckL1['vbar_northward']
-  #   dataout_z['ubar_eastward']=xromqckL1['ubar_eastward']
     dataout_z['zeta']=dataout_z['zeta'].fillna(0)
+    dataout_z = dataout_z.squeeze(dim="ocean_time")
     (dataout_z,gridout)=xroms.roms_dataset(dataout_z,Vtransform=L1Vtransform)
         
 
