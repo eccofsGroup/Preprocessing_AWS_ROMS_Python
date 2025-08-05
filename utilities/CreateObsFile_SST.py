@@ -142,15 +142,11 @@ def CreateObsFile_SST(fname, sst, grd, time, Provenance):
         obs_variance[5, 0] = np.var(OValue)
         
         # Create the NetCDF file.
-        survey = survey_time.size
-        Nstate = 7
-        addhistory = 'Prepared by Julia Levin (julia@marine.rutgers.edu)'
+        survey = len(Nobs)
         
         # The variable 'obs_provenance_definition' must be defined in your context;
         # here we use a placeholder.
-        obs_provenance_definition = None  
         
-        survey = len(time)
         define_4dvar_obs_file(fname,survey,obs_provenance_definition_eccofs())
         ds = Dataset(fname, 'a')
         

@@ -161,6 +161,7 @@ def main(fconfig):
     
         # create observation file
         fname   = f"{base_file_name}{mindays:04d}.nc"
+        
         flag = CreateObsFile_SST(fname, sst_mean, g1, time, 317)
         if flag != 1:
             print(f"  {fname} not created (no data).")

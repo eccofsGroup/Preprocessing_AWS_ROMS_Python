@@ -1232,6 +1232,7 @@ def create_clm_file_COAWST(initfile,grd,tunits):
     """
 
     print('Creating Climatology file')    
+    
     # Create the initialization netCDF file with global attributes.
     fh        = nc.Dataset(initfile, "w", format="NETCDF4")
     fh.type   =  'Climatology file for L1 grid'
@@ -1360,6 +1361,13 @@ def create_clm_file(initfile,grd,tunits):
 
     print('Creating Climatology file')    
     # Create the initialization netCDF file with global attributes.
+
+    if os.path.isfile(initfile):
+        os.remove(initfile)
+        print(f"{initfile} exists, Deleting.")
+    else:
+        print(f"{initfile} does not exist. Creating.")
+            
     fh        = nc.Dataset(initfile, "w", format="NETCDF4")
     fh.type   =  'Climatology file for L1 grid'
     fh.title  =  'Climatology' 

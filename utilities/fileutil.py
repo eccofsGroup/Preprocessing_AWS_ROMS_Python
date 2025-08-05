@@ -5,7 +5,43 @@ from datetime import timedelta,date
 import xarray as xr
 
 def concat_met(fconfig):
-    print('Concatenating Met files')
+    
+    # print('Concatenating Merged Met files')
+    # local_dir=fconfig['transfer']['ldesdir']
+    # srcdir=fconfig['transfer']['trlist']['met']['srcdir_m']
+    # prefix=fconfig['transfer']['trlist']['met']['prefix_m']
+    # varnames=fconfig['transfer']['trlist']['met']['vars']
+    # nday=fconfig['transfer']['nday']
+    # nday2=fconfig['transfer']['trlist']['met']['nday']
+    # start_date = date.today()-timedelta(days=nday)
+    
+    # alltoday=start_date.strftime('%Y%m%d')
+    
+    # for var in varnames:
+    #     ofile=f'{local_dir}{prefix}_{var}_1_{alltoday}.nc'
+    #     dslist=[]
+    #     for dt in range(0,nday2-1):
+    #         day=start_date+timedelta(days=dt)
+    #         today=day.strftime('%Y%m%d')
+    #         file=glob.glob(srcdir+f'*{var}*{today}*.nc')
+    #         print(file)
+    #         ds=xr.open_dataset(file[0])
+    #         subset = ds.isel(time=slice(0, 24))
+    #         dslist.append(subset)
+        # day=start_date+timedelta(days=nday2-1)
+        # today=day.strftime('%Y%m%d')
+        # file=glob.glob(fconfig['transfer']['trlist']['met']['srcdir']+f'*{var}*{today}*.nc')
+        # ds=xr.open_dataset(file[0])
+        # dslist.append(ds)
+        # combined = xr.concat(dslist, dim='time')    
+        # combined.to_netcdf(ofile)
+    
+    
+    
+    
+    
+    
+    print('Concatenating GFS Met files')
     local_dir=fconfig['transfer']['ldesdir']
     srcdir=fconfig['transfer']['trlist']['met']['srcdir']
     prefix=fconfig['transfer']['trlist']['met']['prefix']
@@ -22,7 +58,7 @@ def concat_met(fconfig):
         for dt in range(0,nday2-1):
             day=start_date+timedelta(days=dt)
             today=day.strftime('%Y%m%d')
-            file=glob.glob(fconfig['transfer']['trlist']['met']['srcdir']+f'*{var}*{today}*.nc')
+            file=glob.glob(srcdir+f'*{var}*{today}*.nc')
             ds=xr.open_dataset(file[0])
             subset = ds.isel(time=slice(0, 24))
             dslist.append(subset)
@@ -33,8 +69,6 @@ def concat_met(fconfig):
         dslist.append(ds)
         combined = xr.concat(dslist, dim='time')    
         combined.to_netcdf(ofile)
-    #combined = xr.open_mfdataset(files,concat_dim='time',combine='nested')
-    #combined.to_netcdf(ofile)
 
 def concat_clm(fconfig):
         print('Concatenating Climatology files')
@@ -60,7 +94,7 @@ def delete_remote(fconfig):
     remote_dir=fconfig['transfer']['rdesdir']
     remote_server=fconfig['transfer']['server']
     try:
-        subprocess.check_call(['ssh',remote_server, 'rm -rf '+remote_dir+'*'],env=os.environ)
+        subprocess.check_call(['ssh',remote_server, 'rm -rf '+remote_dir+'*.nc'],env=os.environ)
         print(f"Successfully deleted files in {remote_dir}")
 
     except Exception as e:
@@ -72,8 +106,9 @@ def delete_remote(fconfig):
 def delete_local(fconfig):
     local_dir=fconfig['transfer']['ldesdir']
     try:
-        for filename in os.listdir(local_dir):
+        for filename in glob.glob(f'{local_dir}*.nc'):
             file_path = os.path.join(local_dir, filename)
+
             if os.path.isfile(file_path):
                 os.remove(file_path)
         print(f"Successfully deleted files in {local_dir}")

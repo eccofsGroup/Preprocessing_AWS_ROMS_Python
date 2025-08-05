@@ -21,76 +21,76 @@ def main(opts):
         if path not in sys.path:
             sys.path.append(path)
 
-    # print('Get GLOFAS Rivers Data')
-    # status_river=ECCOFS_RIVERS_driver(fconfig)
+    print('Get GLOFAS Rivers Data')
+    status_river=ECCOFS_RIVERS_driver(fconfig)
     
 
-    # print('Get Mercator Data')
-    # status_merc=mercator_aquire_driver(fconfig)
+    print('Get Mercator Data')
+    status_merc=mercator_aquire_driver(fconfig)
     
     
-    # # # print('Extract Initial conditions from mercator')
-    # # # status_ini=ECCOFS_INI_driver(fconfig)
+    # # print('Extract Initial conditions from mercator')
+    # # status_ini=ECCOFS_INI_driver(fconfig)
     
-    # print('Extract climatology data from mercator')
-    # status_clm=ECCOFS_CLM_driver(fconfig)
+    print('Extract climatology data from mercator')
+    status_clm=ECCOFS_CLM_driver(fconfig)
     
-    # print('Extract Boundary conditions from mercator')
-    # status_bry=ECCOFS_BRY_driver(fconfig)
-    
-    
-    # print('In situ driver running')
-    # status_insitu=insitu_driver(fconfig)
+    print('Extract Boundary conditions from mercator')
+    status_bry=ECCOFS_BRY_driver(fconfig)
     
     
-    # print('Rads Driver Running')
-    # status_ssh=rads_driver(fconfig)
+    print('In situ driver running')
+    status_insitu=insitu_driver(fconfig)
     
-    # print('Checking SST Availability')
-    # status_sst=sst_driver(fconfig)
-    # #print(f'There are a total of  {filecount} SST files')
+    
+    print('Rads Driver Running')
+    status_ssh=rads_driver(fconfig)
+    
+    print('Checking SST Availability')
+    status_sst=sst_driver(fconfig)
+    #print(f'There are a total of  {filecount} SST files')
 
-    # print('Checking GLIDER Availability')
-    # glider_driver(fconfig)
-
-
-    # print('RUNNING OBS PreProcessing')
-    # status=obs_pre_driver(fconfig)
-
-    # print('RUNNING CombineOBS')
-    # status=obs_combine_driver(fconfig)
+    print('Checking GLIDER Availability')
+    glider_driver(fconfig)
 
 
-    # #create scheduler
-    # delay=fconfig['obs']['delay']
-    # scheduler = sched.scheduler(time.time, time.sleep)
+    print('RUNNING OBS PreProcessing')
+    status=obs_pre_driver(fconfig)
+
+    print('RUNNING CombineOBS')
+    status=obs_combine_driver(fconfig)
 
 
-    # if not(status_insitu):
-    #     print(f'In situ data aquisition failed, waiting {delay} seconds')
-    #     scheduler.enter(delay, 2, insitu_driver,(fconfig,))
-    # else:
-    #     print('In situ data aquisition succeeded')
+    #create scheduler
+    delay=fconfig['obs']['delay']
+    scheduler = sched.scheduler(time.time, time.sleep)
+
+
+    if not(status_insitu):
+        print(f'In situ data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
+    else:
+        print('In situ data aquisition succeeded')
             
             
-    # if not(status_ssh):
-    #     print(f'SSH data aquisition failed, waiting {delay} seconds')
-    #     scheduler.enter(delay,1, rads_driver,(fconfig,))
-    # else:
-    #     print('SSH data aquisition succeeded')
+    if not(status_ssh):
+        print(f'SSH data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay,1, rads_driver,(fconfig,))
+    else:
+        print('SSH data aquisition succeeded')
 
     
-    # if not(status_sst):
-    #     print(f'SST data aquisition failed, waiting {delay} seconds')
-    #     scheduler.enter(delay,1, sst_driver,(fconfig,))
-    # else:
-    #     print('SST data aquisition succeeded')
+    if not(status_sst):
+        print(f'SST data aquisition failed, waiting {delay} seconds')
+        scheduler.enter(delay,1, sst_driver,(fconfig,))
+    else:
+        print('SST data aquisition succeeded')
 
 
-    # scheduler.run()
-    # et=time.time()
-    # elt=et-st
-    # print(f'TOTAL processing time: {elt} seconds')
+    scheduler.run()
+    et=time.time()
+    elt=et-st
+    print(f'TOTAL processing time: {elt} seconds')
         
     file_delete_driver(fconfig)
     file_compile_driver(fconfig)

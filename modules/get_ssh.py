@@ -479,6 +479,14 @@ def main(fconfig):
         # number of survey times
         survey = len(survey_time)
         if survey > 0:
+            if os.path.isfile(OBS_out):
+                os.remove(OBS_out)
+                print(f"{OBS_out} exists, Deleting.")
+            else:
+                print(f"{OBS_out} does not exist. Creating.")
+            
+            
+            
             define_4dvar_obs_file(OBS_out,survey,obs_provenance_definition_eccofs())
         ds = Dataset(OBS_out, 'a')
         ds.history = "Total SSH ( gdr anomaly + ROMS background + ROMS tide)  "

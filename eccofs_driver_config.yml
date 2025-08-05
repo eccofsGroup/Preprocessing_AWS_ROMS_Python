@@ -11,6 +11,8 @@
         met:
             srcdir: '/home/om/cron/HRRR_AWS/data/gfs/'
             prefix: 'ECCOFS_REALTIME_GFS'
+            srcdir_m: '/home/om/cron/HRRR_AWS/data/merged/'
+            prefix_m: 'ECCOFS_REALTIME_MERGED'
             nday: 4
             vars: ['Uwind','Vwind','Tair','Pair','Qair','lwrad_down','lwrad','swrad','rain']
             searchpattern: '*'
@@ -199,7 +201,7 @@
     romsobs:
         gridfile: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
         scoord: [7, 2, 250, 50, 2, 4] 
-        ndays : 3
+        ndays : 5
         AMSR2:
             URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/AMSR2_L3/'
             WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
