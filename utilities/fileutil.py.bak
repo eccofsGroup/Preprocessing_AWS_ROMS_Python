@@ -2,7 +2,6 @@ import os,glob
 import subprocess,shutil
 import datetime,time
 from datetime import timedelta,date
-import numpy as np
 import xarray as xr
 
 def concat_met(fconfig):
@@ -50,12 +49,11 @@ def concat_met(fconfig):
          srcdir2=fconfig['transfer']['trlist']['met']['srcdir']
        #  ofile=f'{local_dir}{prefix}_{var}_CONTINUED_{alltoday}.nc'
          ofile=ofile.replace('MERGED','CONTINUE')
-         file=glob.glob(srcdir2+f'*{var}_{today}*.nc')
+         file=glob.glob(srcdir2+f'*{var}*{today}*.nc')
         
          if len(file)>0:
              ds=xr.open_dataset(file[0])
              subset = ds.where(ds.time > last_time, drop=True)
-             #print(var)
              #print(subset)
              subset[var].attrs['coordinates'] = "lon lat" 
              subset.to_netcdf(ofile)
@@ -82,7 +80,7 @@ def concat_met(fconfig):
         for dt in range(0,nday2-1):
             day=start_date+timedelta(days=dt)
             today=day.strftime('%Y%m%d')
-            file=glob.glob(srcdir+f'*{var}_{today}*.nc')
+            file=glob.glob(srcdir+f'*{var}*{today}*.nc')
             ds=xr.open_dataset(file[0])
             subset = ds.isel(time=slice(0, 24))
             dslist.append(subset)
@@ -91,7 +89,8 @@ def concat_met(fconfig):
         file=glob.glob(fconfig['transfer']['trlist']['met']['srcdir']+f'*{var}*{today}*.nc')
         ds=xr.open_dataset(file[0])
         dslist.append(ds)
-        combined = xr.concat(dslist, dim='time')    
+        combined = xr.concat(dslist, dim='time')
+        combined[var].attrs['coordinates'] = "lon lat" 
         combined.to_netcdf(ofile)
 
 def concat_clm(fconfig):
@@ -112,21 +111,12 @@ def concat_clm(fconfig):
             files.append(file[0])
 
         combined = xr.open_mfdataset(files,concat_dim='time',combine='nested')
-        
-        last = combined.isel(time=-1)
-
-        # Create a copy and change its time coordinate
-        
-        #print(last['ocean_time'].values)
-        #print(type(last['ocean_time'].values))
-        
-        new_time = last['ocean_time'].values+np.timedelta64(5,'D') # ,your desired time
-        last['ocean_time'].values = new_time
-        
-
-        # Concatenate along the time dimension
-        combined = xr.concat([combined, last],dim="time")
-
+        last_step = combined.isel(time=-1)
+# 2. Assign a new time coordinate to it
+        new_time = last_step['time']+ timedelta(days=5)
+        today=start_date.strftime('%Y%m%d')# whatever you want
+        last_step = last_step.assign_coords(time=[new_time])
+        combined = xr.concat([combined, last_step], dim="time")
         combined.to_netcdf(ofile)
         
 def delete_remote(fconfig):
@@ -163,6 +153,7 @@ def compile_all_files(fconfig):
     start_date = date.today()-timedelta(days=nday)
     today=start_date.strftime('%Y%m%d')
     keys=fconfig['transfer']['trlist'].keys()
+
 
     for key in keys:
         

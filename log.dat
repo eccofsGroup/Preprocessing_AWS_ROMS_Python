@@ -1,0 +1,126 @@
+STARTING ECCOFS driver
+RUNNING DRIVER
+OBS driver initializing
+Get GLOFAS Rivers Data
+Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc
+---------------------------
+DOWNLOADING GLOFAS 2025-08-10 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250811.nc
+2025-08-12 09:26:58,311 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-12 09:26:58,613 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
+2025-08-12 09:26:58,613 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
+[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
+before downloading the dataset.
+2025-08-12 09:26:58,613 INFO Request ID is 27f457b7-1e7f-4878-8c13-16e35aec21e1
+2025-08-12 09:26:58,737 INFO status has been updated to accepted
+2025-08-12 09:27:32,207 INFO status has been updated to successful
+18065ae26d03823f58a9fe771fc7de6c.nc:   0%|          | 0.00/10.2M [00:00<?, ?B/s]18065ae26d03823f58a9fe771fc7de6c.nc:  10%|▉         | 1.00M/10.2M [00:00<00:08, 1.14MB/s]18065ae26d03823f58a9fe771fc7de6c.nc:  30%|██▉       | 3.00M/10.2M [00:01<00:02, 3.64MB/s]18065ae26d03823f58a9fe771fc7de6c.nc:  59%|█████▉    | 6.00M/10.2M [00:01<00:00, 6.44MB/s]18065ae26d03823f58a9fe771fc7de6c.nc:  98%|█████████▊| 10.0M/10.2M [00:01<00:00, 11.7MB/s]                                                                                         **********************************
+input file load time: 0.22591209411621094 seconds
+Disharge variable extraction time: 6.866455078125e-05 seconds
+<xarray.Dataset> Size: 6kB
+Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
+                              points: 93)
+Coordinates:
+    number                   int64 8B 0
+  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
+  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
+    surface                  float64 8B 0.0
+    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
+    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
+    time                     (forecast_period) datetime64[ns] 88B 2025-08-11 ...
+Dimensions without coordinates: points
+Data variables:
+    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
+Attributes:
+    GRIB_edition:            2
+    GRIB_centre:             ecmf
+    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
+    GRIB_subCentre:          0
+    Conventions:             CF-1.7
+    institution:             European Centre for Medium-Range Weather Forecasts
+    history:                 2025-08-12T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
+Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc
+Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250811.nc
+Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc
+Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc
+---------------------------
+DOWNLOADING GLOFAS 2025-08-09 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250810.nc
+2025-08-12 09:27:37,687 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-12 09:27:38,000 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
+2025-08-12 09:27:38,000 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
+[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
+before downloading the dataset.
+2025-08-12 09:27:38,000 INFO Request ID is b3a022f8-7561-40c9-ae3e-c06209480c64
+2025-08-12 09:27:38,118 INFO status has been updated to accepted
+2025-08-12 09:27:52,034 INFO status has been updated to successful
+2293e943df3fa944e8c08cb632d3557f.nc:   0%|          | 0.00/10.2M [00:00<?, ?B/s]2293e943df3fa944e8c08cb632d3557f.nc:  10%|▉         | 1.00M/10.2M [00:00<00:08, 1.19MB/s]2293e943df3fa944e8c08cb632d3557f.nc:  29%|██▉       | 3.00M/10.2M [00:00<00:01, 3.91MB/s]2293e943df3fa944e8c08cb632d3557f.nc:  59%|█████▉    | 6.00M/10.2M [00:01<00:00, 8.42MB/s]2293e943df3fa944e8c08cb632d3557f.nc:  88%|████████▊ | 9.00M/10.2M [00:01<00:00, 12.8MB/s]                                                                                         **********************************
+input file load time: 0.21359992027282715 seconds
+Disharge variable extraction time: 3.600120544433594e-05 seconds
+<xarray.Dataset> Size: 6kB
+Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
+                              points: 93)
+Coordinates:
+    number                   int64 8B 0
+  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
+  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
+    surface                  float64 8B 0.0
+    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
+    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
+    time                     (forecast_period) datetime64[ns] 88B 2025-08-10 ...
+Dimensions without coordinates: points
+Data variables:
+    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
+Attributes:
+    GRIB_edition:            2
+    GRIB_centre:             ecmf
+    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
+    GRIB_subCentre:          0
+    Conventions:             CF-1.7
+    institution:             European Centre for Medium-Range Weather Forecasts
+    history:                 2025-08-11T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
+Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc
+Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250810.nc
+Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc
+Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc
+---------------------------
+DOWNLOADING GLOFAS 2025-08-08 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250809.nc
+2025-08-12 09:27:55,150 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2025-08-12 09:27:55,467 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
+2025-08-12 09:27:55,467 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
+[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
+before downloading the dataset.
+2025-08-12 09:27:55,467 INFO Request ID is 91a7cf60-84b5-4605-8aca-11e15e37b6f5
+2025-08-12 09:27:55,628 INFO status has been updated to accepted
+2025-08-12 09:28:09,632 INFO status has been updated to running
+2025-08-12 09:28:17,529 INFO status has been updated to successful
+276c5fbbb4d7a24faff8ef4b6fced1e8.nc:   0%|          | 0.00/10.2M [00:00<?, ?B/s]276c5fbbb4d7a24faff8ef4b6fced1e8.nc:  10%|▉         | 1.00M/10.2M [00:00<00:07, 1.22MB/s]276c5fbbb4d7a24faff8ef4b6fced1e8.nc:  39%|███▉      | 4.00M/10.2M [00:01<00:01, 4.95MB/s]276c5fbbb4d7a24faff8ef4b6fced1e8.nc:  88%|████████▊ | 9.00M/10.2M [00:01<00:00, 12.2MB/s]                                                                                         **********************************
+input file load time: 0.21404743194580078 seconds
+Disharge variable extraction time: 4.220008850097656e-05 seconds
+<xarray.Dataset> Size: 6kB
+Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
+                              points: 93)
+Coordinates:
+    number                   int64 8B 0
+  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
+  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
+    surface                  float64 8B 0.0
+    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
+    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
+    time                     (forecast_period) datetime64[ns] 88B 2025-08-09 ...
+Dimensions without coordinates: points
+Data variables:
+    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
+Attributes:
+    GRIB_edition:            2
+    GRIB_centre:             ecmf
+    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
+    GRIB_subCentre:          0
+    Conventions:             CF-1.7
+    institution:             European Centre for Medium-Range Weather Forecasts
+    history:                 2025-08-10T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
+Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc
+Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250809.nc
+Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc
+Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250808.nc
+---------------------------
+DOWNLOADING GLOFAS 2025-08-07 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250808.nc
+2025-08-12 09:28:19,906 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.

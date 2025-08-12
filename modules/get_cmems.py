@@ -30,7 +30,8 @@ def main(fconfig):
     [Fi,Fj] = roms_lonlat2ij(grd)
     output_file = os.path.join(working_directory, prefix)
     ndays=fconfig['obs']['romsobs']['ndays']
-    end_day   = pd.Timestamp.today()- pd.Timedelta(days=1)
+#    end_day   = pd.Timestamp.today()- pd.Timedelta(days=1)
+    end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
     start_day = end_day - pd.Timedelta(days=ndays)
     all_files = glob.glob(f"{output_file}*.nc")
     all_files = [os.path.basename(f) for f in all_files]
@@ -64,7 +65,7 @@ def main(fconfig):
     dTime = 1 / 24         # 1 hour in days
     t_epsilon = 4 / 24 / 60  # 4 minutes in days
     a = 25
-    L, M = grd['h'].shape
+    LL, MM = grd['h'].shape
        
     # Create points for interpolant
     all_pts = np.column_stack((grd['lon_rho'].ravel(), grd['lat_rho'].ravel()))
@@ -105,7 +106,7 @@ def main(fconfig):
         # Find boolean mask for points outside the grid or with invalid depth/value
         outside = np.where(np.isnan(All['obs_Xgrid']) | np.isnan(All['obs_Ygrid']) |
                     (All['obs_Xgrid'] < 0) | (All['obs_Ygrid'] < 0) |
-                    (All['obs_Xgrid'] > M - 1) | (All['obs_Ygrid'] > L - 1) |
+                    (All['obs_Xgrid'] > MM - 1) | (All['obs_Ygrid'] > LL - 1) |
                     (All['obs_depth'] < 0) | (All['obs_value'] == 0) |
                     (Fm(All['obs_lon'], All['obs_lat'])==0))[0]  
        
@@ -211,6 +212,7 @@ def main(fconfig):
         indS = np.where(All['obs_type'] == 7)[0]
         Salt = accum3d(depthBin[indS], varInd[indS], timeBin[indS], All['obs_value'][indS], shape=(maxDepth, maxVar, maxTime),func=np.mean)
         flag_s = accum3d(depthBin[indS], varInd[indS], timeBin[indS], flag[indS], shape=(maxDepth, maxVar, maxTime), func=np.sum)
+        
 
         # Apply valid spatial mask (ill)
         Temp = Temp[:, ill, :]

@@ -29,11 +29,11 @@ def main(opts):
     # status_merc=mercator_aquire_driver(fconfig)
     
     
-    # # print('Extract Initial conditions from mercator')
-    # # status_ini=ECCOFS_INI_driver(fconfig)
+    # # # print('Extract Initial conditions from mercator')
+    # # # status_ini=ECCOFS_INI_driver(fconfig)
     
-    print('Extract climatology data from mercator')
-    status_clm=ECCOFS_CLM_driver(fconfig)
+    # print('Extract climatology data from mercator')
+    # status_clm=ECCOFS_CLM_driver(fconfig)
     
     # print('Extract Boundary conditions from mercator')
     # status_bry=ECCOFS_BRY_driver(fconfig)
@@ -88,16 +88,16 @@ def main(opts):
 
 
     # scheduler.run()
-    # et=time.time()
-    # elt=et-st
-    # print(f'TOTAL processing time: {elt} seconds')
+    et=time.time()
+    elt=et-st
+    print(f'TOTAL processing time: {elt} seconds')
         
     # file_delete_driver(fconfig)
-    # file_compile_driver(fconfig)
-    # file_transfer_driver(fconfig)
-    # et=time.time()
-    # elt=et-st
-    # print(f'TOTAL processing time with file transfer: {elt} seconds')
+    file_compile_driver(fconfig)
+    file_transfer_driver(fconfig)
+    et=time.time()
+    elt=et-st
+    print(f'TOTAL processing time with file transfer: {elt} seconds')
 
 def file_compile_driver(fconfig):
     import fileutil as fileu
@@ -239,45 +239,45 @@ def obs_pre_driver(fconfig):
             status=False 
             
             
-    print('Processing SSH')
-    try:    
-        st=time.time()
-        SSH.main(fconfig)
-        status=True  
-        et=time.time()
-        elt=et-st
-        print(f'SSH processing time: {elt} seconds')
-    except Exception as e:
-            print(f"An error occurred: {e}")
-            traceback.print_exc()  
-            status=False 
+    # print('Processing SSH')
+    # try:    
+    #     st=time.time()
+    #     SSH.main(fconfig)
+    #     status=True  
+    #     et=time.time()
+    #     elt=et-st
+    #     print(f'SSH processing time: {elt} seconds')
+    # except Exception as e:
+    #         print(f"An error occurred: {e}")
+    #         traceback.print_exc()  
+    #         status=False 
             
-    print('Processing AMSR2')
-    try:    
-        amsr2.main(fconfig)
-        status=True  
-    except Exception as e:
-            print(f"An error occurred: {e}")
-            traceback.print_exc()  
-            status=False 
+    # print('Processing AMSR2')
+    # try:    
+    #     amsr2.main(fconfig)
+    #     status=True  
+    # except Exception as e:
+    #         print(f"An error occurred: {e}")
+    #         traceback.print_exc()  
+    #         status=False 
     
-    print('Processing GOES')
-    try:    
-        GOES.main(fconfig)
-        status=True  
-    except Exception as e:
-            print(f"An error occurred: {e}")
-            traceback.print_exc()  
-            status=False 
+    # print('Processing GOES')
+    # try:    
+    #     GOES.main(fconfig)
+    #     status=True  
+    # except Exception as e:
+    #         print(f"An error occurred: {e}")
+    #         traceback.print_exc()  
+    #         status=False 
      
-    print('Processing LEO')
-    try:    
-        LEO.main(fconfig)
-        status=True  
-    except Exception as e:
-            print(f"An error occurred: {e}")
-            traceback.print_exc()  
-            status=False 
+    # print('Processing LEO')
+    # try:    
+    #     LEO.main(fconfig)
+    #     status=True  
+    # except Exception as e:
+    #         print(f"An error occurred: {e}")
+    #         traceback.print_exc()  
+    #         status=False 
 
                            
                    

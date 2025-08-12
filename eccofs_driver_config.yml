@@ -145,7 +145,7 @@
     delay: 3600
     combine:
         OBS_out: "/home/om/cron/ECCOFS_OBS/REALTIME/data/combine/ssh_sst_cmems_" 
-        grd_file: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
+        grd_file: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_08_b7.nc'
         grd_file_3km: "/home/julia/ROMS/eccofs/Data/grid_eccofs_3km_08_b7.nc"
 
         amsr2_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_"
@@ -199,9 +199,9 @@
         goutdirec: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/GOES19_L3/'
         gfilepart: '_NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00.nc'
     romsobs:
-        gridfile: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_09_b7.nc'
+        gridfile: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_08_b7.nc'
         scoord: [7, 2, 250, 50, 2, 4] 
-        ndays : 5
+        ndays : 2
         AMSR2:
             URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/AMSR2_L3/'
             WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
@@ -234,6 +234,7 @@
             input_dir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_'
             std_dir: '/home/julia/ROMS/eccofs/Data/STD_eccofs6km_20112023_run01_1_1_wMLD1TS/eccofs6km_std_mesoscale_20112023_'
             WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
+            #WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/tmp/j1/'
             prefix: 'cmems_nrt_'            
     
     

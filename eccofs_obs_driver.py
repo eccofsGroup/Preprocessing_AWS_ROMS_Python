@@ -92,12 +92,12 @@ def main(opts):
     elt=et-st
     print(f'TOTAL processing time: {elt} seconds')
         
-    file_delete_driver(fconfig)
-    file_compile_driver(fconfig)
-    file_transfer_driver(fconfig)
-    et=time.time()
-    elt=et-st
-    print(f'TOTAL processing time with file transfer: {elt} seconds')
+    #file_delete_driver(fconfig)
+    #file_compile_driver(fconfig)
+    #file_transfer_driver(fconfig)
+    #et=time.time()
+    #elt=et-st
+    #print(f'TOTAL processing time with file transfer: {elt} seconds')
 
 def file_compile_driver(fconfig):
     import fileutil as fileu
