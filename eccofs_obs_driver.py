@@ -63,31 +63,31 @@ def main(opts):
 
     #create scheduler
     delay=fconfig['obs']['delay']
-    scheduler = sched.scheduler(time.time, time.sleep)
+    #scheduler = sched.scheduler(time.time, time.sleep)
 
 
-    if not(status_insitu):
-        print(f'In situ data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay, 2, insitu_driver,(fconfig,))
-    else:
-        print('In situ data aquisition succeeded')
+    # if not(status_insitu):
+    #     print(f'In situ data aquisition failed, waiting {delay} seconds')
+    #     scheduler.enter(delay, 2, insitu_driver,(fconfig,))
+    # else:
+    #     print('In situ data aquisition succeeded')
             
             
-    if not(status_ssh):
-        print(f'SSH data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay,1, rads_driver,(fconfig,))
-    else:
-        print('SSH data aquisition succeeded')
+    # if not(status_ssh):
+    #     print(f'SSH data aquisition failed, waiting {delay} seconds')
+    #     scheduler.enter(delay,1, rads_driver,(fconfig,))
+    # else:
+    #     print('SSH data aquisition succeeded')
 
     
-    if not(status_sst):
-        print(f'SST data aquisition failed, waiting {delay} seconds')
-        scheduler.enter(delay,1, sst_driver,(fconfig,))
-    else:
-        print('SST data aquisition succeeded')
+    # if not(status_sst):
+    #     print(f'SST data aquisition failed, waiting {delay} seconds')
+    #     scheduler.enter(delay,1, sst_driver,(fconfig,))
+    # else:
+    #     print('SST data aquisition succeeded')
 
 
-    scheduler.run()
+    #scheduler.run()
     et=time.time()
     elt=et-st
     print(f'TOTAL processing time: {elt} seconds')

@@ -21,7 +21,7 @@ def main(opts):
         if path not in sys.path:
             sys.path.append(path)
 
-    # file_delete_driver(fconfig)
+    file_delete_driver(fconfig)
     file_compile_driver(fconfig)
     file_transfer_driver(fconfig)
     et=time.time()

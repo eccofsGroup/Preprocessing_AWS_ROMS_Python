@@ -64,35 +64,38 @@ def concat_met(fconfig):
              print(f'No Met file: {tmp}')
     
     
+    ##############################################
+    #Commented code for GFS only 
+    ##############################################
+    # print('Concatenating GFS Met files')
+    # local_dir=fconfig['transfer']['ldesdir']
+    # srcdir=fconfig['transfer']['trlist']['met']['srcdir']
+    # prefix=fconfig['transfer']['trlist']['met']['prefix']
+    # varnames=fconfig['transfer']['trlist']['met']['vars']
+    # nday=fconfig['transfer']['nday']
+    # nday2=fconfig['transfer']['trlist']['met']['nday']
+    # start_date = date.today()-timedelta(days=nday)
     
-    print('Concatenating GFS Met files')
-    local_dir=fconfig['transfer']['ldesdir']
-    srcdir=fconfig['transfer']['trlist']['met']['srcdir']
-    prefix=fconfig['transfer']['trlist']['met']['prefix']
-    varnames=fconfig['transfer']['trlist']['met']['vars']
-    nday=fconfig['transfer']['nday']
-    nday2=fconfig['transfer']['trlist']['met']['nday']
-    start_date = date.today()-timedelta(days=nday)
+    # alltoday=start_date.strftime('%Y%m%d')
     
-    alltoday=start_date.strftime('%Y%m%d')
-    
-    for var in varnames:
-        ofile=f'{local_dir}{prefix}_{var}_{alltoday}.nc'
-        dslist=[]
-        for dt in range(0,nday2-1):
-            day=start_date+timedelta(days=dt)
-            today=day.strftime('%Y%m%d')
-            file=glob.glob(srcdir+f'*{var}_{today}*.nc')
-            ds=xr.open_dataset(file[0])
-            subset = ds.isel(time=slice(0, 24))
-            dslist.append(subset)
-        day=start_date+timedelta(days=nday2-1)
-        today=day.strftime('%Y%m%d')
-        file=glob.glob(fconfig['transfer']['trlist']['met']['srcdir']+f'*{var}*{today}*.nc')
-        ds=xr.open_dataset(file[0])
-        dslist.append(ds)
-        combined = xr.concat(dslist, dim='time')    
-        combined.to_netcdf(ofile)
+    # for var in varnames:
+    #     ofile=f'{local_dir}{prefix}_{var}_{alltoday}.nc'
+    #     dslist=[]
+    #     for dt in range(0,nday2-1):
+    #         day=start_date+timedelta(days=dt)
+    #         today=day.strftime('%Y%m%d')
+    #         file=glob.glob(srcdir+f'*{var}_{today}*.nc')
+    #         ds=xr.open_dataset(file[0])
+    #         subset = ds.isel(time=slice(0, 24))
+    #         dslist.append(subset)
+    #     day=start_date+timedelta(days=nday2-1)
+    #     today=day.strftime('%Y%m%d')
+    #     file=glob.glob(fconfig['transfer']['trlist']['met']['srcdir']+f'*{var}*{today}*.nc')
+    #     ds=xr.open_dataset(file[0])
+    #     dslist.append(ds)
+    #     combined = xr.concat(dslist, dim='time')    
+    #     combined.to_netcdf(ofile)
+
 
 def concat_clm(fconfig):
         print('Concatenating Climatology files')
@@ -115,19 +118,45 @@ def concat_clm(fconfig):
         
         last = combined.isel(time=-1)
 
-        # Create a copy and change its time coordinate
-        
-        #print(last['ocean_time'].values)
-        #print(type(last['ocean_time'].values))
+
         
         new_time = last['ocean_time'].values+np.timedelta64(5,'D') # ,your desired time
         last['ocean_time'].values = new_time
-        
-
-        # Concatenate along the time dimension
         combined = xr.concat([combined, last],dim="time")
 
         combined.to_netcdf(ofile)
+def move_clm(fconfig):
+        print('Moving  Climatology files')
+        local_dir=fconfig['transfer']['ldesdir']
+        prefix=fconfig['transfer']['trlist']['clm']['prefix']
+        nday=fconfig['transfer']['nday']
+        nday2=fconfig['transfer']['trlist']['clm']['nday']
+        start_date = date.today()-timedelta(days=nday)
+        
+        today1=start_date.strftime('%Y%m%d')
+        for dt in range(0,nday2):
+            day=start_date+timedelta(days=dt)
+            today=day.strftime('%Y%m%d')
+            file=glob.glob(fconfig['transfer']['trlist']['clm']['srcdir']+f'*{today}*.nc')
+            ind=dt+1
+            ofile=f'{local_dir}{prefix}_{today1}_{ind:02d}_clm.nc'
+
+            print(ofile)
+            shutil.copy2(file[0], ofile)
+            
+
+        combined = xr.open_dataset(ofile)
+        
+        last = combined.isel(time=-1)
+
+
+        
+        new_time = last['ocean_time'].values+np.timedelta64(5,'D') # ,your desired time
+        last['ocean_time'].values = new_time
+        ind=ind+1
+        ofile=f'{local_dir}{prefix}_{today1}_{ind:02d}_clm.nc'
+        last.to_netcdf(ofile)
+
         
 def delete_remote(fconfig):
     remote_dir=fconfig['transfer']['rdesdir']
@@ -164,6 +193,7 @@ def compile_all_files(fconfig):
     today=start_date.strftime('%Y%m%d')
     keys=fconfig['transfer']['trlist'].keys()
 
+   # move_clm(fconfig)
     for key in keys:
         
         sp=fconfig['transfer']['trlist'][key]['searchpattern']
@@ -173,7 +203,8 @@ def compile_all_files(fconfig):
             case 'met':
                 concat_met(fconfig)
             case 'clm':
-                concat_clm(fconfig)
+                #concat_clm(fconfig)
+                move_clm(fconfig)
                 
             case _:
                 print(fconfig['transfer']['trlist'][key]['srcdir']+f'{sp}{today}*.nc')

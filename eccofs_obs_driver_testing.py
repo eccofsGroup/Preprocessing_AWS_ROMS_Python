@@ -94,7 +94,7 @@ def main(opts):
         
     # file_delete_driver(fconfig)
     file_compile_driver(fconfig)
-    file_transfer_driver(fconfig)
+   # file_transfer_driver(fconfig)
     et=time.time()
     elt=et-st
     print(f'TOTAL processing time with file transfer: {elt} seconds')
