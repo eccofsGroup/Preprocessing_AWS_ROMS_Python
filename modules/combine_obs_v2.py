@@ -32,6 +32,7 @@ def main(fconfig):
     goes_file = fconfig['obs']['combine']['goes_file']
     ssh_file = fconfig['obs']['combine']['ssh_file']
     cmems_file = fconfig['obs']['combine']['cmems_file']
+    cfrf_file = fconfig['obs']['combine']['cfrf_file']
 
     m1 = np.load(fconfig['obs']['combine']['sst_stats_file'])
 
@@ -53,6 +54,7 @@ def main(fconfig):
     #------------------------------------------------------
     # parameters for binning SST
     dTime = 6/24; # 6 hours
+    dTime_insitu = 20/24/60;
     t_epsilon = 5/24/60;  # slightly more than 4 minutes which is 1*dt in eccofs 6km
     
     std_harm = m1['std_harm']
@@ -64,7 +66,7 @@ def main(fconfig):
 # %%
 
     for day_pd in days:
-        day = (day_pd - ref_datum).days
+        day = np.array((day_pd - ref_datum).days)
         print(f"=================================Merging observations for {day_pd}==============")
  
         expected_deviation = np.squeeze(
@@ -89,7 +91,6 @@ def main(fconfig):
         SST['obs_time'] = []; SST['obs_depth']=[]; SST['obs_label']=[]; SST['obs_type']=[]
 
         for file in files:
-            print(file)
             if os.path.isfile(file):
                 print(f"reading data from {file}")
                 with Dataset(file) as nc:
@@ -260,7 +261,7 @@ def main(fconfig):
             # convert labels back to integers
             data['obs_label'] = np.array([int(s) for s in labels], dtype=int)
 
-            # provenance_b: same as label_b but any label > 999 means that more than one provenance contributed, identifies as  400
+            # provenance_b: same as label_b but any label > 999 means that more than one provenance contributed, identifies as  300
             data['obs_provenance'] = data['obs_label'].copy()
             data['obs_provenance'][data['obs_label'] > 999] = 300
 
@@ -276,16 +277,16 @@ def main(fconfig):
             # fix SST error
             data['obs_error'] = np.ones(LL)
             ind = np.where(data['obs_provenance']==317)[0]  # geostationary only
-            data['obs_error'][ind] = 0.9**2 * np.ones_like(ind)
+            data['obs_error'][ind] = 0.8**2 * np.ones_like(ind)
         
             # microwave and all microwave superobs
             ind = np.where((data['obs_provenance'] == 324) | ( (data['obs_provenance'] == 300) & (data['obs_label'] % 10**3==324)))[0] 
-            data['obs_error'][ind] = 0.7**2 * np.ones_like(ind)
+            data['obs_error'][ind] = 0.6**2 * np.ones_like(ind)
         
             # infrared and all infrared superobs
             ind = np.where((data['obs_provenance'] == 311) | ( (data['obs_provenance'] == 300) & (data['obs_label'] % 10**3==311)) |
                        ( (data['obs_provenance'] == 300) & (data['obs_label'] % 10**6==311)))[0] 
-            data['obs_error'][ind] = 0.6**2 * np.ones_like(ind)
+            data['obs_error'][ind] = 0.5**2 * np.ones_like(ind)
         else:
             data = {}
             for var in SST.keys():
@@ -293,16 +294,13 @@ def main(fconfig):
  
             
 # %%
-        
         #---------------------------------------------------------
-        #     Add all other observations
+        #     Process SSH observations
         #---------------------------------------------------------
         files = []
-        files.extend([f"{ssh_file}{int(day-1):04d}.nc", f"{cmems_file}{int(day-1):04d}.nc"])
-        files.extend([f"{ssh_file}{int(day):04d}.nc", f"{cmems_file}{int(day):04d}.nc"])
-        files.extend([f"{ssh_file}{int(day+1):04d}.nc", f"{cmems_file}{int(day+1):04d}.nc"])
-        files.extend([f"{ssh_file}{int(day+2):04d}.nc", f"{cmems_file}{int(day+2):04d}.nc"])
-        
+        files.extend([f"{ssh_file}{int(day-1):04d}.nc", f"{ssh_file}{int(day):04d}.nc"])
+        files.extend([f"{ssh_file}{int(day+1):04d}.nc", f"{ssh_file}{int(day+2):04d}.nc"])
+
         for file in files:
             print(file)
             if os.path.isfile(file):
@@ -321,38 +319,135 @@ def main(fconfig):
 
             ind = np.where(data['obs_type']==1)[0]  # altimetry
             data['obs_error'][ind] = 0.05**2 * np.ones_like(ind)
+        
+            data['obs_depth'][data['obs_depth']==0] = g['N']
+            data['obs_Zgrid'] = data['obs_depth']
+
+        #---------------------------------------------------------
+        #     Process T/S profiles observations
+        #---------------------------------------------------------
+        files = []
+        files.extend([f"{cmems_file}{int(day):04d}.nc", f"{cfrf_file}{int(day):04d}.nc"])
+        files.extend([f"{cmems_file}{int(day+1):04d}.nc", f"{cfrf_file}{int(day+1):04d}.nc"])
+        files.extend([f"{cmems_file}{int(day+2):04d}.nc", f"{cfrf_file}{int(day+2):04d}.nc"])
+
+        TS={}
+        for var in data.keys():
+            TS[var]=[]
+
+        for file in files:
+            if os.path.isfile(file):
+                print(f"reading data from {file}")
+                with Dataset(file) as nc:
+                    for var in TS.keys():
+                        TS[var] = np.concatenate([TS[var],nc.variables[var][:]])
+
+        if (len(TS['obs_lon'])>0) :
+            # remove values that fall outside of time window (this occasionally happens
+            # when doing repeat of of observations with lags, and fall in the water
+            good = np.where((TS['obs_time']>=day) & (TS['obs_time']<day+3) &
+                        (Fm(TS['obs_lon'], TS['obs_lat']) == 1))[0];
+            for var in TS.keys():
+                TS[var] = TS[var][good]
 
             # scale error for CMEMS Argo profiles (801), Gliders (806), 
             # CTD profiles (807), Sea Mammals (808), Moorings (823), 
             # thermosalinograph (824)
+            ind = np.where((TS['obs_provenance'] >= 700) & (TS['obs_provenance'] != 808) & (TS['obs_provenance'] != 824))[0]
+            TS['obs_error'][ind] = 0.9**2 * TS['obs_error'][ind]
+
+            ind = np.where((TS['obs_provenance'] == 808) | (TS['obs_provenance'] == 824))[0]
+            TS['obs_error'][ind] = TS['obs_error'][ind]
         
-            ind = np.where((data['obs_type']==6) & (data['obs_provenance'] == 823))[0]  # Temp from Moorings
-            data['obs_error'][ind] = 0.9**2 * data['obs_error'][ind]
+        # identify and merge duplicate in-situ profiles
+            for typ in [6, 7]:
+                ind = np.where((TS['obs_type']==typ) & 
+                               (TS['obs_provenance'] > 700) &
+                               (TS['obs_provenance'] < 900) ) [0]
+                if (len(ind)>0):
+                    xind = np.floor(TS['obs_Xgrid'][ind]).astype(int); yind = np.floor(TS['obs_Ygrid'][ind]).astype(int)
+                    minTime = np.min(TS['obs_time'][ind])
+                    timeBin = np.floor((TS['obs_time'][ind]-minTime) / dTime_insitu).astype(int)
+                    tmp, depthBin = np.unique(TS['depth'][ind], return_inverse=True)
 
-            ind = np.where((data['obs_type']==7) & (data['obs_provenance'] == 823))[0]  # Salt from Moorings
-            data['obs_error'][ind] = 0.6**2 * data['obs_error'][ind]
+                    # Dimensions
+                    xDimLength = np.max(xind)+1; yDimLength = np.max(yind)+1
+                    depthDimLength = np.max(depthBin)+1; timeDimLength  = np.max(timeBin)+1;
+ 
+                    # Combine 2D indices into a 1D index (like MATLAB's sub2ind)
+                    varInd = np.ravel_multi_index((xind, yind, depthBin, timeBin), dims=(xDimLength, yDimLength, depthDimLength, timeDimLength))
+                    maxVarInd = np.max(varInd)+1;
+                    
+                    counter = accum2d(varInd[:], 0 ,np.ones_like(ind),shape=(maxVarInd,1),func=np.sum);
+                    good = np.where(counter>0)[0]
+                    
+                    if (len(good) < len(ind)):
+                    
+                        wanted = {'obs_lon', 'obs_lat', 'depth', 'obs_Xgrid', 'obs_Ygrid', 'obs_Zgrid', 'obs_time', 'obs_value', 'obs_error'}
+                        B = {k: TS[k] for k in data.keys() & wanted}                    
+                        for var in B.keys():
+                            B[var]= accum2d(varInd[:],0, TS[var][ind],shape=(maxVarInd,1),func = np.mean)[good]
+                        
+                       
+                        # compute obs_label that contains all the provenances that go into superobs
+                        label = TS['obs_label'][ind]
+                        prov = np.unique(label)
+                        Lp = prov.size
 
-            ind = np.where((data['obs_type']==6) & (data['obs_provenance'] == 807))[0]  # Temp from CTD
-            data['obs_error'][ind] = 0.9**2 * data['obs_error'][ind]                 
-        
-            ind = np.where((data['obs_type']==7) & (data['obs_provenance'] == 807))[0]  # Salt from CTD
-            data['obs_error'][ind] = 0.6**2 * data['obs_error'][ind]
+                        # multipliers: 10**[0,1,2,...]
+                        mult = 1.e9 ** np.arange(Lp, dtype=int)
 
-            ind = np.where((data['obs_type']==6) & (data['obs_provenance'] == 806))[0]  # Temp from Gliders
-            data['obs_error'][ind] = 0.9**2 * data['obs_error'][ind]                 
+                        # flag array same shape as provenance_t
+                        flag = np.zeros_like(label, dtype=int)
+                        for ix, p in enumerate(prov):
+                            flag[label == p] = mult[ix]
 
-            ind = np.where((data['obs_type']==7) & (data['obs_provenance'] == 806))[0]  # Salt from Gliders
-            data['obs_error'][ind] = 0.6**2 * data['obs_error'][ind]                 
+                        # accumulate flags into super‐obs using the same binning, get sum of multipliers
+                        flag_b   = accum2d(varInd[:],0, flag, shape=(maxVarInd,1),func=np.mean)[good].ravel()
+                
+                        # decode flag_b into labels
+                        # For each provenance level, extract its digit in flag_b
+                        flag_ind = np.zeros((flag_b.size, Lp), dtype=int)
+                        for ix, p in enumerate(prov):
+                            # digit at place idx is floor(flag_b/mult[idx]) % 10, capped at 1
+                            digit = (flag_b // mult[ix]) % 1.e9
+                            flag_ind[:, ix] = p * np.minimum(1, digit)
 
-            data['obs_depth'][data['obs_depth']==0] = g['N']
-            data['obs_Zgrid'] = data['obs_depth']
-        
+                        # identify rows where sum across prov‐levels is zero (no obs)
+                        no_obs = np.sum(flag_ind, axis=1) == 0
+
+                        # build string labels with concatenated digits, replacing zero‐rows with '0'
+                        labels = []
+                        for i, row in enumerate(flag_ind):
+                            if no_obs[i]:
+                                labels.append('0')
+                            else:
+                                # join nonzero digits into string
+                                s = ''.join(str(d) for d in row if d != 0)
+                                labels.append(s or '0')
+
+                        # convert labels back to integers
+
+                        longest = max(labels, key=len)
+                        print(longest)  # Output: watermelon
+
 # %%
-        
-        # Since we have only one source of in-situ observations, we do not
-        # need to identify identical observations like we did in doppio
-        # may need to add this when we'd have more than one source
-        
+                        B['obs_label'] = np.array([int(s[0:9]) for s in labels], dtype=int)
+
+                        #B['obs_label'] = np.array([int('0') for s in labels], dtype=int)
+                        #B['obs_label'] = np.array(int('9999')) # Changed per JUlias request
+
+                        # provenance_b: same as label_b but any label > 999 means that more than one provenance contributed, identifies as  400
+                        B['obs_provenance'] = B['obs_label'].copy()
+                        B['obs_provenance'][B['obs_label'] > 999] = 800
+                        B['obs_depth'] = B['obs_Zgrid']
+                        B['obs_type'] = typ * np.ones_like(good)
+                        
+                        for var in data.keys():
+                            data[var] = np.concatenate((data[var], B[var].ravel()))
+                    else:                        
+                        for var in data.keys():
+                            data[var] = np.concatenate((data[var], TS[var][ind].ravel()))
         # --------------------------------------------------------
         #      merge into surveys
         #---------------------------------------------------------
@@ -382,8 +477,12 @@ def main(fconfig):
 
             # sort the data first by time then by type
             tmp = 1.e9*data['obs_time'] + data['obs_type'];
+            
+            #lengths = {k: len(v) for k, v in data.items()}
+            #print(lengths)
             ind = np.argsort(tmp)
             for var in data.keys():
+           #     print(var)
                 data[var] = data[var][ind];
 
 
@@ -399,7 +498,6 @@ def main(fconfig):
             survey = len(survey_time)
             define_4dvar_obs_file(output_fname,survey,obs_provenance_definition_eccofs())
             ds = Dataset(output_fname, 'a')
-            ds.history = "CMEMS near real time data transformed into 4DVAR format"
             ds.variables['spherical'][0] = 'T'
             ds.variables['Nobs'][:] = Nobs
             ds.variables['survey_time'][:] = survey_time

@@ -61,7 +61,7 @@ def read_config(infile):
 
 if __name__ == "__main__":
     parser = optparse.OptionParser()
-    parser.add_option('-c', '--configfile',dest='configfile',help='Configuration YML file',default='eccofsv2_driver_config.yml',type='str')
+    parser.add_option('-c', '--configfile',dest='configfile',help='Configuration YML file',default='eccofs_driver_config.yml',type='str')
     (opts, args) = parser.parse_args()
     
     print('RUNNING DRIVER')

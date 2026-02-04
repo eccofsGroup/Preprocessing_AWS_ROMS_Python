@@ -29,7 +29,7 @@
             srcdir: '/home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/'
             searchpattern: '*splitrivers*'
         combine:
-            srcdir: '/home/om/cron/ECCOFS_OBS/REALTIME/data/combine/'
+            srcdir: '/home/om/cron/ECCOFS_OBS/REALTIME/data/combine_v2/'
             searchpattern: '*'
             
  force:
@@ -144,15 +144,16 @@
     
     delay: 3600
     combine:
-        OBS_out: "/home/om/cron/ECCOFS_OBS/REALTIME/data/combine/ssh_sst_cmems_" 
+        OBS_out: "/home/om/cron/ECCOFS_OBS/REALTIME/data/combine_v2/ssh_sst_cmems_v2_" 
         grd_file: '/home/julia/ROMS/eccofs/Data/grid_eccofs_6km_08_b7.nc'
         grd_file_3km: "/home/julia/ROMS/eccofs/Data/grid_eccofs_3km_08_b7.nc"
 
-        amsr2_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_"
-        leo_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_"
-        goes_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_"
-        ssh_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_"
-        cmems_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_"
+        amsr2_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/sst_amsr2_nrt_"
+        leo_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/sst_leo_nrt_"
+        goes_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/sst_goes_nrt_"
+        ssh_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/along_track_TotalSSH_"
+        cmems_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/cmems_nrt_"
+        cfrf_file: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/cfrf_nrt_"
         sst_stats_file: '/home/om/cron/ECCOFS_OBS/REALTIME/data/STD/sst_statistics.npz'
 
 
@@ -179,13 +180,13 @@
         sats: ["jason3","sentinel3a","sentinel3b","sentinel6a","swot"]
         direc: "/home/om/cron/ECCOFS_OBS/SSH/data/raw"
         rads2asc: '/home/om/cron/RADS4/local/bin/rads2asc4'
-        odirdac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/'
-        odirnodac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/'
+        odirdac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/'
+        odirnodac: '/home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/'
         days: 20
         latlon: '-100,-38,5,52'
         variables: 'time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15'
-        satlist: ['j3/c','3a/a','3b/b','6a/a','sw/b']
-        dirlist: ['jason3/','sentinel3a/','sentinel3b/','sentinel6a/','swot/']
+        satlist: ['j3/c','j3/d','3a/a','3b/b','6a/a','sw/b']
+        dirlist: ['jason3/','jason3/','sentinel3a/','sentinel3b/','sentinel6a/','swot/']
         radsxmlnodac: '/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_nodac.xml'
         radsxmldac: '/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_dac.xml'
 
@@ -204,11 +205,11 @@
         ndays : 2
         AMSR2:
             URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/AMSR2_L3/'
-            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
+            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/'
             prefix: 'sst_amsr2_nrt_'
             suffix: '-ECCOFS-REMSS-L3U_GHRSST-SSTsubskin-AMSR2-RSS_daily.nc'
         GOES:
-            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
+            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/'
             URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/GOES19_L3/'
             suffix: '_NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00.nc'
             prefix: 'sst_goes_nrt_'
@@ -216,10 +217,10 @@
         LEO:
             URL: '/home/om/cron/ECCOFS_OBS/PO.DAAC/data/raw/'
             subdirs: ['L3S_LEO_AM_D/','L3S_LEO_AM_N/','L3S_LEO_PM_D/','L3S_LEO_PM_N/']
-            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
+            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/'
             prefix: 'sst_leo_nrt_'
         SSH:
-            working_dir: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/"
+            working_dir: "/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/"
             prefix: "along_track_TotalSSH_"
             altfile: "/home/om/cron/ECCOFS_OBS/REALTIME/data/ssh/altimeter_data.npz"
             nodacfilestat: "/home/om/cron/ECCOFS_OBS/REALTIME/data/ssh/nodac_ssha_mean_std.npz"
@@ -229,13 +230,19 @@
             sentinel3a_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3a/"
             sentinel3b_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/"
             sentinel6a_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel6a/"
-            swot_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/swot"
+            swot_dir: "/home/om/cron/ECCOFS_OBS/SSH/data/raw/swot"           
         CMEMS:
             input_dir: '/home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_'
-            std_dir: '/home/julia/ROMS/eccofs/Data/STD_eccofs6km_20112023_run01_1_1_wMLD1TS/eccofs6km_std_mesoscale_20112023_'
-            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/'
+            std_dir:   '/home/julia/ROMS/eccofs/Data/STD_eccofs6km_Mercator_19932023_1_0.5_1/eccofs6km_std_mesoscale_19932023_'
+            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/'
             #WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/tmp/j1/'
-            prefix: 'cmems_nrt_'            
+            prefix: 'cmems_nrt_' 
+        CFRF:
+            input_dir: '/home/om/cron/ECCOFS_OBS/CFRF/data/processed/ECCOFS_INSITU_CFRF_'
+            std_dir:   '/home/julia/ROMS/eccofs/Data/STD_eccofs6km_Mercator_19932023_1_0.5_1/eccofs6km_std_mesoscale_19932023_'
+            WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs_v2/'
+            #WORKING_DIRECTORY: '/home/om/cron/ECCOFS_OBS/REALTIME/data/tmp/j1/'
+            prefix: 'cfrf_nrt_' 
     
     
 # 

@@ -37,7 +37,7 @@ def main(fconfig):
     # ————————————————
     # TIME PARAMETERS
     # ————————————————
-    dTime      = 2.0 / 24.0            # two hours
+    dTime      = 1.0 / 24.0            # two hours
     lag        = 1.0 / 15.0 / 24.0
     b          = (1.0/24.0/lag) / 2.0
     t_epsilon  = (4.0 / 24.0 / 60.0)     # 4 minutes
@@ -243,9 +243,9 @@ def main(fconfig):
 
         # Tag outliers in bins with >=3 points and inflated std
         outlier_bins = np.where((counter >= 3) & (stdm > 3.0 * estd))[0]
-        for b in outlier_bins:
-            idx = np.where(varInd == b)[0]
-            iv  = np.where(np.abs(ssha_dac[idx] - sshm[b]) > 3.0 * estd[b])[0]
+        for bb in outlier_bins:
+            idx = np.where(varInd == bb)[0]
+            iv  = np.where(np.abs(ssha_dac[idx] - sshm[bb]) > 3.0 * estd[bb])[0]
             ssha[idx[iv]] = np.nan
         
         # Select “good” points for the current day

@@ -14,8 +14,8 @@ latlon='-100,-38,5,52'
 variables='time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15'
 
 
-satlist=['j3/b','3a/a','3b/b','6a/a','sw/b']
-dirlist=['jason3/','sentinel3a/','sentinel3b/','sentinel6a/','swot/']
+satlist=['j3/b','j3/c','j3/d','3a/a','3b/b','6a/a','sw/b']
+dirlist=['jason3/','jason3/','jason3/','sentinel3a/','sentinel3b/','sentinel6a/','swot/']
 
 
 

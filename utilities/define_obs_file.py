@@ -38,6 +38,7 @@ def obs_provenance_definition_eccofs():
         ('CORA_Moorings',               np.int32(823)),
         ('CORA_thermosalinograph',      np.int32(824)),
         ('CORA_Drifter_Buoys',          np.int32(825)),
+        ('CFRF temperature',            np.int32(732)),
     ]
     var1 = {
         'Name':      'obs_provenance',

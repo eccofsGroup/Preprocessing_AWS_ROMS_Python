@@ -42,6 +42,8 @@ def main(opts):
     print('In situ driver running')
     status_insitu=insitu_driver(fconfig)
     
+    print('CFRF Driver Running')
+    status_CFRF=CFRF_driver(fconfig)
     
     print('Rads Driver Running')
     status_ssh=rads_driver(fconfig)
@@ -50,8 +52,8 @@ def main(opts):
     status_sst=sst_driver(fconfig)
     #print(f'There are a total of  {filecount} SST files')
 
-    print('Checking GLIDER Availability')
-    glider_driver(fconfig)
+    #print('Checking GLIDER Availability')
+    #glider_driver(fconfig)
 
 
     print('RUNNING OBS PreProcessing')
@@ -119,7 +121,7 @@ def file_transfer_driver(fconfig):
     
     
 def obs_combine_driver(fconfig):
-    import combine_obs as combine
+    import combine_obs_v2 as combine
     
         
     print('Processing Combine')
@@ -221,7 +223,8 @@ def obs_pre_driver(fconfig):
     import get_sst_goes as GOES
     import get_sst_leo as LEO
     import get_ssh as SSH
-    import get_cmems as CMEMS
+    import get_cmems_v2 as CMEMS
+    import get_cfrf_v2 as cfrf
     
         
     print('Processing CMEMS')
@@ -238,7 +241,17 @@ def obs_pre_driver(fconfig):
             traceback.print_exc()  
             status=False 
             
-            
+                                 
+    print('Processing CFRF')
+    try:    
+        cfrf.main(fconfig)
+        status=True  
+    except Exception as e:
+            print(f"An error occurred: {e}")
+            traceback.print_exc()  
+            status=False 
+
+        
     print('Processing SSH')
     try:    
         st=time.time()
@@ -329,6 +342,21 @@ def sst_driver(fconfig):
         print(f' {subs[ind]} has {nfiles} files')
     print(f'There are a total of  {fcount} SST files')
     return status
+
+def CFRF_driver(fconfig):
+    import acquire_eccofs_CFRF_obs_v1 as cfrfaquire
+    print('--------------------')
+    
+    try:
+        cfrfaquire.main(fconfig)
+        status=True    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        traceback.print_exc()  
+        status=False   
+    
+    return status     
+
 def insitu_driver(fconfig):
     import acquire_eccofs_insitu_obs_v1 as isaquire
     
@@ -362,7 +390,7 @@ def read_config(infile):
 
 if __name__ == "__main__":
     parser = optparse.OptionParser()
-    parser.add_option('-c', '--configfile',dest='configfile',help='Configuration YML file',default='eccofs_driver_config.yml',type='str')
+    parser.add_option('-c', '--configfile',dest='configfile',help='Configuration YML file',default='eccofsv2_driver_config.yml',type='str')
     (opts, args) = parser.parse_args()
     
     print('RUNNING DRIVER')

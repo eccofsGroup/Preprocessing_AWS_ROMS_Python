@@ -1369,7 +1369,7 @@ def create_clm_file(initfile,grd,tunits):
         print(f"{initfile} does not exist. Creating.")
             
     fh        = nc.Dataset(initfile, "w", format="NETCDF4")
-    fh.type   =  'Climatology file for L1 grid'
+    fh.type   =  'Climatology file for input grid'
     fh.title  =  'Climatology' 
     fh.history = ['Created by create_clm_file on '+ dt.datetime.now().strftime('%Y/%m/%d %H:%M:%S')]
 
@@ -1386,64 +1386,69 @@ def create_clm_file(initfile,grd,tunits):
     fh.createDimension('eta_v', dims['eta_v'])
     fh.createDimension('s_rho', atts['sc_r'])
     fh.createDimension('s_w', atts['sc_w'])
-    fh.createDimension('time',None)
+    fh.createDimension('ocean_time',None)
     
     #Define the Variabes in the file
     fh.createVariable('lon_rho', 'f', ('eta_rho', 'xi_rho'))
-    fh.variables['lon_rho'].long_name = 'longitude of RHO-points"'
+    fh.variables['lon_rho'].long_name = 'longitude of RHO-points'
     fh.variables['lon_rho'].units = 'degree_east'
     fh.variables['lon_rho'][:]=grd.lon_rho[:]
     
     fh.createVariable('lat_rho', 'f', ('eta_rho', 'xi_rho'))
-    fh.variables['lat_rho'].long_name = 'latitude of RHO-points"'
+    fh.variables['lat_rho'].long_name = 'latitude of RHO-points'
     fh.variables['lat_rho'].units = 'degree_north'
     fh.variables['lat_rho'][:]=grd.lat_rho[:]
     
+    fh.createVariable('h', 'f', ('eta_rho', 'xi_rho'))
+    fh.variables['h'].long_name = 'Final bathymetry at RHO-points'
+    fh.variables['h'].units = 'meters'
+    fh.variables['h'][:]=grd.h[:]
+    
     fh.createVariable('lon_u', 'f', ('eta_u', 'xi_u'))
-    fh.variables['lon_u'].long_name = 'longitude of U-points"'
+    fh.variables['lon_u'].long_name = 'longitude of U-points'
     fh.variables['lon_u'].units = 'degree_east'
     fh.variables['lon_u'][:]=grd.lon_u[:]
     
     fh.createVariable('lat_u', 'f', ('eta_u', 'xi_u'))
-    fh.variables['lat_u'].long_name = 'latitude of U-points"'
+    fh.variables['lat_u'].long_name = 'latitude of U-points'
     fh.variables['lat_u'].units = 'degree_north'
     fh.variables['lat_u'][:]=grd.lat_u[:]
   
     fh.createVariable('lon_v', 'f', ('eta_v', 'xi_v'))
-    fh.variables['lon_v'].long_name = 'longitude of V-points"'
+    fh.variables['lon_v'].long_name = 'longitude of V-points'
     fh.variables['lon_v'].units = 'degree_east'
     fh.variables['lon_v'][:]=grd.lon_v[:]
     
     fh.createVariable('lat_v', 'f', ('eta_v', 'xi_v'))
-    fh.variables['lat_v'].long_name = 'latitude of V-points"'
+    fh.variables['lat_v'].long_name = 'latitude of V-points'
     fh.variables['lat_v'].units = 'degree_north'
     fh.variables['lat_v'][:]=grd.lat_v[:]
   
   
-    fh.createVariable('spherical', 'short', ('time'))
+    fh.createVariable('spherical', 'short', ())
     fh.variables['spherical'].long_name = 'grid type logical switch'
-    fh.variables['spherical'].flag_meanings = 'Cartesian spherical"'
+    fh.variables['spherical'].flag_meanings = 'Cartesian spherical'
     fh.variables['spherical'].flag_values = '0, 1'
   
-    fh.createVariable('Vtransform','long',('time'));
+    fh.createVariable('Vtransform','long',());
     fh.variables['Vtransform'].long_name ='vertical terrain-following transformation equation'
   
-    fh.createVariable('Vstretching','long',('time'));
+    fh.createVariable('Vstretching','long',());
     fh.variables['Vstretching'].long_name ='vertical terrain-following stretching function'
   
-    fh.createVariable('theta_b','double',('time'));
+    fh.createVariable('theta_b','double',());
     fh.variables['theta_b'].long_name ='S-coordinate bottom control parameter'
     fh.variables['theta_b'].units ='1'
     
-    fh.createVariable('theta_s','double',('time'));
+    fh.createVariable('theta_s','double',());
     fh.variables['theta_s'].long_name ='S-coordinate surface control parameter'
     fh.variables['theta_s'].units ='1'
     
-    fh.createVariable('Tcline','double',('time'));
+    fh.createVariable('Tcline','double',());
     fh.variables['Tcline'].long_name ='S-coordinate surface/bottom layer width'
     fh.variables['Tcline'].units ='meter'
     
-    fh.createVariable('hc','double',('time'));
+    fh.createVariable('hc','double',());
     fh.variables['hc'].long_name ='S-coordinate parameter, critical depth'
     fh.variables['hc'].units ='meter'
     
@@ -1473,48 +1478,48 @@ def create_clm_file(initfile,grd,tunits):
     fh.variables['s_w'].standard_name = "ocean_s_coordinate_g2" 
     fh.variables['s_w'].formula_terms = "s: s_w C: Cs_w eta: zeta depth: h depth_c: hc"  
   
-    fh.createVariable('ocean_time','double',('time'));
+    fh.createVariable('ocean_time','double',('ocean_time'));
     fh.variables['ocean_time'].long_name='time since initialization'
     fh.variables['ocean_time'].units =tunits
     fh.variables['ocean_time'].field ='ocean_time, scalar, series'
     
-    fh.createVariable('salt','f',('time','s_rho','eta_rho','xi_rho'));
+    fh.createVariable('salt','f',('ocean_time','s_rho','eta_rho','xi_rho'));
     fh.variables['salt'].long_name='salinity'
     fh.variables['salt'].units ='PSU'
     fh.variables['salt'].time ="ocean_time" 
-    fh.variables['salt'].coordinates ="lon_rho lat_rho ocean_time" 
+    fh.variables['salt'].coordinates ="lon_rho lat_rho s_rho ocean_time" 
     
-    fh.createVariable('temp','f',('time','s_rho','eta_rho','xi_rho'));
+    fh.createVariable('temp','f',('ocean_time','s_rho','eta_rho','xi_rho'));
     fh.variables['temp'].long_name='temperature'
     fh.variables['temp'].units ='C'
     fh.variables['temp'].time ="ocean_time" 
-    fh.variables['temp'].coordinates ="lon_rho lat_rho ocean_time" 
+    fh.variables['temp'].coordinates ="lon_rho lat_rho s_rho ocean_time" 
   
-    fh.createVariable('u','f',('time','s_rho','eta_u','xi_u'));
+    fh.createVariable('u','f',('ocean_time','s_rho','eta_u','xi_u'));
     fh.variables['u'].long_name='u-momentum component'
     fh.variables['u'].units ='meter second-1'
     fh.variables['u'].time ="ocean_time" 
-    fh.variables['u'].coordinates ="lon_rho lat_rho ocean_time" 
+    fh.variables['u'].coordinates ="lon_u lat_u s_rho ocean_time" 
   
-    fh.createVariable('ubar','f',('time','eta_u','xi_u'));
+    fh.createVariable('ubar','f',('ocean_time','eta_u','xi_u'));
     fh.variables['ubar'].long_name='vertically integrated u-momentum component'
     fh.variables['ubar'].units ='meter second-1'
     fh.variables['ubar'].time ="ocean_time" 
-    fh.variables['ubar'].coordinates ="lon_rho lat_rho ocean_time" 
+    fh.variables['ubar'].coordinates ="lon_u lat_u ocean_time" 
     
-    fh.createVariable('v','f',('time','s_rho','eta_v','xi_v'));
+    fh.createVariable('v','f',('ocean_time','s_rho','eta_v','xi_v'));
     fh.variables['v'].long_name='v-momentum component'
     fh.variables['v'].units ='meter second-1'
     fh.variables['v'].time ="ocean_time" 
-    fh.variables['v'].coordinates ="lon_rho lat_rho ocean_time" 
+    fh.variables['v'].coordinates ="lon_v lat_v s_rho ocean_time" 
   
-    fh.createVariable('vbar','f',('time','eta_v','xi_v'));
+    fh.createVariable('vbar','f',('ocean_time','eta_v','xi_v'));
     fh.variables['vbar'].long_name='vertically integrated v-momentum component'
     fh.variables['vbar'].units ='meter second-1'
     fh.variables['vbar'].time = "ocean_time" 
-    fh.variables['vbar'].coordinates = "lon_rho lat_rho ocean_time" 
+    fh.variables['vbar'].coordinates = "lon_v lat_v ocean_time" 
     
-    fh.createVariable('zeta','f',('time','eta_rho','xi_rho'));
+    fh.createVariable('zeta','f',('ocean_time','eta_rho','xi_rho'));
     fh.variables['zeta'].long_name='free-surface'
     fh.variables['zeta'].units ='meter'
     fh.variables['zeta'].time = "ocean_time" 

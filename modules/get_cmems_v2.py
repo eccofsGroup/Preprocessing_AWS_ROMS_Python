@@ -1,0 +1,416 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+import sys,os,glob
+import numpy as np
+import pandas as pd
+from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator,interp1d
+from netCDF4 import Dataset
+import warnings
+
+# sys.path.append('/Users/julia/python')
+# sys.path.append('/home/julia/python')
+from roms_get_grid import roms_get_grid
+from roms_lonlat2ij import roms_lonlat2ij
+from define_obs_file import define_4dvar_obs_file, obs_provenance_definition_eccofs
+from add_history import add_history
+from accumarrays import accum3d, accum2d
+
+
+def main(fconfig):
+    input_dir = fconfig['obs']['romsobs']['CMEMS']['input_dir']
+    grd_file =fconfig['obs']['romsobs']['gridfile']
+    std_dir = fconfig['obs']['romsobs']['CMEMS']['std_dir']
+    working_directory =fconfig['obs']['romsobs']['CMEMS']['WORKING_DIRECTORY']
+    prefix = fconfig['obs']['romsobs']['CMEMS']['prefix']
+    
+    scoord = fconfig['obs']['romsobs']['scoord']
+
+    grd = roms_get_grid(grd_file, scoord)
+    [Fi,Fj] = roms_lonlat2ij(grd)
+    output_file = os.path.join(working_directory, prefix)
+    ndays=fconfig['obs']['romsobs']['ndays']
+#    end_day   = pd.Timestamp.today()- pd.Timedelta(days=1)
+    end_day = pd.Timestamp.today().normalize() - pd.Timedelta(days=1)
+    start_day = end_day - pd.Timedelta(days=ndays)
+    all_files = glob.glob(f"{output_file}*.nc")
+    all_files = [os.path.basename(f) for f in all_files]
+    ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS                                                                                             
+
+    if all_files:
+           # extract the numeric timestamp from filenames
+           d = len(prefix)
+           times = [int(fn[d:-3]) for fn in all_files]  # strip prefix & ".nc"          for fn in all_files:
+           times.sort()
+
+           # reprecess last 3 days
+           if (start_day> ref_datum + pd.Timedelta(days=times[-1])):
+               start_day = ref_datum + pd.Timedelta(days=times[-1])
+
+    days = pd.date_range(start_day, end_day, freq='D')
+    ref_datum = pd.Timestamp(2011,1,1);           # reference datum in ROMS                                                                                             
+
+
+    # Standard depth levels
+    standard_depth = np.array([0, 5, 10, 15, 20, 30, 40, 50, 60, 80, 100,
+                           125, 150, 200, 250, 300, 400, 500, 600, 700,
+                           800, 900, 1000, 1100, 1200, 1300, 1400, 1500,
+                           1750, 2000, 2500, 3000, 3500, 4000, 4500,
+                           5000, 5500])
+
+    # Midpoints between standard depths (negative for downward depth convention)
+    st_depth = - (standard_depth[:-1] + standard_depth[1:]) / 2.0
+
+    # Binning resolution
+    dTime = 1 / 24         # 1 hour in days
+    t_epsilon = 4 / 24 / 60  # 4 minutes in days
+    a = 25
+    LL, MM = grd['h'].shape
+       
+    # Create points for interpolant
+    all_pts = np.column_stack((grd['lon_rho'].ravel(), grd['lat_rho'].ravel()))
+    Fm = NearestNDInterpolator(all_pts, grd['mask_rho'].ravel())
+    
+    for day in days:
+        datestr = day.strftime('%Y%m%d')
+        print(f"Processing day {datestr}")
+        input_file = input_dir + datestr + ".nc"
+        
+        if not os.path.exists(input_file):
+            print("  file not found, skipping.")
+            continue
+        
+        # input data
+        with Dataset(input_file, 'r') as nc:
+            All = {}
+            All['obs_time'] = nc.variables['obs_time'][:]
+            All['obs_lat'] = nc.variables['obs_lat'][:]
+            All['obs_lon'] = nc.variables['obs_lon'][:]
+            All['obs_type'] = nc.variables['obs_type'][:]
+            All['obs_value'] = nc.variables['obs_value'][:]
+            All['obs_depth'] = nc.variables['obs_depth'][:]
+            All['obs_provenance'] = nc.variables['obs_provenance'][:]        
+
+        # find locations of profiles and compute ROMS grid coordinates
+        lonlat, IA, IC = np.unique((All['obs_lat'] + 1j * All['obs_lon']), return_index=True, return_inverse=True)
+
+        # Extract lat/lon from real/imag parts
+        lat = np.float64(lonlat.real);
+        lon = np.float64(lonlat.imag);
+    
+
+        xind = Fi(lon, lat);  yind = Fj(lon, lat);
+        All['obs_Xgrid'] = xind[IC]; 
+        All['obs_Ygrid'] = yind[IC];
+        
+        # Find boolean mask for points outside the grid or with invalid depth/value
+        outside = np.where(np.isnan(All['obs_Xgrid']) | np.isnan(All['obs_Ygrid']) |
+                    (All['obs_Xgrid'] < 0) | (All['obs_Ygrid'] < 0) |
+                    (All['obs_Xgrid'] > MM - 1) | (All['obs_Ygrid'] > LL - 1) |
+                    (All['obs_depth'] < 0) | (All['obs_value'] == 0) |
+                    (Fm(All['obs_lon'], All['obs_lat'])==0))[0]  
+       
+        # remove masked points
+        var_names = list(All.keys())
+
+        # Loop through each variable and remove entries at indices in 'outside'
+        for var in var_names:
+            All[var] = np.delete(All[var], outside)
+
+
+        # Find CTD (provenance 807) indices
+#        ind = np.where(All['obs_provenance'] == 807)[0]
+
+#        if len(ind) > 0:
+#            NN = len(ind) * a
+
+            # Create repeated time offsets (from -1 to 1 in steps of 2/24)
+#            rep = np.tile(np.arange(-1, 1 + 1e-8, 2 / 24), (len(ind), 1))  # shape (len(ind), KK)
+
+#            # Repeat the CTD times across KK columns and add offsets
+#            repeated_times = np.tile(All['obs_time'][ind], (a, 1)).T + rep
+#            all_rep = {}
+#            all_rep['obs_time'] = repeated_times.reshape(NN, 1)
+
+            # Repeat other variables (skip 'time')
+#            for var in var_names[1:]:
+#                all_rep[var] = np.tile(All[var][ind], (a, 1)).T.reshape(NN, 1)
+
+            # Replace original CTD observations with repeated ones
+#            for var in var_names:
+#                All[var] = np.delete(All[var], ind, axis=0)
+#                All[var] = np.concatenate((All[var], all_rep[var].flatten()), axis=0)        # Find indices where provenance is 807
+ 
+        # compute depth index
+        zGood = np.copy(All['obs_depth'])
+        zGood[zGood > standard_depth[-1]] = standard_depth[-1]
+        ind = np.where(standard_depth < np.max(zGood))[0]
+        standardGood = np.append(standard_depth[ind], standard_depth[ind[-1] + 1])
+        # Initialize depthBin as NaNs
+        depthBin = np.full(zGood.shape, np.nan)
+        tmp = np.copy(zGood)
+        # Bin depths by comparing to standardGood intervals
+        for j in range(1, len(standardGood)):
+            idx = np.where(tmp / standardGood[j] <= 1)[0]
+            depthBin[idx] = j - 1  # 0-based index
+            tmp[idx] = np.nan
+            
+        # Compute horizontal bin indices
+        xBin = np.floor(All['obs_Xgrid'] - np.min(All['obs_Xgrid'])).astype(int)
+        yBin = np.floor(All['obs_Ygrid'] - np.min(All['obs_Ygrid'])).astype(int)
+        # Equivalent of MATLAB sub2ind
+        varInd = np.ravel_multi_index((xBin, yBin), dims=(xBin.max()+1, yBin.max()+1))
+        timeBin = np.floor((All['obs_time'] - np.min(All['obs_time'])) / dTime).astype(int)
+        maxTime = np.max(timeBin) + 1
+        maxVar = np.max(varInd) + 1  # +1 for zero-based indexing
+        maxDepth = (np.max(depthBin) + 1).astype(int)  # Assuming depthBin is zero-based
+
+        # Use 2D binning 
+        counter = accum2d(varInd, 0, np.ones_like(All['obs_lon']), shape=(maxVar, 1), func=np.sum)
+        ill = np.where(counter > 0)[0]
+        lon = accum2d(varInd, 0, All['obs_lon'], shape=(maxVar, 1), func=np.mean)[ill].ravel()  
+        lat = accum2d(varInd, 0, All['obs_lat'], shape=(maxVar, 1),func=np.mean)[ill].ravel() 
+        xind = accum2d(varInd, 0, All['obs_Xgrid'], shape=(maxVar, 1),func=np.mean)[ill].ravel() 
+        yind = accum2d(varInd, 0, All['obs_Ygrid'], shape=(maxVar, 1),func=np.mean)[ill].ravel()
+        time = accum2d(timeBin, 0, All['obs_time'], shape=(maxTime, 1),func=np.mean).ravel()
+        # Use 2D binning 
+    
+        #time = accum2d(varInd, timeBin, All['obs_time'], shape=(maxVar, maxTime),func=np.mean)
+        #time = time[ill,:]
+ 
+        # Compute z_r by interpolating Fbackground at each vertical level
+        M = len(lon)  # lon is a 1D array of length M
+        z_r = np.full((grd['N'], M), np.nan)
+        for i in range(grd['N']):
+            values = grd['z_r'][i, :].ravel()  # 1D array same shape as points
+            interpolator = LinearNDInterpolator(all_pts, values)
+            z_r[i, :] = interpolator(lon, lat)  # interpolate at (lon, lat) pairs
+        # Pad z_r to handle observations above/below the grid
+        z_r = np.vstack((-9999 * np.ones((1, M)), z_r, np.zeros((1, M))))
+
+        # Interpolate vertical grid index at observation depths
+        Zgrid = np.full((maxDepth, M), np.nan)
+        for i in range(M):
+            target = np.concatenate([[1], np.arange(1, grd['N']+1 ), [grd['N']]])
+            interp_func = interp1d(z_r[:, i], target, bounds_error=False, fill_value=np.nan)
+            Zgrid[:, i] = interp_func(st_depth[:maxDepth])
+
+        # Compute provenance-based superobs flags
+        prov = np.unique(All['obs_provenance'])
+        Lp = len(prov)
+        mult = 100.0 ** np.arange(Lp)
+        flag = np.zeros_like(All['obs_provenance'], dtype=float)
+        for lp in range(Lp):
+            flag[All['obs_provenance'] == prov[lp]] = mult[lp]
+
+        # --- Temperature superobs ---
+        indT = np.where(All['obs_type'] == 6)[0]
+        Temp = accum3d(depthBin[indT], varInd[indT], timeBin[indT], All['obs_value'][indT], shape=(maxDepth, maxVar, maxTime),func=np.mean)
+        flag_t = accum3d(depthBin[indT], varInd[indT], timeBin[indT], flag[indT], shape=(maxDepth, maxVar, maxTime), func=np.sum)
+
+        # --- Salinity superobs ---
+        indS = np.where(All['obs_type'] == 7)[0]
+        Salt = accum3d(depthBin[indS], varInd[indS], timeBin[indS], All['obs_value'][indS], shape=(maxDepth, maxVar, maxTime),func=np.mean)
+        flag_s = accum3d(depthBin[indS], varInd[indS], timeBin[indS], flag[indS], shape=(maxDepth, maxVar, maxTime), func=np.sum)
+        
+        # Apply valid spatial mask (ill)
+        Temp = Temp[:, ill, :]
+        Salt = Salt[:, ill, :]
+        flag_t = flag_t[:, ill, :]
+        flag_s = flag_s[:, ill, :]
+        
+        ll, ii, kk = Temp.shape
+
+        # make all the fields the same shape 
+        lon_3d = np.tile(lon.reshape(1, ii, 1), (ll, 1, kk))
+        lat_3d = np.tile(lat.reshape(1, ii, 1), (ll, 1, kk))
+        Xgrid_3d = np.tile(xind.reshape(1, ii, 1), (ll, 1, kk))
+        Ygrid_3d = np.tile(yind.reshape(1, ii, 1), (ll, 1, kk))
+        depth_3d = np.tile(st_depth[:ll].reshape(ll, 1, 1), (1, ii, kk))
+        Zgrid_3d = np.tile(Zgrid.reshape(ll, ii, 1), (1, 1, kk))
+        #time_3d = np.tile(time.reshape(1, ii, kk), (ll, 1, 1))
+        time_3d = np.tile(time.reshape(1, 1, kk), (ll, ii, 1))
+
+        # Find valid (non-NaN) entries in Temp and Salt
+        goodT = np.where(~np.isnan(Temp))
+        goodS = np.where(~np.isnan(Salt))
+
+        # Combine valid data from Temp and Salt
+        B = {}
+
+        # Use advanced indexing and flatten values
+        B['obs_value'] = np.concatenate([Temp[goodT], Salt[goodS]])
+        B['obs_lon'] = np.concatenate([lon_3d[goodT], lon_3d[goodS]])
+        B['obs_lat'] = np.concatenate([lat_3d[goodT], lat_3d[goodS]])
+        B['obs_Xgrid'] = np.concatenate([Xgrid_3d[goodT], Xgrid_3d[goodS]])
+        B['obs_Ygrid'] = np.concatenate([Ygrid_3d[goodT], Ygrid_3d[goodS]])
+        B['obs_depth'] = np.concatenate([Zgrid_3d[goodT], Zgrid_3d[goodS]])
+        B['depth'] = np.concatenate([depth_3d[goodT], depth_3d[goodS]])
+        B['obs_Zgrid'] = np.concatenate([Zgrid_3d[goodT], Zgrid_3d[goodS]])
+        B['obs_time'] = np.concatenate([time_3d[goodT], time_3d[goodS]])
+
+        # Observation types: 6 for temperature, 7 for salinity
+        B['obs_type'] = np.concatenate([
+                np.full_like(Temp[goodT], 6, dtype=int),
+                np.full_like(Salt[goodS], 7, dtype=int)
+        ])
+        B['obs_error'] = np.ones(len(B['obs_value']))
+ 
+        # Combine flags
+        flag = np.concatenate([flag_t[goodT], flag_s[goodS]])
+        flag_ind = np.zeros((len(flag), Lp), dtype=int)
+        for ix, p in enumerate(prov):
+            # digit at place idx is floor(flag_b/mult[idx]) % 10, capped at 1                                                                                  
+            digit = (flag // mult[ix]) % 100
+            flag_ind[:, ix] = p * np.minimum(1, digit)
+            
+        # identify rows where sum across prov‐levels is zero (no obs)                                                                                          
+        no_obs = np.sum(flag_ind, axis=1) == 0
+
+        # build string labels with concatenated digits, replacing zero‐rows with '0'                                                                           
+        labels = []
+        for i, row in enumerate(flag_ind):
+            if no_obs[i]:
+                labels.append('0')
+            else:
+                # join nonzero digits into string                                                                                                              
+                s = ''.join(str(d) for d in row if d != 0)
+                labels.append(s or '0')
+
+        # convert labels back to integers                                                                                                                      
+        B['obs_label'] = np.array([int(s) for s in labels], dtype=int)
+        B['obs_provenance'] = np.copy(B['obs_label'])   
+        B['obs_provenance'][B['obs_label'] > 999] = 800
+        
+         
+        # Find the unique survey times and inverse mapping 
+        B['obs_time'] = np.round(B['obs_time'], 8)
+        survey_time, It, Is = np.unique(B['obs_time'], return_index=True, return_inverse=True)
+        # Prepare working arrays                                                                                                                               
+        time_tmp = survey_time.copy()
+        time_new = np.zeros_like(survey_time)
+
+        #  Merge “close” survey times within t_epsilon                                                                                                         
+        for j in range(len(survey_time)):
+            if not np.isnan(time_tmp[j]):
+                # find all survey_time within t_epsilon of survey_time[j]                                                                                      
+                close = np.where(np.abs(time_tmp - time_tmp[j]).astype(np.float32) < t_epsilon)[0]
+                # assign the master time to all close entries                                                                                                  
+                time_new[close] = time_tmp[j]
+                # update obs_time for every original observation in each close group                                                                           
+                # report if we merged more than one                                                                                                            
+                if close.size > 1:
+                    for idx in close:
+                        B['obs_time'][Is == idx] = time_new[idx]
+
+                    merged = survey_time[close]
+                    print(f"   merging surveys at times {merged} ")
+                    # mark these as done                                                                                                                       
+                    time_tmp[close] = np.nan
+
+        # sort the data first by time then by type
+        tmp = 1.e9*B['obs_time'] + B['obs_type'];
+        ind = np.argsort(tmp)
+        var_names = list(B.keys())
+        for var in var_names:
+            B[var] = B[var][ind];
+
+
+        # Recompute unique survey times after merging                                                                                                          
+        survey_time, It, Is = np.unique( B['obs_time'], return_index=True, return_inverse=True)
+            
+        # Count how many observations per survey time                                                                                                          
+        #    (Is contains the survey index for each obs_time entry)                                                                                            
+        Nobs = np.bincount(Is, minlength=survey_time.size)
+       
+ 
+        # Convert Python datetime `day` to days since ROMS ref_datum
+        days_since_base = (day - ref_datum).days
+        output_fname = f"{output_file}{days_since_base:04d}.nc"
+        
+        # model standard deviation file for scaling observation error
+        tt = str(int(np.floor(max(1, days_since_base % 365.25))))
+        stdfile = f"{std_dir}{tt}.nc"
+        profile_obs_error(stdfile, B, grd)
+
+        
+        survey = len(survey_time)
+        if survey > 0:
+            define_4dvar_obs_file(output_fname,survey,obs_provenance_definition_eccofs())
+            ds = Dataset(output_fname, 'a')
+            ds.history = "CMEMS near real time data transformed into 4DVAR format"
+            ds.variables['spherical'][0] = 'T'
+            ds.variables['Nobs'][:] = Nobs
+            ds.variables['survey_time'][:] = survey_time
+            ds.variables['obs_variance'][:] = np.ones(7)
+
+            for var in var_names:
+                ds.variables[var][:] = B[var]
+            ds.close()
+            
+            addhistory = (
+            "Observations of temperature and salinity, downloaded from CMEMS"   
+            "Prepared by Julia Levin. "
+            )
+            add_history(output_fname, addhistory)
+            
+def profile_obs_error(stdfile, data, grd):
+ 
+     
+    with Dataset(stdfile, 'r') as ds:
+        temp_std = np.squeeze(ds.variables['temp'][:])
+        salt_std = np.squeeze(ds.variables['salt'][:])
+
+
+    # Temperature observations (obs_type == 6)
+    ind = np.where(data['obs_type'] == 6)[0]
+    z = np.floor(data['obs_depth'][ind]).astype(int)-1
+    y = np.floor(data['obs_Ygrid'][ind]).astype(int)
+    x = np.floor(data['obs_Xgrid'][ind]).astype(int)
+
+    for i in range(len(ind)):
+            zN = grd['z_r'][:, y[i], x[i]]
+            if z[i] >= 0:
+                data['obs_error'][ind[i]] = temp_std[z[i], y[i], x[i]]
+            else:       # if obs_depth is given as depth, not as index
+                if z[i] > zN[-1]:
+                    data['obs_error'][ind[i]] = temp_std[-1, y[i], x[i]]
+                elif z[i] < zN[0]:
+                    data['obs_error'][ind[i]] = temp_std[0, y[i], x[i]]
+                else:
+                    f = interp1d(zN, temp_std[:, y[i], x[i]], bounds_error=False, fill_value="extrapolate")
+                    data['obs_error'][ind[i]] = f(z[i])
+    # Clip 
+    data['obs_error'][ind] = np.clip(data['obs_error'][ind], a_min=0.1, a_max=None)
+
+ 
+    # Salinity observations (obs_type == 7)
+    ind = np.where(data['obs_type'] == 7)[0]
+    z = np.floor(data['obs_depth'][ind]).astype(int)-1
+    y = np.floor(data['obs_Ygrid'][ind]).astype(int)
+    x = np.floor(data['obs_Xgrid'][ind]).astype(int)
+
+    for i in range(len(ind)):
+            zN = grd['z_r'][:, y[i], x[i]]
+            if z[i] > 0:
+                data['obs_error'][ind[i]] = salt_std[int(np.floor(z[i])), y[i], x[i]]
+            else:
+                if z[i] >= zN[-1]:
+                    data['obs_error'][ind[i]] = salt_std[-1, y[i], x[i]]
+                elif z[i] < zN[0]:
+                    data['obs_error'][ind[i]] = salt_std[0, y[i], x[i]]
+                else:
+                    f = interp1d(zN, salt_std[:, y[i], x[i]], bounds_error=False, fill_value="extrapolate")
+                    data['obs_error'][ind[i]] = f(z[i])
+
+    # Clip and square the error
+    data['obs_error'][ind] = np.clip(data['obs_error'][ind], a_min=0.04, a_max=None)
+    data['obs_error'] = data['obs_error'] ** 2
+            
+#if __name__ == "__main__":
+#    warnings.filterwarnings("ignore")
+
+#    get_cmems()
+
+
+

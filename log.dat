@@ -1,1995 +1,0 @@
-STARTING ECCOFS driver
-RUNNING DRIVER
-OBS driver initializing
-Get GLOFAS Rivers Data
-Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc
----------------------------
-DOWNLOADING GLOFAS 2025-08-10 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250811.nc
-2025-08-12 09:26:58,311 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
-2025-08-12 09:26:58,613 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
-2025-08-12 09:26:58,613 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
-[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
-before downloading the dataset.
-2025-08-12 09:26:58,613 INFO Request ID is 27f457b7-1e7f-4878-8c13-16e35aec21e1
-2025-08-12 09:26:58,737 INFO status has been updated to accepted
-2025-08-12 09:27:32,207 INFO status has been updated to successful
-18065ae26d03823f58a9fe771fc7de6c.nc:   0%|          | 0.00/10.2M [00:00<?, ?B/s]18065ae26d03823f58a9fe771fc7de6c.nc:  10%|▉         | 1.00M/10.2M [00:00<00:08, 1.14MB/s]18065ae26d03823f58a9fe771fc7de6c.nc:  30%|██▉       | 3.00M/10.2M [00:01<00:02, 3.64MB/s]18065ae26d03823f58a9fe771fc7de6c.nc:  59%|█████▉    | 6.00M/10.2M [00:01<00:00, 6.44MB/s]18065ae26d03823f58a9fe771fc7de6c.nc:  98%|█████████▊| 10.0M/10.2M [00:01<00:00, 11.7MB/s]                                                                                         **********************************
-input file load time: 0.22591209411621094 seconds
-Disharge variable extraction time: 6.866455078125e-05 seconds
-<xarray.Dataset> Size: 6kB
-Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
-                              points: 93)
-Coordinates:
-    number                   int64 8B 0
-  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
-  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
-    surface                  float64 8B 0.0
-    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
-    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
-    time                     (forecast_period) datetime64[ns] 88B 2025-08-11 ...
-Dimensions without coordinates: points
-Data variables:
-    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
-Attributes:
-    GRIB_edition:            2
-    GRIB_centre:             ecmf
-    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
-    GRIB_subCentre:          0
-    Conventions:             CF-1.7
-    institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2025-08-12T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc
-Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250811.nc
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250811.nc
-Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc
----------------------------
-DOWNLOADING GLOFAS 2025-08-09 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250810.nc
-2025-08-12 09:27:37,687 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
-2025-08-12 09:27:38,000 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
-2025-08-12 09:27:38,000 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
-[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
-before downloading the dataset.
-2025-08-12 09:27:38,000 INFO Request ID is b3a022f8-7561-40c9-ae3e-c06209480c64
-2025-08-12 09:27:38,118 INFO status has been updated to accepted
-2025-08-12 09:27:52,034 INFO status has been updated to successful
-2293e943df3fa944e8c08cb632d3557f.nc:   0%|          | 0.00/10.2M [00:00<?, ?B/s]2293e943df3fa944e8c08cb632d3557f.nc:  10%|▉         | 1.00M/10.2M [00:00<00:08, 1.19MB/s]2293e943df3fa944e8c08cb632d3557f.nc:  29%|██▉       | 3.00M/10.2M [00:00<00:01, 3.91MB/s]2293e943df3fa944e8c08cb632d3557f.nc:  59%|█████▉    | 6.00M/10.2M [00:01<00:00, 8.42MB/s]2293e943df3fa944e8c08cb632d3557f.nc:  88%|████████▊ | 9.00M/10.2M [00:01<00:00, 12.8MB/s]                                                                                         **********************************
-input file load time: 0.21359992027282715 seconds
-Disharge variable extraction time: 3.600120544433594e-05 seconds
-<xarray.Dataset> Size: 6kB
-Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
-                              points: 93)
-Coordinates:
-    number                   int64 8B 0
-  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
-  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
-    surface                  float64 8B 0.0
-    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
-    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
-    time                     (forecast_period) datetime64[ns] 88B 2025-08-10 ...
-Dimensions without coordinates: points
-Data variables:
-    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
-Attributes:
-    GRIB_edition:            2
-    GRIB_centre:             ecmf
-    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
-    GRIB_subCentre:          0
-    Conventions:             CF-1.7
-    institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2025-08-11T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc
-Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250810.nc
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250810.nc
-Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc
----------------------------
-DOWNLOADING GLOFAS 2025-08-08 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250809.nc
-2025-08-12 09:27:55,150 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
-2025-08-12 09:27:55,467 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
-2025-08-12 09:27:55,467 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
-[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
-before downloading the dataset.
-2025-08-12 09:27:55,467 INFO Request ID is 91a7cf60-84b5-4605-8aca-11e15e37b6f5
-2025-08-12 09:27:55,628 INFO status has been updated to accepted
-2025-08-12 09:28:09,632 INFO status has been updated to running
-2025-08-12 09:28:17,529 INFO status has been updated to successful
-276c5fbbb4d7a24faff8ef4b6fced1e8.nc:   0%|          | 0.00/10.2M [00:00<?, ?B/s]276c5fbbb4d7a24faff8ef4b6fced1e8.nc:  10%|▉         | 1.00M/10.2M [00:00<00:07, 1.22MB/s]276c5fbbb4d7a24faff8ef4b6fced1e8.nc:  39%|███▉      | 4.00M/10.2M [00:01<00:01, 4.95MB/s]276c5fbbb4d7a24faff8ef4b6fced1e8.nc:  88%|████████▊ | 9.00M/10.2M [00:01<00:00, 12.2MB/s]                                                                                         **********************************
-input file load time: 0.21404743194580078 seconds
-Disharge variable extraction time: 4.220008850097656e-05 seconds
-<xarray.Dataset> Size: 6kB
-Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
-                              points: 93)
-Coordinates:
-    number                   int64 8B 0
-  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
-  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
-    surface                  float64 8B 0.0
-    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
-    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
-    time                     (forecast_period) datetime64[ns] 88B 2025-08-09 ...
-Dimensions without coordinates: points
-Data variables:
-    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
-Attributes:
-    GRIB_edition:            2
-    GRIB_centre:             ecmf
-    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
-    GRIB_subCentre:          0
-    Conventions:             CF-1.7
-    institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2025-08-10T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc
-Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250809.nc
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250809.nc
-Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250808.nc
----------------------------
-DOWNLOADING GLOFAS 2025-08-07 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250808.nc
-2025-08-12 09:28:19,906 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
-2025-08-12 09:28:20,447 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
-2025-08-12 09:28:20,447 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
-[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
-before downloading the dataset.
-2025-08-12 09:28:20,447 INFO Request ID is 73c8d795-ae75-4e9e-be14-c5bb3b4a3f8a
-2025-08-12 09:28:20,575 INFO status has been updated to accepted
-2025-08-12 09:28:34,662 INFO status has been updated to successful
-5d03f507e359d43c156157ba1d21ea20.nc:   0%|          | 0.00/10.1M [00:00<?, ?B/s]5d03f507e359d43c156157ba1d21ea20.nc:  10%|▉         | 1.00M/10.1M [00:00<00:07, 1.20MB/s]5d03f507e359d43c156157ba1d21ea20.nc:  30%|██▉       | 3.00M/10.1M [00:01<00:02, 3.42MB/s]5d03f507e359d43c156157ba1d21ea20.nc:  69%|██████▉   | 7.00M/10.1M [00:01<00:00, 9.00MB/s]                                                                                         **********************************
-input file load time: 0.21117424964904785 seconds
-Disharge variable extraction time: 3.600120544433594e-05 seconds
-<xarray.Dataset> Size: 6kB
-Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
-                              points: 93)
-Coordinates:
-    number                   int64 8B 0
-  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
-  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
-    surface                  float64 8B 0.0
-    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
-    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
-    time                     (forecast_period) datetime64[ns] 88B 2025-08-08 ...
-Dimensions without coordinates: points
-Data variables:
-    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
-Attributes:
-    GRIB_edition:            2
-    GRIB_centre:             ecmf
-    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
-    GRIB_subCentre:          0
-    Conventions:             CF-1.7
-    institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2025-08-09T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250808.nc
-Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250808.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250808.nc
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250808.nc
-Creating Rivers file: /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250807.nc
----------------------------
-DOWNLOADING GLOFAS 2025-08-06 09:26:57.891249 forecast to /home/om/cron/ECCOFS_OBS/RIVERS/data/raw/daily/GLOFAS_GRIDDED_FORECAST_20250807.nc
-2025-08-12 09:28:37,084 INFO [2024-09-26T00:00:00] Watch our [Forum]( https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
-2025-08-12 09:28:37,411 INFO [2024-02-01T00:00:00] Please note that accessing this dataset via CDS for time-critical operation is not advised or supported
-2025-08-12 09:28:37,411 INFO [2024-02-01T00:00:00] Please note we suggest checking the list of known issues on the GloFAS wiki
-[here](https://confluence.ecmwf.int/display/CEMS/GloFAS+-+Known+Issues)
-before downloading the dataset.
-2025-08-12 09:28:37,411 INFO Request ID is 8d0a93c3-f387-4c65-ba6a-7fbae76622b4
-2025-08-12 09:28:37,656 INFO status has been updated to accepted
-2025-08-12 09:28:51,745 INFO status has been updated to running
-2025-08-12 09:28:59,514 INFO status has been updated to successful
-237e0b5b17d43b168bfb59b7b71d5988.nc:   0%|          | 0.00/10.2M [00:00<?, ?B/s]237e0b5b17d43b168bfb59b7b71d5988.nc:  10%|▉         | 1.00M/10.2M [00:00<00:08, 1.19MB/s]237e0b5b17d43b168bfb59b7b71d5988.nc:  30%|██▉       | 3.00M/10.2M [00:00<00:01, 3.92MB/s]237e0b5b17d43b168bfb59b7b71d5988.nc:  59%|█████▉    | 6.00M/10.2M [00:01<00:00, 8.43MB/s]237e0b5b17d43b168bfb59b7b71d5988.nc:  79%|███████▊  | 8.00M/10.2M [00:01<00:00, 8.76MB/s]                                                                                         **********************************
-input file load time: 0.21192216873168945 seconds
-Disharge variable extraction time: 4.696846008300781e-05 seconds
-<xarray.Dataset> Size: 6kB
-Dimensions:                  (forecast_period: 11, forecast_reference_time: 1,
-                              points: 93)
-Coordinates:
-    number                   int64 8B 0
-  * forecast_period          (forecast_period) timedelta64[ns] 88B 1 days ......
-  * forecast_reference_time  (forecast_reference_time) datetime64[ns] 8B 2025...
-    surface                  float64 8B 0.0
-    latitude                 (points) float64 744B 49.23 48.13 ... 15.93 9.425
-    longitude                (points) float64 744B 291.6 290.3 ... 275.1 288.9
-    time                     (forecast_period) datetime64[ns] 88B 2025-08-07 ...
-Dimensions without coordinates: points
-Data variables:
-    dis24                    (forecast_period, forecast_reference_time, points) float32 4kB ...
-Attributes:
-    GRIB_edition:            2
-    GRIB_centre:             ecmf
-    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
-    GRIB_subCentre:          0
-    Conventions:             CF-1.7
-    institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2025-08-08T07:35 GRIB to CDM+CF via cfgrib-0.9.1...
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250807.nc
-Splitting the rivers file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250807.nc into /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_splitrivers_file_3km_20250807.nc
-Writing River data to file /home/om/cron/ECCOFS_OBS/RIVERS/data/processed/daily/ECCOFS_rivers_file_3km_20250807.nc
-Rivers file time: 124.30403232574463 seconds
-Get Mercator Data
-Getting Mercator Data
-2025-08-09 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:29:04Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:29:04Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:29:07Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:29:09Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:28, 29.64s/it]100%|██████████| 4/4 [00:29<00:00,  7.41s/it]
-INFO - 2025-08-12T13:29:39Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:29:41Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:29:41Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:29:43Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:29:45Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:28, 29.54s/it]100%|██████████| 4/4 [00:29<00:00,  7.40s/it]
-INFO - 2025-08-12T13:30:15Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:30:16Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:30:16Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:30:19Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:30:21Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:29, 30.00s/it] 38%|███▊      | 3/8 [00:32<00:43,  8.70s/it] 62%|██████▎   | 5/8 [00:49<00:26,  8.69s/it] 88%|████████▊ | 7/8 [00:50<00:05,  5.18s/it]100%|██████████| 8/8 [00:50<00:00,  6.33s/it]
-INFO - 2025-08-12T13:31:11Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:31:13Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:31:13Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:31:18Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.16s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.28it/s]100%|██████████| 4/4 [00:01<00:00,  2.61it/s]
-INFO - 2025-08-12T13:31:19Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_09.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_09.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_09.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_09.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_09.nc
-2025-08-10 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:31:25Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:31:25Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:31:27Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:31:29Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.81s/it] 75%|███████▌  | 3/4 [00:39<00:11, 11.42s/it]100%|██████████| 4/4 [00:39<00:00,  9.87s/it]
-INFO - 2025-08-12T13:32:09Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:32:11Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:32:11Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:32:13Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:32:15Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.08s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.42s/it]100%|██████████| 4/4 [00:31<00:00,  7.86s/it]
-INFO - 2025-08-12T13:32:47Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:32:48Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:32:48Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:32:51Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:32:53Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:27, 29.59s/it] 62%|██████▎   | 5/8 [00:30<00:13,  4.56s/it] 88%|████████▊ | 7/8 [00:30<00:02,  2.90s/it]100%|██████████| 8/8 [00:30<00:00,  3.83s/it]
-INFO - 2025-08-12T13:33:24Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:33:25Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:33:25Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:33:30Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:04,  1.52s/it] 75%|███████▌  | 3/4 [00:07<00:02,  2.45s/it]100%|██████████| 4/4 [00:07<00:00,  1.77s/it]
-INFO - 2025-08-12T13:33:37Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_10.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_10.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_10.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_10.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_10.nc
-2025-08-11 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:33:42Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:33:42Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:33:44Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:33:47Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.33s/it]100%|██████████| 4/4 [00:29<00:00,  7.33s/it]
-INFO - 2025-08-12T13:34:16Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:34:18Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:34:18Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:34:20Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:34:22Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.74s/it] 75%|███████▌  | 3/4 [01:23<00:27, 27.85s/it]100%|██████████| 4/4 [01:23<00:00, 20.96s/it]
-INFO - 2025-08-12T13:35:46Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:35:48Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:35:48Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:35:50Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:35:53Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:28, 29.75s/it] 62%|██████▎   | 5/8 [00:30<00:13,  4.56s/it]100%|██████████| 8/8 [00:30<00:00,  3.80s/it]
-INFO - 2025-08-12T13:36:23Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:36:25Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:36:25Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:36:29Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.17s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.10it/s]100%|██████████| 4/4 [00:01<00:00,  2.44it/s]
-INFO - 2025-08-12T13:36:31Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_11.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_11.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_11.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_11.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_11.nc
-2025-08-12 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:36:37Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:36:37Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:36:39Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:36:41Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:25, 28.46s/it]100%|██████████| 4/4 [00:28<00:00,  7.13s/it]
-INFO - 2025-08-12T13:37:09Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:37:11Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:37:11Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:37:13Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:37:15Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.95s/it]100%|██████████| 4/4 [00:28<00:00,  7.24s/it]
-INFO - 2025-08-12T13:37:44Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:37:46Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:37:46Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:37:48Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:37:50Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:26, 29.46s/it] 62%|██████▎   | 5/8 [00:31<00:14,  4.74s/it] 88%|████████▊ | 7/8 [00:31<00:02,  2.99s/it]100%|██████████| 8/8 [00:31<00:00,  3.92s/it]
-INFO - 2025-08-12T13:38:22Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:38:24Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:38:24Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:38:29Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.22s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.38it/s]100%|██████████| 4/4 [00:01<00:00,  2.67it/s]
-INFO - 2025-08-12T13:38:30Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_12.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_12.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_12.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_12.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_12.nc
-2025-08-13 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:38:36Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:38:36Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:38:38Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:38:40Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:24, 28.04s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.43s/it]100%|██████████| 4/4 [00:28<00:00,  7.12s/it]
-INFO - 2025-08-12T13:39:09Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:39:12Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:39:12Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:39:14Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:39:16Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.70s/it]100%|██████████| 4/4 [00:28<00:00,  7.18s/it]
-INFO - 2025-08-12T13:39:45Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:39:46Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:39:46Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:39:49Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:39:51Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:23, 29.02s/it] 62%|██████▎   | 5/8 [00:29<00:13,  4.47s/it]100%|██████████| 8/8 [00:29<00:00,  3.71s/it]
-INFO - 2025-08-12T13:40:21Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:40:23Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:40:23Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:40:27Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:07<00:21,  7.13s/it] 75%|███████▌  | 3/4 [00:08<00:02,  2.28s/it]100%|██████████| 4/4 [00:08<00:00,  2.08s/it]
-INFO - 2025-08-12T13:40:35Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_13.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_13.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_13.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_13.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_13.nc
-2025-08-14 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:40:41Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:40:41Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:40:43Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:40:46Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:27<01:23, 27.70s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.53s/it]100%|██████████| 4/4 [00:28<00:00,  7.16s/it]
-INFO - 2025-08-12T13:41:14Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:41:16Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:41:16Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:41:18Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:41:20Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.97s/it] 75%|███████▌  | 3/4 [00:39<00:11, 11.52s/it]100%|██████████| 4/4 [00:39<00:00,  9.95s/it]
-INFO - 2025-08-12T13:42:00Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:42:02Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:42:02Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:42:04Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:42:06Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:30<03:34, 30.65s/it] 38%|███▊      | 3/8 [00:45<01:07, 13.50s/it] 62%|██████▎   | 5/8 [00:48<00:21,  7.29s/it]100%|██████████| 8/8 [00:48<00:00,  6.06s/it]
-INFO - 2025-08-12T13:42:55Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:42:57Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:42:57Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:43:01Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.17s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.04it/s]100%|██████████| 4/4 [00:01<00:00,  2.39it/s]
-INFO - 2025-08-12T13:43:03Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_14.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_14.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_14.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_14.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_14.nc
-2025-08-15 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:43:09Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:43:09Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:43:11Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:43:13Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:27<01:23, 27.75s/it] 75%|███████▌  | 3/4 [00:27<00:07,  7.26s/it]100%|██████████| 4/4 [00:27<00:00,  6.98s/it]
-INFO - 2025-08-12T13:43:41Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:43:43Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:43:43Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:43:45Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:43:47Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:27<01:21, 27.02s/it] 75%|███████▌  | 3/4 [00:27<00:07,  7.35s/it]100%|██████████| 4/4 [00:27<00:00,  6.99s/it]
-INFO - 2025-08-12T13:44:15Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:44:17Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:44:17Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:44:19Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:44:22Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:27<03:13, 27.70s/it] 38%|███▊      | 3/8 [00:28<00:37,  7.52s/it] 62%|██████▎   | 5/8 [00:29<00:11,  3.97s/it]100%|██████████| 8/8 [00:29<00:00,  3.74s/it]
-INFO - 2025-08-12T13:44:52Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:44:53Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:44:53Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:44:58Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.12s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.35it/s]100%|██████████| 4/4 [00:01<00:00,  2.70it/s]
-INFO - 2025-08-12T13:44:59Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_15.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_15.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_15.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_15.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_15.nc
-2025-08-16 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:45:05Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:45:05Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:45:07Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:45:09Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.82s/it] 75%|███████▌  | 3/4 [00:29<00:07,  7.60s/it]100%|██████████| 4/4 [00:29<00:00,  7.29s/it]
-INFO - 2025-08-12T13:45:38Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:45:41Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:45:41Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:45:43Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:45:45Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:27<01:23, 27.77s/it] 75%|███████▌  | 3/4 [00:28<00:07,  7.42s/it]100%|██████████| 4/4 [00:28<00:00,  7.09s/it]
-INFO - 2025-08-12T13:46:13Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:46:15Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:46:15Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:46:17Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:46:19Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:27<03:15, 27.99s/it] 62%|██████▎   | 5/8 [00:28<00:12,  4.28s/it] 88%|████████▊ | 7/8 [00:29<00:02,  2.80s/it]100%|██████████| 8/8 [00:29<00:00,  3.65s/it]
-INFO - 2025-08-12T13:46:49Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:46:51Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:46:51Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:46:55Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.24s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.39it/s]100%|██████████| 4/4 [00:01<00:00,  2.66it/s]
-INFO - 2025-08-12T13:46:57Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_16.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_16.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_16.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_16.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_16.nc
-2025-08-17 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:47:02Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:47:02Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:47:04Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:47:06Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.92s/it]100%|██████████| 4/4 [00:29<00:00,  7.25s/it]
-INFO - 2025-08-12T13:47:36Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:47:38Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:47:38Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:47:40Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:47:42Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:29, 29.92s/it]100%|██████████| 4/4 [00:29<00:00,  7.48s/it]
-INFO - 2025-08-12T13:48:12Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:48:14Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:48:14Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:48:17Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:48:19Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:28<03:18, 28.29s/it] 62%|██████▎   | 5/8 [00:28<00:12,  4.30s/it]100%|██████████| 8/8 [00:28<00:00,  3.59s/it]
-INFO - 2025-08-12T13:48:48Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:48:50Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:48:50Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:48:54Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.14s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.33it/s]100%|██████████| 4/4 [00:01<00:00,  2.67it/s]
-INFO - 2025-08-12T13:48:56Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_17.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_17.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_17.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_17.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_17.nc
-2025-08-18 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:49:02Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:49:02Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:49:04Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:49:06Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:31<01:33, 31.11s/it] 75%|███████▌  | 3/4 [00:31<00:08,  8.27s/it]100%|██████████| 4/4 [00:31<00:00,  7.92s/it]
-INFO - 2025-08-12T13:49:38Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:49:40Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:49:40Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:49:42Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:49:44Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:30<01:32, 30.93s/it]100%|██████████| 4/4 [00:30<00:00,  7.74s/it]
-INFO - 2025-08-12T13:50:15Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:50:17Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:50:17Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:50:19Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:50:21Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:32<03:50, 32.94s/it] 38%|███▊      | 3/8 [00:40<00:56, 11.29s/it] 88%|████████▊ | 7/8 [00:41<00:03,  3.84s/it]100%|██████████| 8/8 [00:41<00:00,  5.21s/it]
-INFO - 2025-08-12T13:51:03Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:51:05Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:51:05Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:51:09Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.14s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.10it/s]100%|██████████| 4/4 [00:01<00:00,  2.46it/s]
-INFO - 2025-08-12T13:51:11Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_18.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_18.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_18.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_18.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_18.nc
-2025-08-19 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:51:17Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:51:17Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:51:19Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:51:21Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.03s/it] 75%|███████▌  | 3/4 [00:29<00:07,  7.62s/it]100%|██████████| 4/4 [00:29<00:00,  7.32s/it]
-INFO - 2025-08-12T13:51:51Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:51:52Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:51:52Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:51:54Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:51:57Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.09s/it] 75%|███████▌  | 3/4 [00:29<00:07,  7.58s/it]100%|██████████| 4/4 [00:29<00:00,  7.30s/it]
-INFO - 2025-08-12T13:52:26Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:52:28Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:52:28Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:52:30Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:52:32Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:30<03:32, 30.35s/it] 38%|███▊      | 3/8 [00:30<00:39,  7.95s/it] 62%|██████▎   | 5/8 [00:31<00:12,  4.12s/it]100%|██████████| 8/8 [00:31<00:00,  3.95s/it]
-INFO - 2025-08-12T13:53:04Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:53:08Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:53:08Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:53:13Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.10s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.30it/s]100%|██████████| 4/4 [00:01<00:00,  2.66it/s]
-INFO - 2025-08-12T13:53:14Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_19.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_19.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_19.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_19.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_19.nc
-2025-08-20 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:53:20Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:53:20Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:53:22Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:53:24Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:28<01:26, 28.91s/it] 75%|███████▌  | 3/4 [00:32<00:08,  8.72s/it]100%|██████████| 4/4 [00:32<00:00,  8.06s/it]
-INFO - 2025-08-12T13:53:56Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:53:59Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:53:59Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:54:02Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:54:04Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:27, 29.29s/it]100%|██████████| 4/4 [00:29<00:00,  7.34s/it]
-INFO - 2025-08-12T13:54:33Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:54:35Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:54:35Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:54:37Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:54:39Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:29<03:28, 29.84s/it] 38%|███▊      | 3/8 [00:30<00:39,  7.86s/it] 62%|██████▎   | 5/8 [00:30<00:11,  3.98s/it]100%|██████████| 8/8 [00:30<00:00,  3.86s/it]
-INFO - 2025-08-12T13:55:10Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:55:12Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:55:12Z - Selected dataset part: "default"
-INFO - 2025-08-12T13:55:16Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.10s/it] 75%|███████▌  | 3/4 [00:01<00:00,  1.99it/s]100%|██████████| 4/4 [00:01<00:00,  2.37it/s]
-INFO - 2025-08-12T13:55:18Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_20.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_20.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_20.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_20.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_20.nc
-2025-08-21 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:55:24Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:55:24Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:55:26Z - Some of your subset selection [2025-08-21 00:00:00+00:00, 2025-08-21 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-21 00:00:00+00:00]
-WARNING - 2025-08-12T13:55:26Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:55:28Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:28, 29.36s/it]100%|██████████| 4/4 [00:29<00:00,  7.34s/it]
-INFO - 2025-08-12T13:55:57Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc
-TMP_thetao.nc
-cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m
-['thetao']
-INFO - 2025-08-12T13:55:59Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:55:59Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:56:01Z - Some of your subset selection [2025-08-21 00:00:00+00:00, 2025-08-21 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-21 00:00:00+00:00]
-WARNING - 2025-08-12T13:56:01Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:56:03Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:29<01:29, 29.74s/it]100%|██████████| 4/4 [00:29<00:00,  7.44s/it]
-INFO - 2025-08-12T13:56:33Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc
-TMP_uv.nc
-cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m
-['uo', 'vo']
-INFO - 2025-08-12T13:56:35Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:56:35Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:56:37Z - Some of your subset selection [2025-08-21 00:00:00+00:00, 2025-08-21 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-21 00:00:00+00:00]
-WARNING - 2025-08-12T13:56:37Z - Some of your subset selection [-10.0, 6000.0] for the depth dimension exceed the dataset coordinates [0.49402499198913574, 5727.9169921875]
-INFO - 2025-08-12T13:56:40Z - Starting download. Please wait...
-  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:30<03:32, 30.34s/it] 62%|██████▎   | 5/8 [00:30<00:13,  4.57s/it]100%|██████████| 8/8 [00:30<00:00,  3.83s/it]
-INFO - 2025-08-12T13:57:10Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc
-TMP_zos.nc
-cmems_mod_glo_phy_anfc_0.083deg_P1D-m
-['zos']
-INFO - 2025-08-12T13:57:12Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:57:12Z - Selected dataset part: "default"
-WARNING - 2025-08-12T13:57:14Z - Some of your subset selection [2025-08-21 00:00:00+00:00, 2025-08-21 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-21 00:00:00+00:00]
-INFO - 2025-08-12T13:57:17Z - Starting download. Please wait...
-  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:01<00:03,  1.14s/it] 75%|███████▌  | 3/4 [00:01<00:00,  2.28it/s]100%|██████████| 4/4 [00:01<00:00,  2.62it/s]
-INFO - 2025-08-12T13:57:18Z - Successfully downloaded to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_21.nc
-Copying: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_so.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_21.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_thetao.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_21.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_uv.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_21.nc
-Adding: /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/TMP_zos.nc to /home/om/cron/ECCOFS_OBS/MERCATOR/tmp/mercator_doppio_2025_08_21.nc
-2025-08-22 00:00:00
-TMP_so.nc
-cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m
-['so']
-INFO - 2025-08-12T13:57:24Z - Selected dataset version: "202406"
-INFO - 2025-08-12T13:57:24Z - Selected dataset part: "default"
-An error occurred: Some of your subset selection [2025-08-22 00:00:00+00:00, 2025-08-22 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-21 00:00:00+00:00]
-Traceback (most recent call last):
-  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/eccofs_obs_driver.py", line 208, in mercator_aquire_driver
-    get_merc.main(fconfig)
-  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/acquire_mercator_ECCOFS.py", line 79, in main
-    copernicus_marine.subset(
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/core_functions/deprecated_options.py", line 78, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/python_interface/exception_handler.py", line 17, in wrapper
-    raise exception
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/python_interface/exception_handler.py", line 13, in wrapper
-    return function(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/python_interface/subset.py", line 195, in subset
-    return subset_function(
-           ^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/core_functions/subset.py", line 155, in subset_function
-    check_dataset_subset_bounds(
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/download_functions/subset_xarray.py", line 745, in check_dataset_subset_bounds
-    _check_coordinate_overlap(
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/copernicusmarine/download_functions/subset_xarray.py", line 820, in _check_coordinate_overlap
-    raise CoordinatesOutOfDatasetBounds(message)
-copernicusmarine.core_functions.exceptions.CoordinatesOutOfDatasetBounds: Some of your subset selection [2025-08-22 00:00:00+00:00, 2025-08-22 12:00:00+00:00] for the time dimension exceed the dataset coordinates [2022-06-01 00:00:00+00:00, 2025-08-21 00:00:00+00:00]
-Extract climatology data from mercator
-Initilaizing grids and regridder
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_09.nc
-Creating Climatology file
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250809_clm.nc exists, Deleting.
-FILL time: 9.568814516067505
-Re-using weights
-REGRIDDER time: 0.7206196784973145
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 654.5326659679413 seconds
-Writing climatology data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250809_clm.nc
-Initilization file processing time: 715.0657122135162 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_10.nc
-Creating Climatology file
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250810_clm.nc exists, Deleting.
-FILL time: 11.926392793655396
-Re-using weights
-REGRIDDER time: 0.5733294486999512
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 648.7054243087769 seconds
-Writing climatology data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250810_clm.nc
-Initilization file processing time: 711.580765247345 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_11.nc
-Creating Climatology file
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250811_clm.nc exists, Deleting.
-FILL time: 9.458187341690063
-Re-using weights
-REGRIDDER time: 0.5725469589233398
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 660.1639397144318 seconds
-Writing climatology data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250811_clm.nc
-Initilization file processing time: 720.2890374660492 seconds
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/raw/mercator_doppio_2025_08_12.nc
-Creating Climatology file
-/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250812_clm.nc exists, Deleting.
-FILL time: 9.601973533630371
-Re-using weights
-REGRIDDER time: 0.5729489326477051
-RUNNING horizontal regridding
-Preparing for vertical interpolation
-Running vertical interpolation, this may take a few minutes
-processing time: 658.2533740997314 seconds
-Writing climatology data to file/home/om/cron/ECCOFS_OBS/MERCATOR/data/clm/ECCOFS_REALTIME_20250812_clm.nc
-Initilization file processing time: 718.8935623168945 seconds
-CLM file time: 2865.970065832138 seconds
-Extract Boundary conditions from mercator
-Initilaizing grids and regridder
-2025-08-09
-filling processing time: 0.1761934757232666 seconds
-Procesing Boundary Condition file: /home/om/cron/ECCOFS_OBS/MERCATOR/data/bdry/ECCOFS_REALTIME_20250809_bry.nc
-Creating Boundary conditions files file
-Re-using weights
-Re-using weights
-Re-using weights
-Re-using weights
-Create regridder: 0.15098214149475098
-Procesing Boundary Condition time: 2025-08-09T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 1.5991263389587402
-processing time: 1.4696846008300781 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.025583744049072266
-processing time: 1.1872646808624268 seconds
-Procesing Boundary Condition time: 2025-08-10T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.025338172912597656
-processing time: 1.548163890838623 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02498340606689453
-processing time: 1.0610530376434326 seconds
-Procesing Boundary Condition time: 2025-08-11T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.02391529083251953
-processing time: 1.4598751068115234 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02428126335144043
-processing time: 1.0643424987792969 seconds
-Procesing Boundary Condition time: 2025-08-12T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024360179901123047
-processing time: 1.5860257148742676 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.025219202041625977
-processing time: 1.182569980621338 seconds
-Procesing Boundary Condition time: 2025-08-13T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024641752243041992
-processing time: 1.487140417098999 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.025143861770629883
-processing time: 1.0916478633880615 seconds
-Procesing Boundary Condition time: 2025-08-14T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024968385696411133
-processing time: 1.6110844612121582 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02616143226623535
-processing time: 1.1896259784698486 seconds
-Procesing Boundary Condition time: 2025-08-15T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.02453899383544922
-processing time: 1.616530179977417 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.025144338607788086
-processing time: 1.0958096981048584 seconds
-Procesing Boundary Condition time: 2025-08-16T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.02453780174255371
-processing time: 1.4879000186920166 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02553272247314453
-processing time: 1.080310583114624 seconds
-Procesing Boundary Condition time: 2025-08-17T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024418115615844727
-processing time: 1.4829633235931396 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02475142478942871
-processing time: 1.0773961544036865 seconds
-boundary conditions  file processing time: 212.92878413200378 seconds
-2025-08-10
-filling processing time: 0.12778902053833008 seconds
-Procesing Boundary Condition file: /home/om/cron/ECCOFS_OBS/MERCATOR/data/bdry/ECCOFS_REALTIME_20250810_bry.nc
-Creating Boundary conditions files file
-Re-using weights
-Re-using weights
-Re-using weights
-Re-using weights
-Create regridder: 0.14103198051452637
-Procesing Boundary Condition time: 2025-08-10T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.02510857582092285
-processing time: 1.4768552780151367 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02435302734375
-processing time: 1.0799193382263184 seconds
-Procesing Boundary Condition time: 2025-08-11T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024759531021118164
-processing time: 1.49454927444458 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02480626106262207
-processing time: 1.0936634540557861 seconds
-Procesing Boundary Condition time: 2025-08-12T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024260520935058594
-processing time: 1.496199131011963 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.024783849716186523
-processing time: 1.1894371509552002 seconds
-Procesing Boundary Condition time: 2025-08-13T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.0246427059173584
-processing time: 1.4985897541046143 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02531719207763672
-processing time: 1.10219407081604 seconds
-Procesing Boundary Condition time: 2025-08-14T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024137258529663086
-processing time: 1.5101609230041504 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.025652647018432617
-processing time: 1.0986003875732422 seconds
-Procesing Boundary Condition time: 2025-08-15T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024087905883789062
-processing time: 1.4855353832244873 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02479386329650879
-processing time: 1.1184728145599365 seconds
-Procesing Boundary Condition time: 2025-08-16T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.02366352081298828
-processing time: 1.511535406112671 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02493143081665039
-processing time: 1.104405164718628 seconds
-Procesing Boundary Condition time: 2025-08-17T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.025068998336791992
-processing time: 1.5232186317443848 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.025380373001098633
-processing time: 1.1017816066741943 seconds
-Procesing Boundary Condition time: 2025-08-18T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024303197860717773
-processing time: 1.500040054321289 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02541494369506836
-processing time: 1.1211144924163818 seconds
-boundary conditions  file processing time: 208.2114827632904 seconds
-2025-08-11
-filling processing time: 0.12709569931030273 seconds
-Procesing Boundary Condition file: /home/om/cron/ECCOFS_OBS/MERCATOR/data/bdry/ECCOFS_REALTIME_20250811_bry.nc
-Creating Boundary conditions files file
-Re-using weights
-Re-using weights
-Re-using weights
-Re-using weights
-Create regridder: 0.13678216934204102
-Procesing Boundary Condition time: 2025-08-11T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.02334427833557129
-processing time: 1.4800946712493896 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.024153470993041992
-processing time: 1.1111855506896973 seconds
-Procesing Boundary Condition time: 2025-08-12T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024938344955444336
-processing time: 1.5007328987121582 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.0247652530670166
-processing time: 1.0801713466644287 seconds
-Procesing Boundary Condition time: 2025-08-13T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.025170087814331055
-processing time: 1.5326898097991943 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02672266960144043
-processing time: 1.110353946685791 seconds
-Procesing Boundary Condition time: 2025-08-14T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024709224700927734
-processing time: 1.4908702373504639 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.025327444076538086
-processing time: 1.0961544513702393 seconds
-Procesing Boundary Condition time: 2025-08-15T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.02391648292541504
-processing time: 1.5177669525146484 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.024758338928222656
-processing time: 1.0848658084869385 seconds
-Procesing Boundary Condition time: 2025-08-16T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024016141891479492
-processing time: 1.4903020858764648 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.024824857711791992
-processing time: 1.1025524139404297 seconds
-Procesing Boundary Condition time: 2025-08-17T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024532079696655273
-processing time: 1.4917194843292236 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.02525782585144043
-processing time: 1.0832438468933105 seconds
-Procesing Boundary Condition time: 2025-08-18T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024796247482299805
-processing time: 1.5079994201660156 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.024606704711914062
-processing time: 1.1099672317504883 seconds
-Procesing Boundary Condition time: 2025-08-19T00:00:00.000000000
-Processing EAST boundary
-Regrid EAST boundary: 0.024272680282592773
-processing time: 1.5099196434020996 seconds
-Skipping WEST boundary
-Skipping NORTH boundary
-Processing SOUTH boundary
-Regrid SOUTH boundary: 0.024582862854003906
-processing time: 1.0810537338256836 seconds
-boundary conditions  file processing time: 207.22969722747803 seconds
-BRY file time: 628.9964897632599 seconds
-In situ driver running
---------------------
-2025-08-12
-INFO - 2025-08-12T14:55:43Z - Selected dataset version: "202311"
-INFO - 2025-08-12T14:55:43Z - Selected dataset part: "latest"
-Processing
-WRITING file: /home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_20250811.nc
-2025-08-11
-INFO - 2025-08-12T14:56:15Z - Selected dataset version: "202311"
-INFO - 2025-08-12T14:56:15Z - Selected dataset part: "latest"
-Processing
-WRITING file: /home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_20250810.nc
-2025-08-10
-INFO - 2025-08-12T14:56:49Z - Selected dataset version: "202311"
-INFO - 2025-08-12T14:56:49Z - Selected dataset part: "latest"
-Processing
-WRITING file: /home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_20250809.nc
-2025-08-09
-INFO - 2025-08-12T14:57:19Z - Selected dataset version: "202311"
-INFO - 2025-08-12T14:57:19Z - Selected dataset part: "latest"
-Processing
-WRITING file: /home/om/cron/ECCOFS_OBS/INSITU_NRT/data/processed/ECCOFS_NRT_INSITU_CMEMS_20250808.nc
-Rads Driver Running
---------------------
-MAIN
-GETTING SL WITH DAC
-j3/c
-######################################################################################################################################
-# Editing statistics for JASON-3 (j3)
-# Created: 2025-08-12 14:57:53 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S j3/c --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_dac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/jason3/
-#
-# PASSES QUERIED                                             0
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0         0         602         513           1
-# Pass number limits                               0         0           1         254           1
-# Time limits                                      0         0 250723/1057 250812/1057
-# Equator longitude limits (asc)                   0         0    -131.999     -37.799
-# Equator longitude limits (des)                   0         0    -100.201      -6.001
-#
-# PASSES AND MEASUREMENTS READ                     0         0
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0         0 250723/1057 250812/1057         NaN         NaN 850101/0000         -0.
-# latitude [degrees_north]                         0         0       5.000      52.000         NaN         NaN       0.000      -0.000
-# longitude [degrees_east]                         0         0    -100.000     -38.000         NaN         NaN       0.000      -0.000
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION                0
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-######################################################################################################################################
-3a/a
-######################################################################################################################################
-# Editing statistics for SNTNL-3A (3a)
-# Created: 2025-08-12 14:57:53 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S 3a/a --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_dac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/sentinel3a/
-#
-# PASSES QUERIED                                          1540
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0      1540         128         129           1
-# Pass number limits                               0      1540           1         770           1
-# Time limits                                    968       572 250723/1057 250812/1057
-# Equator longitude limits (asc)                 223        63    -100.883     -21.065
-# Equator longitude limits (des)                 223        63    -116.935     -37.117
-#
-# PASSES AND MEASUREMENTS READ                   126    238258
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    238258 250723/1057 250812/1057 250725/0106 250811/1707 250803/0245     439799.
-# latitude [degrees_north]                    172676     65582       5.000      52.000       5.000      51.998      25.948      12.899
-# longitude [degrees_east]                     92558    145700    -100.000     -38.000     -99.999     -38.001     -69.004      17.697
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            52714
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                         8142     44572      -3.000       3.000      -1.002       1.063       0.104       0.130
-# CNES GDR-F orbital altitude [m]                  0     52714         NaN         NaN  804564.177  810532.514  806106.998    1604.824
-# Ku-band range corrected for instr. effec      4449     48265  750000.000  850000.000  804574.326  810577.229  806044.686    1522.033
-# ECMWF dry tropospheric correction [m]           21     52693      -2.400      -2.100      -2.351      -2.120      -2.321       0.014
-# radiometer wet tropospheric correction [      1547     51167      -0.600       0.000      -0.533      -0.047      -0.269       0.079
-# smoothed dual-frequency ionospheric corr       774     51940      -0.400       0.040      -0.111      -0.003      -0.055       0.016
-# MOG2D/TUGO dynamic atmospheric correctio         4     52710      -1.000       1.000      -0.199       0.836      -0.060       0.046
-# solid earth tide [m]                             0     52714      -1.000       1.000      -0.120       0.251       0.009       0.103
-# GOT4.10c ocean tide (extrapolated) [m]        1199     51515      -5.000       5.000      -2.000       2.538       0.013       0.299
-# GOT4.10 load tide [m]                            0     52714      -0.500       0.500      -0.034       0.056      -0.001       0.014
-# pole tide [m]                                    0     52714      -0.100       0.100      -0.007       0.000      -0.003       0.002
-# Tran et al. 2021 non-parametric sea stat      3728     48986      -1.000       1.000      -0.310      -0.001      -0.053       0.025
-# DTU15 mean sea surface height [m]                0     52714         NaN         NaN     -69.624      50.415     -19.038      22.893
-# Ku-band significant wave height [m]           3832     48882       0.000       8.000       0.002       7.760       1.267       0.585
-# Ku-band backscatter coefficient [dB]          3836     48878       6.000      27.000       6.010      27.000      12.173       2.068
-# std dev of Ku-band range [m]                  4506     48208       0.000       0.400       0.008       0.389       0.045       0.014
-# number of valid Ku-band measurements [1]      7442     45272      16.500      21.500      17.000      21.000      19.948       0.881
-# flag word []                                  5500     47214   65448.000       0.000       1.000      19.000       1.004       0.184
-# std dev of Ku-band significant wave heig      3822     48892       0.000       2.100       0.007       2.042       0.429       0.117
-# std dev of Ku-band backscatter coefficie      4133     48581       0.000       1.000       0.000       1.000       0.149       0.118
-# reference frame offset [m]                       0     52714         NaN         NaN      -0.009      -0.009      -0.009       0.000
-######################################################################################################################################
-3b/b
-######################################################################################################################################
-# Editing statistics for SNTNL-3B (3b)
-# Created: 2025-08-12 14:57:54 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S 3b/b --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_dac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/sentinel3b/
-#
-# PASSES QUERIED                                          1540
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0      1540         109         110           1
-# Pass number limits                               0      1540           1         770           1
-# Time limits                                    968       572 250723/1057 250812/1057
-# Equator longitude limits (asc)                 222        64    -100.883     -21.065
-# Equator longitude limits (des)                 222        64    -116.935     -37.117
-#
-# PASSES AND MEASUREMENTS READ                   128    240538
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    240538 250723/1057 250812/1057 250725/0028 250811/1810 250802/1937     451727.
-# latitude [degrees_north]                    174023     66515       5.000      52.000       5.001      51.999      26.247      12.923
-# longitude [degrees_east]                     93990    146548    -100.000     -38.000    -100.000     -38.001     -68.598      17.675
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            53374
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                         8335     45039      -3.000       3.000      -1.010       1.654       0.102       0.132
-# CNES GDR-F orbital altitude [m]                  0     53374         NaN         NaN  804115.126  810540.971  805999.195    1598.976
-# Ku-band range corrected for instr. effec      4289     49085  750000.000  850000.000  804159.501  810480.844  805947.174    1522.225
-# ECMWF dry tropospheric correction [m]           12     53362      -2.400      -2.100      -2.348      -2.111      -2.321       0.014
-# radiometer wet tropospheric correction [      1587     51787      -0.600       0.000      -0.519      -0.052      -0.264       0.079
-# smoothed dual-frequency ionospheric corr       651     52723      -0.400       0.040      -0.104      -0.013      -0.055       0.016
-# MOG2D/TUGO dynamic atmospheric correctio         1     53373      -1.000       1.000      -0.393       0.802      -0.062       0.049
-# solid earth tide [m]                             0     53374      -1.000       1.000      -0.120       0.251       0.010       0.104
-# GOT4.10c ocean tide (extrapolated) [m]        1262     52112      -5.000       5.000      -3.103       2.181       0.014       0.302
-# GOT4.10 load tide [m]                            0     53374      -0.500       0.500      -0.033       0.061      -0.001       0.015
-# pole tide [m]                                    0     53374      -0.100       0.100      -0.008       0.000      -0.003       0.002
-# Tran et al. 2021 non-parametric sea stat      3603     49771      -1.000       1.000      -0.304      -0.001      -0.053       0.024
-# DTU15 mean sea surface height [m]                0     53374         NaN         NaN     -66.822      48.239     -18.722      23.039
-# Ku-band significant wave height [m]           3687     49687       0.000       8.000       0.001       7.558       1.271       0.530
-# Ku-band backscatter coefficient [dB]          3659     49715       6.000      27.000       6.070      26.980      12.249       2.112
-# std dev of Ku-band range [m]                  4345     49029       0.000       0.400       0.007       0.390       0.045       0.014
-# number of valid Ku-band measurements [1]      7443     45931      16.500      21.500      17.000      21.000      19.944       0.886
-# flag word []                                  5534     47840   65448.000       0.000       1.000      19.000       1.003       0.130
-# std dev of Ku-band significant wave heig      3707     49667       0.000       2.100       0.007       2.095       0.428       0.114
-# std dev of Ku-band backscatter coefficie      3969     49405       0.000       1.000       0.000       1.000       0.151       0.121
-# reference frame offset [m]                       0     53374         NaN         NaN      -0.015      -0.015      -0.015       0.000
-######################################################################################################################################
-6a/a
-######################################################################################################################################
-# Editing statistics for SNTNL-6A (6a)
-# Created: 2025-08-12 14:57:56 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S 6a/a --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_dac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/sentinel6a/
-#
-# PASSES QUERIED                                           762
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0       762         173         175           1
-# Pass number limits                               0       762           1         254           1
-# Time limits                                    249       513 250723/1057 250812/1057
-# Equator longitude limits (asc)                 189        68    -131.975     -37.797
-# Equator longitude limits (des)                 188        68    -100.203      -6.025
-#
-# PASSES AND MEASUREMENTS READ                   136    448577
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    448577 250723/1057 250812/1057 250723/1232 250811/2307 250802/0425     492353.
-# latitude [degrees_north]                    314166    134411       5.000      52.000       5.000      52.000      29.161      13.677
-# longitude [degrees_east]                    228749    219828    -100.000     -38.000    -100.000     -38.000     -68.934      17.451
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            88070
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                        31883     56187      -3.000       3.000      -0.962       1.261       0.096       0.131
-# CNES GDR-F orbital altitude [m]                  0     88070         NaN         NaN 1339523.680 1350600.721 1344189.087    3362.632
-# Ku-band range corrected for instr. effec     25947     62123 1300000.000 1400000.000 1337040.284 1350607.884 1343537.468    3043.896
-# ECMWF dry tropospheric correction [m]          986     87084      -2.400      -2.100      -2.352      -2.100      -2.302       0.040
-# radiometer wet tropospheric correction [     18483     69587      -0.600       0.000      -0.600       0.000      -0.260       0.082
-# smoothed dual-frequency ionospheric corr     26299     61771      -0.400       0.040      -0.116      -0.006      -0.052       0.017
-# MOG2D/TUGO dynamic atmospheric correctio         0     88070      -1.000       1.000      -0.382       0.261      -0.059       0.046
-# solid earth tide [m]                             0     88070      -1.000       1.000      -0.219       0.303      -0.017       0.121
-# GOT4.10c ocean tide (extrapolated) [m]       19713     68357      -5.000       5.000      -2.300       3.007       0.019       0.311
-# GOT4.10 load tide [m]                            0     88070      -0.500       0.500      -0.043       0.061      -0.001       0.013
-# pole tide [m]                                    0     88070      -0.100       0.100      -0.008       0.001      -0.003       0.002
-# Tran et al. 2020 non-parametric sea stat     22115     65955      -1.000       1.000      -0.359       0.000      -0.057       0.049
-# DTU15 mean sea surface height [m]                0     88070         NaN         NaN     -67.402      50.450     -20.186      21.292
-# Ku-band significant wave height [m]          24918     63152       0.000       8.000       0.000       7.987       1.443       0.875
-# Ku-band backscatter coefficient [dB]         22331     65739       7.000      28.000       7.000      27.990      14.596       2.629
-# std dev of Ku-band range [m]                 28222     59848       0.000       0.170       0.011       0.170       0.060       0.016
-# number of valid Ku-band measurements [1]     28295     59775      15.500      20.500      16.000      20.000      19.533       0.747
-# flag word []                                 30104     57966   65512.000       0.000       1.000       1.000       1.000       0.000
-# reference frame offset [m]                       0     88070         NaN         NaN      -0.020      -0.020      -0.020       0.000
-######################################################################################################################################
-sw/b
-######################################################################################################################################
-# Editing statistics for SWOT (sw)
-# Created: 2025-08-12 14:57:57 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S sw/b --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_dac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/nodac/swot/
-#
-# PASSES QUERIED                                          1168
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0      1168         336         337           1
-# Pass number limits                               0      1168           1         584           1
-# Time limits                                    607       561 250723/1057 250812/1057
-# Equator longitude limits (asc)                 221        60    -114.394     -36.729
-# Equator longitude limits (des)                 220        60    -101.271     -23.606
-#
-# PASSES AND MEASUREMENTS READ                   120    318140
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    318140 250723/1057 250812/1057 250723/1518 250812/0103 250802/0502     489061.
-# latitude [degrees_north]                    232140     86000       5.000      52.000       5.000      52.000      28.662      13.593
-# longitude [degrees_east]                    113014    205126    -100.000     -38.000    -100.000     -38.000     -68.759      17.486
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            68743
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                        24066     44677      -3.000       3.000      -0.963       1.852       0.097       0.127
-# CNES GDR-F orbital altitude [m]                  0     68743         NaN         NaN  894942.246  901333.559  897087.912    1920.923
-# Ku-band range corrected for instr. effec     20700     48043  850000.000  950000.000  892355.135  901325.628  896686.860    1695.515
-# ECMWF dry tropospheric correction [m]         1065     67678      -2.400      -2.100      -2.345      -2.100      -2.301       0.042
-# radiometer wet tropospheric correction [     15196     53547      -0.600       0.000      -0.586      -0.040      -0.254       0.070
-# smoothed dual-frequency ionospheric corr     20290     48453      -0.400       0.040      -0.116      -0.008      -0.052       0.019
-# MOG2D/TUGO dynamic atmospheric correctio         0     68743      -1.000       1.000      -0.406       0.154      -0.060       0.045
-# solid earth tide [m]                             0     68743      -1.000       1.000      -0.172       0.297       0.021       0.119
-# GOT4.10c ocean tide (extrapolated) [m]       15064     53679      -5.000       5.000      -1.929       2.971      -0.004       0.317
-# GOT4.10 load tide [m]                            0     68743      -0.500       0.500      -0.035       0.061       0.001       0.013
-# pole tide [m]                                    0     68743      -0.100       0.100      -0.007       0.001      -0.003       0.002
-# Tran et al. 2020 non-parametric sea stat     18845     49898      -1.000       1.000      -0.359      -0.000      -0.053       0.041
-# DTU15 mean sea surface height [m]                0     68743         NaN         NaN     -69.595      50.500     -20.044      21.263
-# Ku-band significant wave height [m]          19325     49418       0.000       8.000       0.233       7.998       1.365       0.738
-# Ku-band backscatter coefficient [dB]         19323     49420       8.000      29.000       8.000      28.990      14.847       2.428
-# std dev of Ku-band range [m]                 21595     47148       0.000       0.170       0.009       0.170       0.060       0.017
-# number of valid Ku-band measurements [1]         0     68743      15.500      20.500      20.000      20.000      20.000       0.000
-# flag word []                                 23500     45243   65384.000       0.000       0.000     128.000       0.105       3.659
-# reference frame offset [m]                       0     68743         NaN         NaN      -0.006      -0.006      -0.006       0.000
-######################################################################################################################################
-j3/c
-######################################################################################################################################
-# Editing statistics for JASON-3 (j3)
-# Created: 2025-08-12 14:57:57 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S j3/c --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_nodac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/jason3/
-#
-# PASSES QUERIED                                             0
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0         0         602         513           1
-# Pass number limits                               0         0           1         254           1
-# Time limits                                      0         0 250723/1057 250812/1057
-# Equator longitude limits (asc)                   0         0    -131.999     -37.799
-# Equator longitude limits (des)                   0         0    -100.201      -6.001
-#
-# PASSES AND MEASUREMENTS READ                     0         0
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0         0 250723/1057 250812/1057         NaN         NaN 850101/0000         -0.
-# latitude [degrees_north]                         0         0       5.000      52.000         NaN         NaN       0.000      -0.000
-# longitude [degrees_east]                         0         0    -100.000     -38.000         NaN         NaN       0.000      -0.000
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION                0
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-######################################################################################################################################
-3a/a
-######################################################################################################################################
-# Editing statistics for SNTNL-3A (3a)
-# Created: 2025-08-12 14:57:57 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S 3a/a --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_nodac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3a/
-#
-# PASSES QUERIED                                          1540
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0      1540         128         129           1
-# Pass number limits                               0      1540           1         770           1
-# Time limits                                    968       572 250723/1057 250812/1057
-# Equator longitude limits (asc)                 223        63    -100.883     -21.065
-# Equator longitude limits (des)                 223        63    -116.935     -37.117
-#
-# PASSES AND MEASUREMENTS READ                   126    238258
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    238258 250723/1057 250812/1057 250725/0106 250811/1707 250803/0245     439799.
-# latitude [degrees_north]                    172676     65582       5.000      52.000       5.000      51.998      25.948      12.899
-# longitude [degrees_east]                     92558    145700    -100.000     -38.000     -99.999     -38.001     -69.004      17.697
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            52714
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                         8142     44572      -3.000       3.000      -1.101       1.081       0.043       0.135
-# CNES GDR-F orbital altitude [m]                  0     52714         NaN         NaN  804564.177  810532.514  806106.998    1604.824
-# Ku-band range corrected for instr. effec      4449     48265  750000.000  850000.000  804574.326  810577.229  806044.686    1522.033
-# ECMWF dry tropospheric correction [m]           21     52693      -2.400      -2.100      -2.351      -2.120      -2.321       0.014
-# radiometer wet tropospheric correction [      1547     51167      -0.600       0.000      -0.533      -0.047      -0.269       0.079
-# smoothed dual-frequency ionospheric corr       774     51940      -0.400       0.040      -0.111      -0.003      -0.055       0.016
-# MOG2D/TUGO dynamic atmospheric correctio         4     52710      -1.000       1.000      -0.199       0.836      -0.060       0.046
-# solid earth tide [m]                             0     52714      -1.000       1.000      -0.120       0.251       0.009       0.103
-# GOT4.10c ocean tide (extrapolated) [m]        1199     51515      -5.000       5.000      -2.000       2.538       0.013       0.299
-# GOT4.10 load tide [m]                            0     52714      -0.500       0.500      -0.034       0.056      -0.001       0.014
-# pole tide [m]                                    0     52714      -0.100       0.100      -0.007       0.000      -0.003       0.002
-# Tran et al. 2021 non-parametric sea stat      3728     48986      -1.000       1.000      -0.310      -0.001      -0.053       0.025
-# DTU15 mean sea surface height [m]                0     52714         NaN         NaN     -69.624      50.415     -19.038      22.893
-# Ku-band significant wave height [m]           3832     48882       0.000       8.000       0.002       7.760       1.267       0.585
-# Ku-band backscatter coefficient [dB]          3836     48878       6.000      27.000       6.010      27.000      12.173       2.068
-# std dev of Ku-band range [m]                  4506     48208       0.000       0.400       0.008       0.389       0.045       0.014
-# number of valid Ku-band measurements [1]      7442     45272      16.500      21.500      17.000      21.000      19.948       0.881
-# flag word []                                  5500     47214   65448.000       0.000       1.000      19.000       1.004       0.184
-# std dev of Ku-band significant wave heig      3822     48892       0.000       2.100       0.007       2.042       0.429       0.117
-# std dev of Ku-band backscatter coefficie      4133     48581       0.000       1.000       0.000       1.000       0.149       0.118
-# reference frame offset [m]                       0     52714         NaN         NaN      -0.009      -0.009      -0.009       0.000
-######################################################################################################################################
-3b/b
-######################################################################################################################################
-# Editing statistics for SNTNL-3B (3b)
-# Created: 2025-08-12 14:57:58 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S 3b/b --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_nodac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/
-#
-# PASSES QUERIED                                          1540
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0      1540         109         110           1
-# Pass number limits                               0      1540           1         770           1
-# Time limits                                    968       572 250723/1057 250812/1057
-# Equator longitude limits (asc)                 222        64    -100.883     -21.065
-# Equator longitude limits (des)                 222        64    -116.935     -37.117
-#
-# PASSES AND MEASUREMENTS READ                   128    240538
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    240538 250723/1057 250812/1057 250725/0028 250811/1810 250802/1937     451727.
-# latitude [degrees_north]                    174023     66515       5.000      52.000       5.001      51.999      26.247      12.923
-# longitude [degrees_east]                     93990    146548    -100.000     -38.000    -100.000     -38.001     -68.598      17.675
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            53374
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                         8335     45039      -3.000       3.000      -1.110       1.622       0.038       0.135
-# CNES GDR-F orbital altitude [m]                  0     53374         NaN         NaN  804115.126  810540.971  805999.195    1598.976
-# Ku-band range corrected for instr. effec      4289     49085  750000.000  850000.000  804159.501  810480.844  805947.174    1522.225
-# ECMWF dry tropospheric correction [m]           12     53362      -2.400      -2.100      -2.348      -2.111      -2.321       0.014
-# radiometer wet tropospheric correction [      1587     51787      -0.600       0.000      -0.519      -0.052      -0.264       0.079
-# smoothed dual-frequency ionospheric corr       651     52723      -0.400       0.040      -0.104      -0.013      -0.055       0.016
-# MOG2D/TUGO dynamic atmospheric correctio         1     53373      -1.000       1.000      -0.393       0.802      -0.062       0.049
-# solid earth tide [m]                             0     53374      -1.000       1.000      -0.120       0.251       0.010       0.104
-# GOT4.10c ocean tide (extrapolated) [m]        1262     52112      -5.000       5.000      -3.103       2.181       0.014       0.302
-# GOT4.10 load tide [m]                            0     53374      -0.500       0.500      -0.033       0.061      -0.001       0.015
-# pole tide [m]                                    0     53374      -0.100       0.100      -0.008       0.000      -0.003       0.002
-# Tran et al. 2021 non-parametric sea stat      3603     49771      -1.000       1.000      -0.304      -0.001      -0.053       0.024
-# DTU15 mean sea surface height [m]                0     53374         NaN         NaN     -66.822      48.239     -18.722      23.039
-# Ku-band significant wave height [m]           3687     49687       0.000       8.000       0.001       7.558       1.271       0.530
-# Ku-band backscatter coefficient [dB]          3659     49715       6.000      27.000       6.070      26.980      12.249       2.112
-# std dev of Ku-band range [m]                  4345     49029       0.000       0.400       0.007       0.390       0.045       0.014
-# number of valid Ku-band measurements [1]      7443     45931      16.500      21.500      17.000      21.000      19.944       0.886
-# flag word []                                  5534     47840   65448.000       0.000       1.000      19.000       1.003       0.130
-# std dev of Ku-band significant wave heig      3707     49667       0.000       2.100       0.007       2.095       0.428       0.114
-# std dev of Ku-band backscatter coefficie      3969     49405       0.000       1.000       0.000       1.000       0.151       0.121
-# reference frame offset [m]                       0     53374         NaN         NaN      -0.015      -0.015      -0.015       0.000
-######################################################################################################################################
-6a/a
-######################################################################################################################################
-# Editing statistics for SNTNL-6A (6a)
-# Created: 2025-08-12 14:57:58 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S 6a/a --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_nodac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel6a/
-#
-# PASSES QUERIED                                           762
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0       762         173         175           1
-# Pass number limits                               0       762           1         254           1
-# Time limits                                    249       513 250723/1057 250812/1057
-# Equator longitude limits (asc)                 189        68    -131.975     -37.797
-# Equator longitude limits (des)                 188        68    -100.203      -6.025
-#
-# PASSES AND MEASUREMENTS READ                   136    448577
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    448577 250723/1057 250812/1057 250723/1232 250811/2307 250802/0425     492353.
-# latitude [degrees_north]                    314166    134411       5.000      52.000       5.000      52.000      29.161      13.677
-# longitude [degrees_east]                    228749    219828    -100.000     -38.000    -100.000     -38.000     -68.934      17.451
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            88070
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                        31883     56187      -3.000       3.000      -1.009       1.240       0.034       0.136
-# CNES GDR-F orbital altitude [m]                  0     88070         NaN         NaN 1339523.680 1350600.721 1344189.087    3362.632
-# Ku-band range corrected for instr. effec     25947     62123 1300000.000 1400000.000 1337040.284 1350607.884 1343537.468    3043.896
-# ECMWF dry tropospheric correction [m]          986     87084      -2.400      -2.100      -2.352      -2.100      -2.302       0.040
-# radiometer wet tropospheric correction [     18483     69587      -0.600       0.000      -0.600       0.000      -0.260       0.082
-# smoothed dual-frequency ionospheric corr     26299     61771      -0.400       0.040      -0.116      -0.006      -0.052       0.017
-# MOG2D/TUGO dynamic atmospheric correctio         0     88070      -1.000       1.000      -0.382       0.261      -0.059       0.046
-# solid earth tide [m]                             0     88070      -1.000       1.000      -0.219       0.303      -0.017       0.121
-# GOT4.10c ocean tide (extrapolated) [m]       19713     68357      -5.000       5.000      -2.300       3.007       0.019       0.311
-# GOT4.10 load tide [m]                            0     88070      -0.500       0.500      -0.043       0.061      -0.001       0.013
-# pole tide [m]                                    0     88070      -0.100       0.100      -0.008       0.001      -0.003       0.002
-# Tran et al. 2020 non-parametric sea stat     22115     65955      -1.000       1.000      -0.359       0.000      -0.057       0.049
-# DTU15 mean sea surface height [m]                0     88070         NaN         NaN     -67.402      50.450     -20.186      21.292
-# Ku-band significant wave height [m]          24918     63152       0.000       8.000       0.000       7.987       1.443       0.875
-# Ku-band backscatter coefficient [dB]         22331     65739       7.000      28.000       7.000      27.990      14.596       2.629
-# std dev of Ku-band range [m]                 28222     59848       0.000       0.170       0.011       0.170       0.060       0.016
-# number of valid Ku-band measurements [1]     28295     59775      15.500      20.500      16.000      20.000      19.533       0.747
-# flag word []                                 30104     57966   65512.000       0.000       1.000       1.000       1.000       0.000
-# reference frame offset [m]                       0     88070         NaN         NaN      -0.020      -0.020      -0.020       0.000
-######################################################################################################################################
-sw/b
-######################################################################################################################################
-# Editing statistics for SWOT (sw)
-# Created: 2025-08-12 14:57:59 UTC: /home/om/cron/RADS4/local/bin/rads2asc4 -S sw/b --ymd 20250723105752,20250812105752 -R -100,-38,5,52 -V time,lat,lon,sla,dry_tropo,wet_tropo,iono,inv_bar,tide_ocean_got410,tide_load_got410,ssb,mss_dtu15 -X /home/om/cron/ECCOFS_OBS/REALTIME/work/modules/rads_nodac.xml -o /home/om/cron/ECCOFS_OBS/SSH/data/raw/swot/
-#
-# PASSES QUERIED                                          1168
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER        STEP
-# Cycle number limits                              0      1168         336         337           1
-# Pass number limits                               0      1168           1         584           1
-# Time limits                                    607       561 250723/1057 250812/1057
-# Equator longitude limits (asc)                 221        60    -114.394     -36.729
-# Equator longitude limits (des)                 220        60    -101.271     -23.606
-#
-# PASSES AND MEASUREMENTS READ                   120    318140
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# time [seconds since 1985-01-01 00:00:00          0    318140 250723/1057 250812/1057 250723/1518 250812/0103 250802/0502     489061.
-# latitude [degrees_north]                    232140     86000       5.000      52.000       5.000      52.000      28.662      13.593
-# longitude [degrees_east]                    113014    205126    -100.000     -38.000    -100.000     -38.000     -68.759      17.486
-#
-# MEASUREMENTS IN REQUESTED PERIOD AND REGION            68743
-#
-#                                           REJECTED  SELECTED       LOWER       UPPER         MIN         MAX        MEAN      STDDEV
-# sea level anomaly [m]                        24066     44677      -3.000       3.000      -1.024       1.821       0.034       0.131
-# CNES GDR-F orbital altitude [m]                  0     68743         NaN         NaN  894942.246  901333.559  897087.912    1920.923
-# Ku-band range corrected for instr. effec     20700     48043  850000.000  950000.000  892355.135  901325.628  896686.860    1695.515
-# ECMWF dry tropospheric correction [m]         1065     67678      -2.400      -2.100      -2.345      -2.100      -2.301       0.042
-# radiometer wet tropospheric correction [     15196     53547      -0.600       0.000      -0.586      -0.040      -0.254       0.070
-# smoothed dual-frequency ionospheric corr     20290     48453      -0.400       0.040      -0.116      -0.008      -0.052       0.019
-# MOG2D/TUGO dynamic atmospheric correctio         0     68743      -1.000       1.000      -0.406       0.154      -0.060       0.045
-# solid earth tide [m]                             0     68743      -1.000       1.000      -0.172       0.297       0.021       0.119
-# GOT4.10c ocean tide (extrapolated) [m]       15064     53679      -5.000       5.000      -1.929       2.971      -0.004       0.317
-# GOT4.10 load tide [m]                            0     68743      -0.500       0.500      -0.035       0.061       0.001       0.013
-# pole tide [m]                                    0     68743      -0.100       0.100      -0.007       0.001      -0.003       0.002
-# Tran et al. 2020 non-parametric sea stat     18845     49898      -1.000       1.000      -0.359      -0.000      -0.053       0.041
-# DTU15 mean sea surface height [m]                0     68743         NaN         NaN     -69.595      50.500     -20.044      21.263
-# Ku-band significant wave height [m]          19325     49418       0.000       8.000       0.233       7.998       1.365       0.738
-# Ku-band backscatter coefficient [dB]         19323     49420       8.000      29.000       8.000      28.990      14.847       2.428
-# std dev of Ku-band range [m]                 21595     47148       0.000       0.170       0.009       0.170       0.060       0.017
-# number of valid Ku-band measurements [1]         0     68743      15.500      20.500      20.000      20.000      20.000       0.000
-# flag word []                                 23500     45243   65384.000       0.000       0.000     128.000       0.105       3.659
-# reference frame offset [m]                       0     68743         NaN         NaN      -0.006      -0.006      -0.006       0.000
-######################################################################################################################################
-Checking SST Availability
---------------------
-getting GOES19 SST
-2025-08-11
-Today is day 223 of the year.
-Opening Datset
-syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
-context: <!DOCTYPE^ HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>502 Proxy Error</title></head><body><h1>Proxy Error</h1><p>The proxy server received an invalidresponse from an upstream server.<br />The proxy server could not handle the request <em><a href="/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811000000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc.dds">GET&nbsp;/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811000000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc.dds</a></em>.<p>Reason: <strong>Error reading from remote server</strong></p></p></body></html>
-An error occurred: [Errno -70] NetCDF: DAP server error: 'https://www.star.nesdis.noaa.gov/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811000000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc'
-Traceback (most recent call last):
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/file_manager.py", line 211, in _acquire_with_cache_info
-    file = self._cache[self._key]
-           ~~~~~~~~~~~^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/lru_cache.py", line 56, in __getitem__
-    value = self._cache[key]
-            ~~~~~~~~~~~^^^^^
-KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('https://www.star.nesdis.noaa.gov/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811000000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '12a2357d-8b36-493d-b297-644d8a4e7243']
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/eccofs_obs_driver.py", line 303, in sst_driver
-    goesacquire.main(fconfig)
-  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/acquire_GOES19_sst_v1.py", line 52, in main
-    ds=xr.open_mfdataset(urllist,decode_timedelta=False)
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/api.py", line 1634, in open_mfdataset
-    datasets = [open_(p, **open_kwargs) for p in paths1d]
-                ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/api.py", line 686, in open_dataset
-    backend_ds = backend.open_dataset(
-                 ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 666, in open_dataset
-    store = NetCDF4DataStore.open(
-            ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 452, in open
-    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 393, in __init__
-    self.format = self.ds.data_model
-                  ^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 461, in ds
-    return self._acquire()
-           ^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 455, in _acquire
-    with self._manager.acquire_context(needs_lock) as root:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/contextlib.py", line 137, in __enter__
-    return next(self.gen)
-           ^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/file_manager.py", line 199, in acquire_context
-    file, cached = self._acquire_with_cache_info(needs_lock)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/file_manager.py", line 217, in _acquire_with_cache_info
-    file = self._opener(*self._args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "src/netCDF4/_netCDF4.pyx", line 2470, in netCDF4._netCDF4.Dataset.__init__
-  File "src/netCDF4/_netCDF4.pyx", line 2107, in netCDF4._netCDF4._ensure_nc_success
-OSError: [Errno -70] NetCDF: DAP server error: 'https://www.star.nesdis.noaa.gov/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811000000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc'
- AMSR2_L3 has 1 files
- GOES19_L3 has 2 files
- L3S_LEO_AM_D has 2 files
- L3S_LEO_AM_N has 2 files
- L3S_LEO_PM_D has 2 files
- L3S_LEO_PM_N has 2 files
-There are a total of  11 SST files
-Checking GLIDER Availability
---------------------
-glider obs placeholder
-RUNNING OBS PreProcessing
-Processing CMEMS
-Processing day 20250809
-Processing day 20250810
-Processing day 20250811
-CMEMS processing time: 1417.5372502803802 seconds
-Processing SSH
-processing Jason 3 data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/jason3/j3p0219c198.asc does not have any data
-processing Sentinel3a data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3a/3ap0117c096.asc does not have any data
-processing Sentinel3b data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c021.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c023.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c025.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c026.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c030.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c037.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c040.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c043.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c044.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c053.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c055.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c058.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c062.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c064.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c069.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c070.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c071.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c073.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c081.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c082.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c084.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c098.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel3b/3bp0231c105.asc does not have any data
-processing Sentinel6a data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel6a/6ap0219c029.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel6a/6ap0219c067.asc does not have any data
-  /home/om/cron/ECCOFS_OBS/SSH/data/raw/sentinel6a/6ap0250c056.asc does not have any data
-5324.019570179181
-5336.938526324919
-Loading SSHA mean std
-Loading tidal harmonics
-Loading mean dynamic topography
-processing day 20250809
-processing day 5334
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5334.nc exists, Deleting.
-processing day 20250810
-processing day 5335
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5335.nc exists, Deleting.
-processing day 20250811
-processing day 5336
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5336.nc exists, Deleting.
-SSH processing time: 539.5973136425018 seconds
-Processing AMSR2
-Processing day 20250809
-Processing day 20250810
-  file not found, skipping.
-Processing day 20250811
-  file not found, skipping.
-Processing GOES
-Processing day 20250809
-Processing day 20250810
-Processing day 20250811
-  file not found, skipping.
-Processing LEO
-Processing day 20250809
-Processing day 20250810
-Processing day 20250811
-No LEO files found, skipping.
-RUNNING CombineOBS
-Processing Combine
-=================================Merging observations for 2025-08-09 00:00:00==============
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_5334.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_5334.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_5334.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_5334.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_5334.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_5334.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_5335.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_5335.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_5335.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_5335.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_5335.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_amsr2_nrt_5336.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_leo_nrt_5336.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/sst_goes_nrt_5336.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5333.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5333.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5333.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5333.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5334.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5334.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5334.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5334.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5335.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5335.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5335.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5335.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5336.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/along_track_TotalSSH_5336.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5336.nc
-reading data from /home/om/cron/ECCOFS_OBS/REALTIME/data/preobs/cmems_nrt_5336.nc
-   merging surveys at times [5334.05100885 5334.05378663] 
-   merging surveys at times [5334.05656441 5334.05934219] 
-   merging surveys at times [5334.06211996 5334.06489774 5334.06545302] 
-   merging surveys at times [5334.06767552 5334.0704533 ] 
-   merging surveys at times [5334.07323108 5334.07600885] 
-   merging surveys at times [5334.07878663 5334.08156441] 
-   merging surveys at times [5334.08434219 5334.08711996] 
-   merging surveys at times [5334.12124518 5334.12402296] 
-   merging surveys at times [5334.12680074 5334.12957851] 
-   merging surveys at times [5334.13235629 5334.13513407] 
-   merging surveys at times [5334.13791185 5334.14064708 5334.14068962] 
-   merging surveys at times [5334.1434674  5334.14624518] 
-   merging surveys at times [5334.14902296 5334.15180074] 
-   merging surveys at times [5334.15457851 5334.15735629] 
-   merging surveys at times [5334.47133325 5334.47411102] 
-   merging surveys at times [5334.4768888  5334.47966658] 
-   merging surveys at times [5334.48244436 5334.48522214] 
-   merging surveys at times [5334.48652111 5334.48799991] 
-   merging surveys at times [5334.49077769 5334.49355547] 
-   merging surveys at times [5334.49633325 5334.49911102] 
-   merging surveys at times [5334.5018888  5334.50466658] 
-   merging surveys at times [5334.50744436 5334.51022214] 
-   merging surveys at times [5334.55515738 5334.55793516] 
-   merging surveys at times [5334.56071293 5334.56349071] 
-   merging surveys at times [5334.56626849 5334.56904627] 
-   merging surveys at times [5334.57145725 5334.57182404 5334.57460182] 
-   merging surveys at times [5334.5773796  5334.58015738] 
-   merging surveys at times [5334.58293516 5334.58571293] 
-   merging surveys at times [5334.58849071 5334.59126849] 
-   merging surveys at times [5334.61780545 5334.62058323] 
-   merging surveys at times [5334.62336101 5334.62613878] 
-   merging surveys at times [5334.62891656 5334.63169434] 
-   merging surveys at times [5334.63447212 5334.63724989] 
-   merging surveys at times [5334.64002767 5334.64280545 5334.64324591] 
-   merging surveys at times [5334.64558323 5334.64836101] 
-   merging surveys at times [5334.65113878 5334.65203009 5334.65391656] 
-   merging surveys at times [5334.88716681 5334.88994459] 
-   merging surveys at times [5334.89272237 5334.89520524 5334.89550014] 
-   merging surveys at times [5334.89827792 5334.9010557 ] 
-   merging surveys at times [5334.90383348 5334.90661126] 
-   merging surveys at times [5334.90938903 5334.91216681] 
-   merging surveys at times [5334.91494459 5334.91772237] 
-   merging surveys at times [5334.92050014 5334.92327792] 
-   merging surveys at times [5334.96656939 5334.96934717] 
-   merging surveys at times [5334.97212494 5334.97490272] 
-   merging surveys at times [5334.9776805  5334.97916175 5334.98045828] 
-   merging surveys at times [5334.98323606 5334.98601383] 
-   merging surveys at times [5334.98879161 5334.99156939] 
-   merging surveys at times [5334.99434717 5334.99712494] 
-   merging surveys at times [5334.99990272 5335.         5335.0026805 ] 
-   merging surveys at times [5335.04078509 5335.04356286] 
-   merging surveys at times [5335.04634064 5335.04911842] 
-   merging surveys at times [5335.0518962  5335.05467398] 
-   merging surveys at times [5335.05745175 5335.06022953] 
-   merging surveys at times [5335.06300731 5335.06578509 5335.06629066] 
-   merging surveys at times [5335.06856286 5335.07134064] 
-   merging surveys at times [5335.07411842 5335.0768962 ] 
-   merging surveys at times [5335.12104173 5335.12381951] 
-   merging surveys at times [5335.12659729 5335.12937507] 
-   merging surveys at times [5335.13215285 5335.13493062] 
-   merging surveys at times [5335.1377084  5335.14048618] 
-   merging surveys at times [5335.14326396 5335.14604173] 
-   merging surveys at times [5335.14878987 5335.14881951 5335.15159729] 
-   merging surveys at times [5335.15437507 5335.15715285] 
-   merging surveys at times [5335.35301627 5335.35416667] 
-   merging surveys at times [5335.4047808  5335.40755858] 
-   merging surveys at times [5335.41033635 5335.41311413] 
-   merging surveys at times [5335.41589191 5335.41866969] 
-   merging surveys at times [5335.42144746 5335.42422524] 
-   merging surveys at times [5335.42700302 5335.4297808 ] 
-   merging surveys at times [5335.43098902 5335.43255858] 
-   merging surveys at times [5335.43533635 5335.43811413] 
-   merging surveys at times [5335.44089191 5335.44366969] 
-   merging surveys at times [5335.48637772 5335.4891555 ] 
-   merging surveys at times [5335.49193328 5335.49471106] 
-   merging surveys at times [5335.49748884 5335.50026661] 
-   merging surveys at times [5335.50304439 5335.50582217] 
-   merging surveys at times [5335.50859995 5335.51137772] 
-   merging surveys at times [5335.5141555  5335.51693328] 
-   merging surveys at times [5335.51971106 5335.52044482 5335.52248884] 
-   merging surveys at times [5335.54394902 5335.5467268 ] 
-   merging surveys at times [5335.54950458 5335.55228235] 
-   merging surveys at times [5335.55506013 5335.55783791] 
-   merging surveys at times [5335.56061569 5335.56073608 5335.56339346] 
-   merging surveys at times [5335.56617124 5335.56894902] 
-   merging surveys at times [5335.5717268  5335.57450458] 
-   merging surveys at times [5335.57728235 5335.58006013] 
-   merging surveys at times [5335.60946928 5335.61224705] 
-   merging surveys at times [5335.61502483 5335.61780261] 
-   merging surveys at times [5335.62058039 5335.62335817] 
-   merging surveys at times [5335.62613594 5335.62891372] 
-   merging surveys at times [5335.6316915  5335.63446928] 
-   merging surveys at times [5335.63530002 5335.63724705] 
-   merging surveys at times [5335.64002483 5335.6402981  5335.64280261] 
-   merging surveys at times [5335.64558039 5335.64835817] 
-   merging surveys at times [5335.90237074 5335.90514852] 
-   merging surveys at times [5335.9079263  5335.91070408] 
-   merging surveys at times [5335.91348185 5335.91625963] 
-   merging surveys at times [5335.91903741 5335.92181519] 
-   merging surveys at times [5335.92459296 5335.92737074] 
-   merging surveys at times [5335.93014852 5335.9329263 ] 
-   merging surveys at times [5335.93570408 5335.93848185] 
-   merging surveys at times [5335.93922908 5335.94125963] 
-   merging surveys at times [5336.03216461 5336.03494239] 
-   merging surveys at times [5336.03772017 5336.04049795] 
-   merging surveys at times [5336.04327572 5336.0460535 ] 
-   merging surveys at times [5336.04883128 5336.05160906] 
-   merging surveys at times [5336.05438684 5336.05716461] 
-   merging surveys at times [5336.05864163 5336.05994239] 
-   merging surveys at times [5336.06272017 5336.06549795] 
-   merging surveys at times [5336.06827572 5336.0710535 ] 
-   merging surveys at times [5336.09928119 5336.10205897] 
-   merging surveys at times [5336.10386274 5336.10483675] 
-   merging surveys at times [5336.10761452 5336.1103923 ] 
-   merging surveys at times [5336.11317008 5336.11594786] 
-   merging surveys at times [5336.11872564 5336.12150341] 
-   merging surveys at times [5336.12428119 5336.12705897] 
-   merging surveys at times [5336.12983675 5336.13261452] 
-   merging surveys at times [5336.1353923  5336.13786594 5336.13817008] 
-   merging surveys at times [5336.15429884 5336.15707662] 
-   merging surveys at times [5336.15985439 5336.16263217] 
-   merging surveys at times [5336.16540995 5336.16818773] 
-   merging surveys at times [5336.17096551 5336.17374328] 
-   merging surveys at times [5336.17652106 5336.17929884] 
-   merging surveys at times [5336.18207662 5336.18485439] 
-   merging surveys at times [5336.18567848 5336.18763217] 
-   merging surveys at times [5336.19040995 5336.19318773] 
-   merging surveys at times [5336.42139991 5336.42417769] 
-   merging surveys at times [5336.42695547 5336.42973325] 
-   merging surveys at times [5336.43251103 5336.4352888 ] 
-   merging surveys at times [5336.43806658 5336.44084436] 
-   merging surveys at times [5336.4425901  5336.44362214] 
-   merging surveys at times [5336.44639991 5336.44917769] 
-   merging surveys at times [5336.45195547 5336.45473325] 
-   merging surveys at times [5336.45751103 5336.4602888 ] 
-   merging surveys at times [5336.51095726 5336.51373504] 
-   merging surveys at times [5336.51651281 5336.51929059] 
-   merging surveys at times [5336.52195201 5336.52206837 5336.52484615] 
-   merging surveys at times [5336.52762393 5336.5304017 ] 
-   merging surveys at times [5336.53317948 5336.53595726] 
-   merging surveys at times [5336.53873504 5336.54151281] 
-   merging surveys at times [5336.54429059 5336.54706837] 
-   merging surveys at times [5336.59601318 5336.59879095] 
-   merging surveys at times [5336.60156873 5336.60434651] 
-   merging surveys at times [5336.60546736 5336.60712429] 
-   merging surveys at times [5336.60990206 5336.61267984] 
-   merging surveys at times [5336.61545762 5336.6182354 ] 
-   merging surveys at times [5336.62101318 5336.62379095] 
-   merging surveys at times [5336.62656873 5336.62934651] 
-   merging surveys at times [5336.63212429 5336.63490206] 
-   merging surveys at times [5336.67372937 5336.67650715] 
-   merging surveys at times [5336.67928493 5336.68206271] 
-   merging surveys at times [5336.68311881 5336.68484048] 
-   merging surveys at times [5336.68761826 5336.69039604] 
-   merging surveys at times [5336.69317382 5336.6959516 ] 
-   merging surveys at times [5336.69872937 5336.70150715] 
-   merging surveys at times [5336.70428493 5336.70706271] 
-   merging surveys at times [5336.70984048 5336.71261826] 
-   merging surveys at times [5336.83761706 5336.84039484] 
-   merging surveys at times [5336.84317262 5336.8459504 ] 
-   merging surveys at times [5336.84872817 5336.85150595] 
-   merging surveys at times [5336.85428373 5336.85450429 5336.85706151] 
-   merging surveys at times [5336.85983929 5336.86261706] 
-   merging surveys at times [5336.86539484 5336.86817262] 
-   merging surveys at times [5336.8709504  5336.87372817] 
-   merging surveys at times [5336.91769299 5336.92047077] 
-   merging surveys at times [5336.92324855 5336.92602632] 
-   merging surveys at times [5336.9288041  5336.93158188] 
-   merging surveys at times [5336.93435966 5336.93585413 5336.93713744] 
-   merging surveys at times [5336.93991521 5336.94269299] 
-   merging surveys at times [5336.94547077 5336.94824855] 
-   merging surveys at times [5336.95102632 5336.9538041 ] 
-Combine processing time: 149.704833984375 seconds
-In situ data aquisition succeeded
-SSH data aquisition succeeded
-SST data aquisition failed, waiting 3600 seconds
---------------------
-getting GOES19 SST
-2025-08-11
-Today is day 223 of the year.
-Opening Datset
-An error occurred: [Errno -90] NetCDF: file not found: 'https://www.star.nesdis.noaa.gov/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811100000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc'
-Traceback (most recent call last):
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/file_manager.py", line 211, in _acquire_with_cache_info
-    file = self._cache[self._key]
-           ~~~~~~~~~~~^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/lru_cache.py", line 56, in __getitem__
-    value = self._cache[key]
-            ~~~~~~~~~~~^^^^^
-KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('https://www.star.nesdis.noaa.gov/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811100000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'be481071-664f-4832-a7f0-55d362ec7eeb']
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/eccofs_obs_driver.py", line 303, in sst_driver
-    goesacquire.main(fconfig)
-  File "/home/om/cron/ECCOFS_OBS/REALTIME/work/modules/acquire_GOES19_sst_v1.py", line 52, in main
-    ds=xr.open_mfdataset(urllist,decode_timedelta=False)
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/api.py", line 1634, in open_mfdataset
-    datasets = [open_(p, **open_kwargs) for p in paths1d]
-                ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/api.py", line 686, in open_dataset
-    backend_ds = backend.open_dataset(
-                 ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 666, in open_dataset
-    store = NetCDF4DataStore.open(
-            ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 452, in open
-    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 393, in __init__
-    self.format = self.ds.data_model
-                  ^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 461, in ds
-    return self._acquire()
-           ^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/netCDF4_.py", line 455, in _acquire
-    with self._manager.acquire_context(needs_lock) as root:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/contextlib.py", line 137, in __enter__
-    return next(self.gen)
-           ^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/file_manager.py", line 199, in acquire_context
-    file, cached = self._acquire_with_cache_info(needs_lock)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hunter/miniconda3/envs/ECCOFS/lib/python3.12/site-packages/xarray/backends/file_manager.py", line 217, in _acquire_with_cache_info
-    file = self._opener(*self._args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "src/netCDF4/_netCDF4.pyx", line 2470, in netCDF4._netCDF4.Dataset.__init__
-  File "src/netCDF4/_netCDF4.pyx", line 2107, in netCDF4._netCDF4._ensure_nc_success
-OSError: [Errno -90] NetCDF: file not found: 'https://www.star.nesdis.noaa.gov/thredds/dodsC/gridG19ABINRTL3CWW00/2025/223/20250811100000-NOAA-L3C_GHRSST-SSTsubskin-ABI_G19-ACSPO_V3.00-v02.1-fv01.0.nc'
- AMSR2_L3 has 1 files
- GOES19_L3 has 2 files
- L3S_LEO_AM_D has 2 files
- L3S_LEO_AM_N has 2 files
- L3S_LEO_PM_D has 2 files
- L3S_LEO_PM_N has 2 files
-There are a total of  11 SST files
-TOTAL processing time: 11303.858587026596 seconds
-DONE
-MOVING
-RUNNING DRIVER
-OBS driver initializing
-Moving  Climatology files
-/home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_01_clm.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_02_clm.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_03_clm.nc
-/home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_04_clm.nc
-elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_01_clm.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_02_clm.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_03_clm.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_04_clm.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_05_clm.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_bry.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_20250809_clm.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_Pair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_Qair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_Tair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_Uwind_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_Vwind_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_lwrad_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_lwrad_down_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_rain_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_CONTINUE_swrad_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_Pair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_Qair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_Tair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_Uwind_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_Vwind_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_lwrad_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_lwrad_down_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_rain_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_GFS_swrad_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_Pair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_Qair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_Tair_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_Uwind_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_Vwind_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_lwrad_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_lwrad_down_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_rain_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_REALTIME_MERGED_swrad_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ECCOFS_splitrivers_file_3km_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ssh_sst_cmems_20250809.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-File /home/om/cron/ECCOFS_OBS/REALTIME/data/toamarel/ssh_sst_cmems_20250809_3km.nc successfully uploaded to elhunter@amarel.rutgers.edu:/scratch/elhunter/ECCOFS/REALTIME/data/
-TOTAL time file transfer: 282.01682114601135 seconds
-DONE

@@ -4,6 +4,7 @@ import datetime,time
 from datetime import timedelta,date
 import numpy as np
 import xarray as xr
+import boto3
 
 def concat_met(fconfig):
     
@@ -114,17 +115,76 @@ def concat_clm(fconfig):
             file=glob.glob(fconfig['transfer']['trlist']['clm']['srcdir']+f'*{today}*.nc')
             files.append(file[0])
 
-        combined = xr.open_mfdataset(files,concat_dim='time',combine='nested')
+        combined = xr.open_mfdataset(files,concat_dim='ocean_time',combine='nested')
         
-        last = combined.isel(time=-1)
+        last = combined.isel(ocean_time=-1)
 
 
         
         new_time = last['ocean_time'].values+np.timedelta64(5,'D') # ,your desired time
         last['ocean_time'].values = new_time
-        combined = xr.concat([combined, last],dim="time")
+        combined = xr.concat([combined, last],dim="ocean_time")
 
         combined.to_netcdf(ofile)
+        
+def append_clm(fconfig):
+        from netCDF4 import Dataset
+        print('Appending Climatology files')
+        local_dir=fconfig['transfer']['ldesdir']
+        prefix=fconfig['transfer']['trlist']['clm']['prefix']
+        nday=fconfig['transfer']['nday']
+        nday2=fconfig['transfer']['trlist']['clm']['nday']
+        start_date = date.today()-timedelta(days=nday)
+        
+        today=start_date.strftime('%Y%m%d')
+        ofile=f'{local_dir}{prefix}_{today}_clm.nc'
+        files=[]
+        for dt in range(0,nday2):
+            day=start_date+timedelta(days=dt)
+            today=day.strftime('%Y%m%d')
+            file=glob.glob(fconfig['transfer']['trlist']['clm']['srcdir']+f'*{today}*.nc')
+            files.append(file[0])
+
+        
+        with xr.open_dataset(files[0]) as ds:
+            ds.to_netcdf(ofile, mode="w", unlimited_dims=["ocean_time"])
+        
+        with Dataset(ofile, "a") as dst:
+            for f in files[1:]:
+                print(f)
+                with Dataset(f, "r") as src:
+            # Figure out current size
+                    n0 = dst.dimensions["ocean_time"].size
+                    n1 = src.dimensions["ocean_time"].size
+
+            # Append time and any time-dependent variables
+                    
+                    dst["ocean_time"][n0:n0+n1] = src["ocean_time"][:]
+                    
+                    for vname, var in src.variables.items():
+                        if "ocean_time" in var.dimensions and vname != "ocean_time":
+                            
+                            dst[vname][n0:n0+n1, ...] = var[:]
+            n0 = dst.dimensions["ocean_time"].size
+            with Dataset(files[-1], "r") as src:
+                dst["ocean_time"][n0] = src["ocean_time"][-1]+5.0
+                for vname, var in src.variables.items():
+                    if "ocean_time" in var.dimensions and vname != "ocean_time":
+                        dst[vname][n0, ...] = var[:]
+        # for f in files[1:]:
+            # with xr.open_dataset(f) as ds:
+                
+                # print(f)
+                # ds.to_netcdf(ofile, mode="a", unlimited_dims=["ocean_time"])
+        # last = xr.open_dataset(files[-1])
+        # print(last)
+        # new_time = last['ocean_time'].values+np.timedelta64(5,'D') # ,your desired time
+        # last['ocean_time'].values = new_time
+        # last.to_netcdf(ofile, mode="a", unlimited_dims=["ocean_time"])
+        #ombined = xr.concat([combined, last],dim="ocean_time")
+        #combined.to_netcdf(ofile)
+        
+        
 def move_clm(fconfig):
         print('Moving  Climatology files')
         local_dir=fconfig['transfer']['ldesdir']
@@ -145,17 +205,14 @@ def move_clm(fconfig):
             shutil.copy2(file[0], ofile)
             
 
-        combined = xr.open_dataset(ofile)
+        ds = xr.open_dataset(ofile)
+    
+        new_time = ds['ocean_time'].values+np.timedelta64(5,'D') # ,your desired time
+        ds['ocean_time'].values = new_time
         
-        last = combined.isel(time=-1)
-
-
-        
-        new_time = last['ocean_time'].values+np.timedelta64(5,'D') # ,your desired time
-        last['ocean_time'].values = new_time
         ind=ind+1
         ofile=f'{local_dir}{prefix}_{today1}_{ind:02d}_clm.nc'
-        last.to_netcdf(ofile)
+        ds.to_netcdf(ofile)
 
         
 def delete_remote(fconfig):
@@ -203,10 +260,14 @@ def compile_all_files(fconfig):
             case 'met':
                 concat_met(fconfig)
             case 'clm':
+                
+                #move_clm(fconfig)
                 #concat_clm(fconfig)
-                move_clm(fconfig)
+                append_clm(fconfig)
                 
             case _:
+                
+                pass
                 print(fconfig['transfer']['trlist'][key]['srcdir']+f'{sp}{today}*.nc')
                 files=glob.glob(fconfig['transfer']['trlist'][key]['srcdir']+f'{sp}{today}*.nc')
                 files=sorted(files)
@@ -237,5 +298,16 @@ def transfer(fconfig):
             print(f"Error: {str(e)}")
             print(f"File {file} upload to {remote_file_path} failed")
             
-            
-        
+  #Move to fathom_science bucket.           
+    s3 = boto3.client("s3")
+    bucket_name = "fathom-eccofs"
+    folder = "assimilation_files/"
+    
+    for filename in files:
+   #     filepath = os.path.join(local_folder, filename)
+        if os.path.isfile(filename):  # skip subfolders
+            parts=filename.split('/')
+            s3_key = folder + parts[-1]
+            print(f"Uploading {filename} ? s3://{bucket_name}/{s3_key}")
+            s3.upload_file(filename, bucket_name, s3_key)
+    

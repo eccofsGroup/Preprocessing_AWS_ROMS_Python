@@ -71,8 +71,8 @@ def main(fconfig):
             os.remove(f)
             
         for ind,variable in enumerate(variables):
-            print(tmpfiles[ind])
-            print(ids[ind])
+            #print(tmpfiles[ind])
+            #print(ids[ind])
             day2=day+timedelta(days=0.5)
             
             print(variable)
