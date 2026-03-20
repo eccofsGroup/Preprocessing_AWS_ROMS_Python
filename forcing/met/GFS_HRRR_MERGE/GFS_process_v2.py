@@ -71,8 +71,26 @@ oVariables = {
     'Vwind': ("v10")
     
 }
-    
 
+####FOR LATER VERSION OF KERCHUNK UNCOMMENT THIS    
+# oVariables = {
+    # 'Tair': ("t2m"), 
+    # 'Qair': ("r2"), 
+    # 'Pair': ("prmsl"),
+    # 'rain': ("prate"),
+    # 'wind': ("UV"),
+    # 'swrad': ("SWRAD"), 
+    # 'lwrad': ("LWRAD"),
+    # 'lwrad_down': ("sdlwrf"), 
+    # 'swdown': ("sdswrf"), 
+    # 'swup': ("suswrf"),
+    # 'lwdown': ("sdlwrf"), 
+    # 'lwup': ("sulwrf"),
+    # 'Uwind': ("u10"),
+    # 'Vwind': ("v10")
+    
+# }
+    
 
 projection = ccrs.LambertConformal(central_longitude=262.5, 
                                    central_latitude=38.5, 
@@ -125,6 +143,9 @@ sc1=np.append(sc1,1.0)
 
 vfilter={'cfVarName':['prmsl','t2m','r2','u10','v10','prate'],"stepType":'instant'}  
 rfilter={'shortName':['dswrf','dlwrf','uswrf','ulwrf'],'typeOfLevel':'surface'}   
+####FOR LATER VERSION OF KERCHUNK UNCOMMENT THIS    
+#rfilter={'shortName':['sdswrf','sdlwrf','suswrf','sulwrf'],'typeOfLevel':'surface'}   
+
 
 
 
